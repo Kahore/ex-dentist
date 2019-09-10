@@ -10,7 +10,7 @@
 export default {
   name: 'home',
   components: {
-    Main: import('@/components/Main.vue')
+    Main: () =>  import('@/components/Main.vue')
   }
 }
 </script>
