@@ -18,9 +18,9 @@
 7.	~~Checkbox - I have read and accept the Terms of Service and Privacy Policy* (term_and_privacy_policy_acceptance)~~
 * Integrate with firebase
 ###	Password-recovery Page 
-*	It should show a blurb and a text field to enter their registered email address.
-*	The blurb should say, "Enter your registered email address, and we will send an email with the instructions on resetting your password."
-
+*	~~It should show a blurb and a text field to enter their registered email address.~~
+*	~~The blurb should say, "Enter your registered email address, and we will send an email with the instructions on resetting your password."~~
+* Integrate with firebase
 ## Dentist Area
 ###	Navigation 
 *	Navigational items are Dashboard, Patients, Support, and My Account.
