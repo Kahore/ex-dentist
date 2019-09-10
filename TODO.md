@@ -25,18 +25,19 @@
 ###	~~Navigation~~
 *	~~Navigational items are Dashboard, Patients, Support, and My Account.~~
 ###	Dashboard 
-*	It should display a message asking Dentists to add practices under their profile IF they haven't added already.
-*	It should display stats area to show the stats for Total Cases, Cases Completed, Cases Inprogress, Cases Required Attention.
-*	It should display Case Order Table
+*	~~It should display a message asking Dentists to add practices under their profile IF they haven't added already.~~
+* Read from db info above?
+*	~~It should display stats area to show the stats for Total Cases, Cases Completed, Cases Inprogress, Cases Required Attention.~~
+*	~~It should display Case Order Table~~
 ####	Case Order Table 
-*	It should contain the following columns: 
-1.	Order Date
-2.	Patient Name
-3.	ID
-4.	Treatment
-5.	Case Status
-6.	Appointment Date
-7.	Lab Slip - Icon which generates the lab slip for that case
+*	~~It should contain the following columns:~~
+1.	~~Order Date~~
+2.	~~Patient Name~~
+3.	~~ID~~
+4.	~~Treatment~~
+5.	~~Case Status~~
+6.	~~Appointment Date~~
+7.	~~Lab Slip - Icon which generates the lab slip for that case~~
 *	It should provide a Search functionality. So that the Dentist can search a string across all the column data.
 *	It should have the ability to do pagination or lazy loading.
 *	It should color-code each record in the table. So the Dentist can identify quickly whether the case requires attention from the Dentist or the Lab.
