@@ -2,7 +2,7 @@
   <div>
       <li class="nav-item dropdown">
         <a
-          class="nav-link dropdown-toggle"  
+          class="nav-link dropdown-toggle"
           id="navbarDropdown"
           role="button"
           data-toggle="dropdown"
@@ -17,16 +17,16 @@
           aria-labelledby="navbarDropdown"
           :class="{show: isDDOpen}">
           <router-link to="/dentistDashboard">
-            <a class="dropdown-item">Dashboard</a>
+            <a class="dropdown-item" @click="toggleDDbar">Dashboard</a>
           </router-link>
           <router-link to="/dentist-patients">
-            <a class="dropdown-item">Patients</a>
+            <a class="dropdown-item" @click="toggleDDbar">Patients</a>
           </router-link>
           <router-link to="/dentist-support">
-            <a class="dropdown-item">Support</a>
+            <a class="dropdown-item" @click="toggleDDbar">Support</a>
           </router-link>
           <router-link to="/dentist-myAccount">
-            <a class="dropdown-item">My Account</a>
+            <a class="dropdown-item" @click="toggleDDbar">My Account</a>
           </router-link>
         </div>
       </li>
@@ -41,10 +41,10 @@ export default {
       isDDOpen: false
     }
   },
-  methods:{
+  methods: {
     toggleDDbar () {
       this.isDDOpen = !this.isDDOpen
-    }   
+    }
   }
 }
 </script>
