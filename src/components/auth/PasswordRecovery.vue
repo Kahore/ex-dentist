@@ -25,16 +25,16 @@
           </button>
         </div>
       </form>
-    </div> 
+    </div>
   </div>
-  <!-- .row --> 
+  <!-- .row -->
 </template>
 
 <script>
 export default {
   name: 'PasswordRecovery',
   methods: {
-    resetPassword() {
+    resetPassword () {
       console.log('TCL: resetPassword -> resetPassword')
     }
   }
