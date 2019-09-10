@@ -41,8 +41,8 @@ import {
 } from 'vuex'
 export default {
   name: 'navHeader',
-  components:{
-    NavDentist: ()=> import ('./dentist/_NavRoot')
+  components: {
+    NavDentist: () => import('./dentist/_NavRoot')
   },
   data () {
     return {
