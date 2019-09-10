@@ -1,7 +1,10 @@
 <template>
   <div class="row pt-5">
     <div class="col-md-4 offset-md-4 col-sm-12 offset-sm-1">
-      <form id="login-form" role="form" class="form-group">
+      <form
+        id="login-form"
+        role="form"
+        class="form-group">
         <h3 class="text-center">Login</h3>
         <userType v-if="selectedUserType === ''"/>
         <div v-else>
