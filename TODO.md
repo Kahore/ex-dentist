@@ -93,12 +93,13 @@
 *	It should contain a section with filters to display files uploaded in the comments area by the Dentist, Lab, and Clinician. Options for filters are All, Dentist, Lab, and Clinician. 
 *	Thumbnails will represent files in the files area. Each thumbnail will contain a marker to identify the user type uploaded that file.
 ###	Support Page 
-*	It should display a contact form for the Dentist to ask questions.
-*	It should display Administration postal address, email, and telephone.
-*	It should display Laboratory details - postal address, email, and telephone.
-*	It should show the list of downloadable PDF forms.
-*	It should display the instructional videos section.
-*	It should display FAQ's section.
+*	~~It should display a contact form for the Dentist to ask questions.~~
+*	~~It should display Administration postal address, email, and telephone.~~
+*	~~It should display Laboratory details - postal address, email, and telephone.~~
+*	~~It should show the list of downloadable PDF forms.~~
+*	~~It should display the instructional videos section.~~
+*	~~It should display FAQ's section.~~
+* fix mobile responsive
 ###	My Account 
 *	It should provide functionality for the Dentist to update the personal details
 *	It should provide a feature to update the password
