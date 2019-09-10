@@ -70,11 +70,23 @@
 import { mapGetters } from 'vuex'
 export default {
   name: 'Login',
+  data () {
+    return {
+      email: '',
+      password: '',
+      isLoading: false
+    }
+  },
   components: {
     userType: () => import('./_UserType')
   },
   computed: {
     ...mapGetters(['selectedUserType'])
+  },
+  methods: {
+    loginWithEmailLocal () {
+      console.log('TCL: loginWithEmailLocal -> loginWithEmailLocal')
+    }
   }
 }
 </script>
