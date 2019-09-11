@@ -1,12 +1,19 @@
 <template>
   <div>
-    Dentist patients here
+    <patientModal/>
+    <patientListFilter/>
+    <patientList/>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'DentistPatients' 
+  name: 'DentistPatients',
+  components: {
+    patientModal: () => import('./Patients/PatientModal'),
+    patientListFilter: () => import('./Patients/PatientListFilter'),
+    patientList: () => import('./Patients/PatientList')
+  }
 }
 </script>
 

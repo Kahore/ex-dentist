@@ -4,6 +4,7 @@ import Register from './components/auth/Register.vue'
 import PasswordRecovery from './components/auth/PasswordRecovery.vue'
 import DentistDashboard from './components/dentist/Dashboard.vue'
 import DentistPatients from './components/dentist/Patients.vue'
+import DentistPatientPage from './components/dentist/Patients/PatientDetails.vue'
 import DentistSupport from './components/dentist/Support.vue'
 import DentistMyAccount from './components/dentist/MyAccount.vue'
 
@@ -13,8 +14,9 @@ export const routes = [
   { path: '/recovery', component: PasswordRecovery, name: 'recovery', onlyGuest: true },
   { path: '/login', component: Login, name: 'login', onlyGuest: true },
   { path: '/register', component: Register, name: 'register', onlyGuest: true },
-  { path: '/dentistDashboard', component: DentistDashboard, name: 'DentistDashboard' },
+  { path: '/dentist-dashboard', component: DentistDashboard, name: 'DentistDashboard' },
   { path: '/dentist-patients', component: DentistPatients, name: 'DentistPatients' },
+  { path: '/dentist-patients/patient', component: DentistPatientPage, name: 'DentistPatientPage' },
   { path: '/dentist-support', component: DentistSupport, name: 'DentistSupport' },
   { path: '/dentist-myAccount', component: DentistMyAccount, name: 'DentistMyAccount' },
   { path: '*', redirect: '/' }

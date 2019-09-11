@@ -43,32 +43,32 @@
 *	It should color-code each record in the table. So the Dentist can identify quickly whether the case requires attention from the Dentist or the Lab.
 *	When a user clicks on a record, it takes them to the Order Page for that case.
 ###	Patients 
-*	It should show a table with the list of patients
+*	~~It should show a table with the list of patients~~
 ####	Patient table 
-*	Table should contain the following columns: 
-1.	Patient name (with profile picture)
-2.	Treatment (Treatment which they are currently undergoing)
-3.	Status
-4.	Registration Date
-5.	Practice Name
-6.	Date of Birth
-7.	Actions (Edit, Delete, Archive)
-*	It should provide a Search functionality. So that the Dentist can search a string across all the column data.
-*	It should also provide filters for All, In Treatment, Not In Treatment, Archived patients. 
+*	~~Table should contain the following columns:~~
+1.	~~Patient name~~ (with profile picture)
+2.	~~Treatment (Treatment which they are currently undergoing)~~
+3.	~~Status~~
+4.	~~Registration Date~~
+5.	~~Practice Name~~
+6.	~~Date of Birth~~
+7.	~~Actions~~ (Edit, Delete, Archive)
+*	~~It should provide a Search functionality. So that the Dentist can search a string across all the column data.~~
+*	~~It should also provide filters for All, In Treatment, Not In Treatment, Archived patients.~~
 *	It should have the ability to do pagination or lazy loading.
 *	It should provide a button to add a New Patient. Upon clicking the button, a pop-up window appears, where the Dentist can enter the patient details.
-*	When the Dentist clicks on a Patient record, it should take them to the Patient Page.
+*	~~When the Dentist clicks on a Patient record, it should take them to the Patient Page.~~
 *	Upon clicking the Edit action, a pop-up window appears similar to the New Patient, where the Dentist can update the patient details.
 *	Delete, and Archive action will result in a confirmation pop-up, where the Dentist has to confirm to complete the requested action.
 ####	New/Edit Patient Pop-up Window 
-*	It should contain the following fields: 
-1.	First Name* (first_name)
-2.	Last Name* (last_name)
-3.	Date Of Birth* (date_of_birth)
-4.	Email Address* (email)
-5.	Gender* (gender)
-6.	Profile Picture* - File field (profile_picture)
-7.	Practice Centre* - Dropdown with list of practices (practice_centre_id)
+*	~~It should contain the following fields:~~
+1.	~~First Name* (first_name)~~
+2.	~~Last Name* (last_name)~~
+3.	~~Date Of Birth* (date_of_birth)~~
+4.	~~Email Address* (email)~~
+5.	~~Gender* (gender)~~
+6.	~~Profile Picture* - File field (profile_picture)~~
+7.	~~Practice Centre* - Dropdown with list of practices (practice_centre_id)~~
 ###	Patient Page 
 *	It should show the Patient details.
 *	It should provide a link to edit Patient profile (pop-up).
