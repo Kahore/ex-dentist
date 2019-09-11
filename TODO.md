@@ -101,19 +101,22 @@
 *	~~It should display FAQ's section.~~
 * fix mobile responsive
 ###	My Account 
-*	It should provide functionality for the Dentist to update the personal details
-*	It should provide a feature to update the password
-*	It should provide a feature to manage the practices of the Dentist.
-*	Practice should contain the following fields: 
-1.	Practice Name* (name)
-2.	Address Line 1* (address_line_1)
-3.	Address Line 2 (address_line_2)
-4.	City/Town* (city)
-5.	State/Region* (region)
-6.	Country* (country)
-7.	Postcode* (postcode)
-8.	Email* (email)
-9.	Phone number* (phone)
+*	~~It should provide functionality for the Dentist to update the personal details~~
+*	~~It should provide a feature to update the password~~
+*	~~It should provide a feature to manage the practices of the Dentist.~~
+* modal should rise on click add practices
+* modal should rise on click Practice Name at table
+*	~~Practice should contain the following fields:~~
+1.	~~Practice Name* (name)~~
+2.	~~Address Line 1* (address_line_1)~~
+3.	~~Address Line 2 (address_line_2)~~
+4.	~~City/Town* (city)~~
+5.	~~State/Region* (region)~~
+6.	~~Country* (country)~~
+7.	~~Postcode* (postcode)~~
+8.	~~Email* (email)~~
+9.	~~Phone number* (phone)~~
+* fix mobile responsive
 
 ## Lab-staff Area
 ###	Navigation 
