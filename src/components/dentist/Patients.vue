@@ -1,8 +1,8 @@
 <template>
   <div>
-    <patientModal/>
-    <patientListFilter/>
-    <patientList/>
+    <patientsModal/>
+    <patientsListFilter/>
+    <patientsList/>
   </div>
 </template>
 
@@ -10,9 +10,9 @@
 export default {
   name: 'DentistPatients',
   components: {
-    patientModal: () => import('./Patients/PatientModal'),
-    patientListFilter: () => import('./Patients/PatientListFilter'),
-    patientList: () => import('./Patients/PatientList')
+    patientsModal: () => import('./Patients/PatientsModal'),
+    patientsListFilter: () => import('./Patients/PatientsListFilter'),
+    patientsList: () => import('./Patients/PatientsList')
   }
 }
 </script>
