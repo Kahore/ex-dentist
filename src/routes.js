@@ -4,7 +4,7 @@ import Register from './components/auth/Register.vue'
 import PasswordRecovery from './components/auth/PasswordRecovery.vue'
 import DentistDashboard from './components/dentist/Dashboard.vue'
 import DentistPatients from './components/dentist/Patients.vue'
-import DentistPatientPage from './components/dentist/Patients/PatientDetails.vue'
+import DentistPatientPage from './components/dentist/Patient.vue'
 import DentistSupport from './components/dentist/Support.vue'
 import DentistMyAccount from './components/dentist/MyAccount.vue'
 

@@ -70,11 +70,11 @@
 6.	~~Profile Picture* - File field (profile_picture)~~
 7.	~~Practice Centre* - Dropdown with list of practices (practice_centre_id)~~
 ###	Patient Page 
-*	It should show the Patient details.
-*	It should provide a link to edit Patient profile (pop-up).
-*	It should provide a link to Add/Edit Clinical Notes (pop-up with a text-area)
-*	It should show a table, which contains the details for the Patient's past treatments. When the Dentist clicks on a record, it should take them to the Case Details Page of that treatment.
-*	It should show all the available treatments [Design, Refine, Align, Direct, and In-Direct] that apply to the Patient. When the Dentist clicks on a treatment, it should take them to the Case Order Page for that treatment.
+*	~~It should show the Patient details.~~
+*	~~It should provide a link to edit Patient profile~~ (pop-up).
+*	~~It should provide a link to Add/Edit Clinical Notes (pop-up with a text-area)~~
+*	~~It should show a table, which contains the details for the Patient's past treatments.~~ When the Dentist clicks on a record, it should take them to the Case Details Page of that treatment.
+*	~~It should show all the available treatments [Design, Refine, Align, Direct, and In-Direct] that apply to the Patient.~~ When the Dentist clicks on a treatment, it should take them to the Case Order Page for that treatment.
 ###	Case Order Page 
 *	It should show the Patient details.
 *	It should provide a link to edit Patient profile (pop-up).

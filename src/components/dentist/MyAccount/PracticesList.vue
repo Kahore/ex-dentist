@@ -1,7 +1,6 @@
 <template>
   <div class="container table-responsive mt-2">
     <div class="col-md-12">
-      
       <table id="cart" class="table table-hover table-sm">
         <thead>
           <tr>
