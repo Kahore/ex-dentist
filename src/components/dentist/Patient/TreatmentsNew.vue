@@ -3,10 +3,18 @@
     <div class="row">
       <div class="col-md-12">
         <h4>Available treatments</h4>
-          <a href="" class="dark-link"> Refine </a>
-          <a href="" class="dark-link"> Align </a>
-          <a href="" class="dark-link"> Direct </a>
-          <a href="" class="dark-link"> In-Direct </a>
+          <router-link to="/dentist-caseOrder">
+            <a href="" class="dark-link"> Refine </a>
+          </router-link>
+          <router-link to="/dentist-caseOrder">
+            <a href="" class="dark-link"> Align </a>
+          </router-link>
+          <router-link to="/dentist-caseOrder">
+            <a href="" class="dark-link"> Direct </a>
+          </router-link>
+          <router-link to="/dentist-caseOrder">
+            <a href="" class="dark-link"> In-Direct </a>
+          </router-link>
       </div>
     </div>
   </div>

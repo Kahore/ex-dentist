@@ -21,6 +21,7 @@
 *	~~It should show a blurb and a text field to enter their registered email address.~~
 *	~~The blurb should say, "Enter your registered email address, and we will send an email with the instructions on resetting your password."~~
 * Integrate with firebase
+
 ## Dentist Area
 ###	~~Navigation~~
 *	~~Navigational items are Dashboard, Patients, Support, and My Account.~~
@@ -76,10 +77,10 @@
 *	~~It should show a table, which contains the details for the Patient's past treatments.~~ When the Dentist clicks on a record, it should take them to the Case Details Page of that treatment.
 *	~~It should show all the available treatments [Design, Refine, Align, Direct, and In-Direct] that apply to the Patient.~~ When the Dentist clicks on a treatment, it should take them to the Case Order Page for that treatment.
 ###	Case Order Page 
-*	It should show the Patient details.
-*	It should provide a link to edit Patient profile (pop-up).
-*	It should provide a link to Add/Edit Clinical Notes (pop-up with a text-area)
-*	It should display the treatment specific form, where the Dentist will provide the details and submits the order for the case. Please note that the treatment form varies for Design, Refine, Align, Direct, and In-Direct treatments.
+*	~~It should show the Patient details.~~
+*	~~It should provide a link to edit Patient profile (pop-up).~~
+*	~~It should provide a link to Add/Edit Clinical Notes (pop-up with a text-area)~~
+*	~~It should display the treatment specific form, where the Dentist will provide the details and submits the order for the case. Please note that the treatment form varies for Design, Refine, Align, Direct, and In-Direct treatments.~~
 ###	Case Details Page* - There are three versions of this page: A version for the Dentist, a version for the Lab Staff, and one for the Clinicians. 
 *	It should show the Patient details.
 *	It should provide a link to edit Patient profile (pop-up).
