@@ -22,6 +22,10 @@
         </div>
         <!-- .form-group -->
         <div class="form-group">
+          <textarea name="" id="" rows="2" placeholder="Details"></textarea>
+        </div>
+        <!-- .form-group -->
+        <div class="form-group">
           <button
             class="btn btn-success"
             style="width: 100%"

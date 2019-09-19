@@ -74,7 +74,7 @@
 *	~~It should show the Patient details.~~
 *	~~It should provide a link to edit Patient profile~~ (pop-up).
 *	~~It should provide a link to Add/Edit Clinical Notes (pop-up with a text-area)~~
-*	~~It should show a table, which contains the details for the Patient's past treatments.~~ When the Dentist clicks on a record, it should take them to the Case Details Page of that treatment.
+*	~~It should show a table, which contains the details for the Patient's past treatments. When the Dentist clicks on a record, it should take them to the Case Details Page of that treatment.~~
 *	~~It should show all the available treatments [Design, Refine, Align, Direct, and In-Direct] that apply to the Patient.~~ When the Dentist clicks on a treatment, it should take them to the Case Order Page for that treatment.
 ###	Case Order Page 
 *	~~It should show the Patient details.~~
@@ -82,17 +82,18 @@
 *	~~It should provide a link to Add/Edit Clinical Notes (pop-up with a text-area)~~
 *	~~It should display the treatment specific form, where the Dentist will provide the details and submits the order for the case. Please note that the treatment form varies for Design, Refine, Align, Direct, and In-Direct treatments.~~
 ###	Case Details Page* - There are three versions of this page: A version for the Dentist, a version for the Lab Staff, and one for the Clinicians. 
-*	It should show the Patient details.
-*	It should provide a link to edit Patient profile (pop-up).
-*	It should provide a link to Add/Edit Clinical Notes (pop-up with a text-area)
-*	It should display the Case Order details which the Dentist has provided in the Case Order Page.
-*	It should provide a way for the Dentist to specify the order status (Dropdown field with the list of order status)
-*	It should provide a way for the Dentist to choose the user type that the case will need attention from (Dropdown field with Dentist and Lab Staff as the items).
-*	It should provide a button to generate the lab slip document.
-*	It should provide a comments section to record the communication between the Dentist and the Lab Staff.
-*	Dentists and the Lab Staff should be able to attach files while adding a comment/note in the comment area.
-*	It should contain a section with filters to display files uploaded in the comments area by the Dentist, Lab, and Clinician. Options for filters are All, Dentist, Lab, and Clinician. 
-*	Thumbnails will represent files in the files area. Each thumbnail will contain a marker to identify the user type uploaded that file.
+*	~~It should show the Patient details.~~
+*	~~It should provide a link to edit Patient profile (pop-up).~~
+*	~~It should provide a link to Add/Edit Clinical Notes (pop-up with a text-area)~~
+*	~~It should display the Case Order details which the Dentist has provided in the Case Order Page.~~
+*	~~It should provide a way for the Dentist to specify the order status (Dropdown field with the list of order status)~~
+*	~~It should provide a way for the Dentist to choose the user type that the case will need attention from (Dropdown field with Dentist and Lab Staff as the items).~~
+*	~~It should provide a button to generate the lab slip document.~~
+*	~~It should provide a comments section to record the communication between the Dentist and the Lab Staff.
+*	~~Dentists and the Lab Staff should be able to attach files while adding a comment/note in the comment area.~~
+*	~~It should contain a section with filters to display files uploaded in the comments area by the Dentist, Lab, and Clinician. Options for filters are All, Dentist, Lab, and Clinician.~~
+*	~~Thumbnails will represent files in the files area. Each thumbnail will contain a marker to identify the user type uploaded that file.~~
+* Reorganise comments section as a classical chat on lest part of screen
 ###	Support Page 
 *	~~It should display a contact form for the Dentist to ask questions.~~
 *	~~It should display Administration postal address, email, and telephone.~~

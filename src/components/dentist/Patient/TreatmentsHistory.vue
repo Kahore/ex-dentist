@@ -5,39 +5,54 @@
         <h4 class="pl-3 pt-2">Patient's treatments history</h4>
         <ul class="list-group">
           <li class="list-group-item">
-            <a
-              href=""
-              class="dark-link">
-              Design
-            </a>
+            <router-link
+            to="/dentist-caseOrderDetails">
+              <a
+                href=""
+                class="dark-link">
+                Design
+              </a>
+            </router-link>
           </li>
           <li class="list-group-item">
-            <a
-              href=""
-              class="dark-link">
-              Refine
-            </a>
+            <router-link
+            to="/dentist-caseOrderDetails">
+              <a
+                href=""
+                class="dark-link">
+                Refine
+              </a>
+            </router-link>
           </li>
           <li class="list-group-item">
-            <a
-              href=""
-              class="dark-link">
-              Align
-            </a>
+            <router-link
+            to="/dentist-caseOrderDetails">
+              <a
+                href=""
+                class="dark-link">
+                Align
+              </a>
+            </router-link>
           </li>
           <li class="list-group-item">
-            <a
-              href=""
-              class="dark-link">
-              Direct
-            </a>
+            <router-link
+            to="/dentist-caseOrderDetails">
+              <a
+                href=""
+                class="dark-link">
+                Direct
+              </a>
+            </router-link>
           </li>
           <li class="list-group-item">
-            <a
-              href=""
-              class="dark-link">
-              In-Direct
-            </a>
+            <router-link
+            to="/dentist-caseOrderDetails">
+              <a
+                href=""
+                class="dark-link">
+                In-Direct
+              </a>
+            </router-link>
           </li>
         </ul>
         </div>

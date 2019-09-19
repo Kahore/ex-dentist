@@ -8,6 +8,7 @@ import DentistPatientPage from './components/dentist/Patient.vue'
 import DentistSupport from './components/dentist/Support.vue'
 import DentistMyAccount from './components/dentist/MyAccount.vue'
 import DentistCaseOrderPage from './components/dentist/CaseOrder/CaseOrder.vue'
+import DentistCaseDetailsPage from './components/dentist/CaseDetails/CaseDetails.vue'
 
 export const routes = [
   { path: '/', component: Main, name: 'mainpage' },
@@ -19,6 +20,7 @@ export const routes = [
   { path: '/dentist-patients', component: DentistPatients, name: 'DentistPatients' },
   { path: '/dentist-patients/patient', component: DentistPatientPage, name: 'DentistPatientPage' },
   { path: '/dentist-caseOrder', component: DentistCaseOrderPage, name: 'DentistCaseOrderPage' },
+  { path: '/dentist-caseOrderDetails', component: DentistCaseDetailsPage, name: 'DentistCaseDetailsPage' },
   { path: '/dentist-support', component: DentistSupport, name: 'DentistSupport' },
   { path: '/dentist-myAccount', component: DentistMyAccount, name: 'DentistMyAccount' },
   { path: '*', redirect: '/' }
