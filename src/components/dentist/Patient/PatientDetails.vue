@@ -14,7 +14,8 @@
       <!-- .row -->
       <div class="row">
         <div class="col-12 col-md-4">
-            <a class="dark-link" href="">Edit Patient profile</a>
+            <a class="dark-link" href="" @click.prevent="isModalActive = !isModalActive">Edit Patient profile</a>
+            <patientDetailsModal v-if="isModalActive"/>
         </div>
         <clinicalNotesModal/>
       </div>
@@ -27,7 +28,13 @@
 export default {
   name: 'DentistPatientDetails',
   components: {
-    clinicalNotesModal: () => import('./ClinicalNotesModal')
+    clinicalNotesModal: () => import('./ClinicalNotesModal'),
+    patientDetailsModal: () => import('../Patients/PatientsModal')
+  },
+  data () {
+    return {
+      isModalActive: false
+    }
   }
 }
 </script>
