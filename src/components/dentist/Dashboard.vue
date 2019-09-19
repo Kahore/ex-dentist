@@ -52,7 +52,7 @@
             <a class="dark-link">1234567</a>
           </router-link>
         </td>
-        <td class="d-none d-sm-table-cell">Some Treatment</td>
+        <td class="d-none d-sm-table-cell">Design</td>
         <td class="px-0">Some Case Status</td>
         <td class="px-0">2019-09-15</td>
         <td class="px-0">Some Lab Slip</td>

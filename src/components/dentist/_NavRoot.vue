@@ -16,7 +16,7 @@
           class="dropdown-menu"
           aria-labelledby="navbarDropdown"
           :class="{show: isDDOpen}">
-          <router-link to="/dentistDashboard">
+          <router-link to="/dentist-dashboard">
             <a class="dropdown-item" @click="toggleDDbar">Dashboard</a>
           </router-link>
           <router-link to="/dentist-patients">
