@@ -6,7 +6,7 @@
         <ul class="list-group">
           <li class="list-group-item">
             <router-link
-            to="/dentist-caseOrderDetails">
+            :to='"/dentist-patients/"+patientInfoId+"/caseOrderDetails"'>
               <a
                 href=""
                 class="dark-link">
@@ -16,7 +16,7 @@
           </li>
           <li class="list-group-item">
             <router-link
-            to="/dentist-caseOrderDetails">
+             :to='"/dentist-patients/"+patientInfoId+"/caseOrderDetails"'>
               <a
                 href=""
                 class="dark-link">
@@ -26,7 +26,7 @@
           </li>
           <li class="list-group-item">
             <router-link
-            to="/dentist-caseOrderDetails">
+              :to='"/dentist-patients/"+patientInfoId+"/caseOrderDetails"'>
               <a
                 href=""
                 class="dark-link">
@@ -36,7 +36,7 @@
           </li>
           <li class="list-group-item">
             <router-link
-            to="/dentist-caseOrderDetails">
+            :to='"/dentist-patients/"+patientInfoId+"/caseOrderDetails"'>
               <a
                 href=""
                 class="dark-link">
@@ -46,7 +46,7 @@
           </li>
           <li class="list-group-item">
             <router-link
-            to="/dentist-caseOrderDetails">
+              :to='"/dentist-patients/"+patientInfoId+"/caseOrderDetails"'>
               <a
                 href=""
                 class="dark-link">
@@ -61,8 +61,12 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
-  name: 'PatientTreatments'
+  name: 'PatientTreatments',
+  computed: {
+    ...mapGetters(['patientInfoId'])
+  }
 }
 </script>
 

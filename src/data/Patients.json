@@ -1,0 +1,72 @@
+[
+  {
+    "id" : "1",
+    "first_name" : "John",
+    "last_name" : "Doe 1",
+    "Treatment" : "Design",
+    "Status" : "Some Status",
+    "RegistrationDate": "2019-09-01",
+    "PracticeName": "PracticeName 1",
+    "date_of_birth": "1990-09-01",
+    "gender": "Male",
+    "email": "John.Doe1@example.com",
+    "practice_centre_id": "practice_centre_1",
+    "profile_picture": "profile_picture.svg"
+  },
+  {
+    "id" : "2",
+    "first_name" : "John",
+    "last_name" : "Doe 2",
+    "Treatment" : "Refine",
+    "Status" : "Some Status 2",
+    "RegistrationDate":"2019-09-02",
+    "PracticeName":"PracticeName 2",
+    "date_of_birth":"1990-09-02",
+    "gender": "Male",
+    "email": "John.Doe1@example.com",
+    "practice_centre_id": "practice_centre_2",
+    "profile_picture": "profile_picture.svg"
+  },
+  {
+    "id" : "3",
+    "first_name" : "John",
+    "last_name" : "Doe 3",
+    "Treatment" : "Align",
+    "Status" : "Some Status 3",
+    "RegistrationDate":"2019-09-03",
+    "PracticeName":"PracticeName 3",
+    "date_of_birth":"1990-09-03",
+    "gender": "Male",
+    "email": "John.Doe1@example.com",
+    "practice_centre_id": "practice_centre_3",
+    "profile_picture": "profile_picture.svg"
+  },
+  {
+    "id" : "4",
+    "first_name" : "John",
+    "last_name" : "Doe 4",
+    "Treatment" : "Direct",
+    "Status" : "Some Status 4",
+    "RegistrationDate":"2019-09-04",
+    "PracticeName":"PracticeName 4",
+    "date_of_birth":"1990-09-04",
+    "gender": "Male",
+    "email": "John.Doe1@example.com",
+    "practice_centre_id": "practice_centre_4",
+    "profile_picture": "profile_picture.svg"
+  },
+  {
+    "id" : "5",
+    "first_name" : "John",
+    "last_name" : "Doe 5",
+    "Treatment" : "In-Direct",
+    "Status" : "Some Status 5",
+    "RegistrationDate":"2019-09-05",
+    "PracticeName":"PracticeName 5",
+    "date_of_birth":"1990-09-05",
+    "gender": "Male",
+    "email": "John.Doe1@example.com",
+    "practice_centre_id": "practice_centre_5",
+    "profile_picture": "profile_picture.svg"
+  }
+]

@@ -12,7 +12,7 @@
             class="form-control"
             placeholder="First Name"
             value=""
-            v-model="first_name">
+            v-model="patientInfo.first_name">
         </div>
         <div class="form-group">
           <input
@@ -23,7 +23,7 @@
             class="form-control"
             placeholder="Last Name"
             value=""
-            v-model="last_name">
+            v-model="patientInfo.last_name">
         </div>
         <div class="form-group">
           <input
@@ -34,7 +34,7 @@
             class="form-control"
             placeholder="Date Of Birth"
             value=""
-            v-model="date_of_birth">
+            v-model="patientInfo.date_of_birth">
         </div>
         <div class="form-group">
           <input
@@ -45,14 +45,14 @@
             class="form-control"
             placeholder="Email Address"
             value=""
-            v-model="email">
+            v-model="patientInfo.email">
         </div>
         <div class="form-group">
-          <select name="" id="" v-model="gender">
+          <select v-model="patientInfo.gender">
             <option value="" disabled selected>Select patient gender</option>
-            <option value="female">Female</option>
-            <option value="male">Male</option>
-            <option value="another">Another</option>
+            <option value="Female">Female</option>
+            <option value="Male">Male</option>
+            <option value="Another">Another</option>
           </select>
         </div>
         <div class="form-group">
@@ -67,7 +67,7 @@
             >
         </div>
         <div class="form-group">
-          <select name="" id="" v-model="practice_centre_id">
+          <select name="" id="" v-model="patientInfo.practice_centre_id">
             <option value="" disabled selected>Select practice centre</option>
             <option value="practice_centre_1">practice_centre_1</option>
             <option value="practice_centre_2">practice_centre_2</option>
@@ -90,8 +90,12 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
   name: 'DentistPatientModal',
+  computed: {
+    ...mapGetters(['patientInfo'])
+  },
   methods: {
     savePatient () {
       console.log('TCL: savePatient -> savePatient')

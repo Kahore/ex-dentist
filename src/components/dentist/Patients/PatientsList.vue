@@ -18,13 +18,18 @@
             <tr>
               <button class="btn btn-light">add patient</button>
             </tr>
-            <tr>
-              <td><router-link to="/dentist-patients/patient"><a>Patient</a></router-link></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+            <tr
+            v-for="(patient, index) in patients"
+            :key="index">
+              <td>
+                <router-link  :to="{path:'/dentist-patients/'+patient.id}">
+                  <a>{{patient.first_name + ' ' + patient.last_name}}</a>
+                </router-link></td>
+              <td>{{patient.Treatment}}</td>
+              <td>{{patient.Status}}</td>
+              <td>{{patient.RegistrationDate}}</td>
+              <td>{{patient.PracticeName}}</td>
+              <td>{{patient.date_of_birth}}</td>
               <td>
                 <div class="dropdown">
                   <a
@@ -55,7 +60,13 @@
 
 <script>
 export default {
-  name: 'DentistPatientDetails'
+  name: 'DentistPatientDetails',
+  props: {
+    patients: {
+      type: Array,
+      default: () => []
+    }
+  }
 }
 </script>
 

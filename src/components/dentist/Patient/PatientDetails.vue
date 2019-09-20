@@ -3,12 +3,17 @@
     <div class="col-md-12">
       <div class="row">
         <div class="col-12 col-md-4">
-            Patient Photo here
+            <img
+              :src="getImage(patientInfo.profile_picture)"
+              alt="profile_picture"
+              class="profile-picture__resize">
         </div>
         <div class="col-12 col-md-4">
-            <p>First Name Last Name - Gender</p>
-            <p>Date Of Birth Email Address</p>
-            <p>Practice Centre</p>
+            <p> {{ patientInfo.first_name + ' ' + patientInfo.last_name + ' - ' + patientInfo.gender}}</p>
+            <p> {{ patientInfo.date_of_birth }}
+              <a :href='"mailto:" + patientInfo.email'>{{patientInfo.email}}</a>
+            </p>
+            <p>{{patientInfo.practice_centre_id}}</p>
         </div>
       </div>
       <!-- .row -->
@@ -25,6 +30,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
   name: 'DentistPatientDetails',
   components: {
@@ -35,10 +41,27 @@ export default {
     return {
       isModalActive: false
     }
+  },
+  computed: {
+    ...mapGetters(['patientInfo'])
+  },
+  methods: {
+    getImage (pic) {
+      return require('../../../assets/' + pic)
+    }
+  },
+  created () {
+    this.$store.dispatch('LOAD_PATIENT_INFO', this.$route.params.id)
   }
 }
 </script>
 
 <style lang="scss" scoped>
-
+.profile{
+  &-picture{
+    &__resize{
+      width: 6rem;
+    }
+  }
+}
 </style>
