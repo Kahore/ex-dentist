@@ -122,13 +122,13 @@ export default {
     }
   },
   mounted () {
-    EventBus.$on( 'PATIENT_MODAL', payload => {
-      this.toggleModal( );
-    } );
+    EventBus.$on('PATIENT_MODAL', payload => {
+      this.toggleModal()
+    })
   },
   created () {
     // MEMO: reset state if user not close modal and select another page with this modal
-    this.isActive = false;   
+    this.isActive = false
   }
 }
 </script>

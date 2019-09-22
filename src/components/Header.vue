@@ -62,10 +62,10 @@ export default {
       this.isNavOpen = !this.isNavOpen
     },
     loginModalCall () {
-      EventBus.$emit( 'LOGIN_MODAL' )
+      EventBus.$emit('LOGIN_MODAL')
     },
     registerModalCall () {
-      EventBus.$emit( 'REGISTER_MODAL' )
+      EventBus.$emit('REGISTER_MODAL')
     }
   }
 }

@@ -153,9 +153,9 @@ export default {
     }
   },
   mounted () {
-    EventBus.$on( 'REGISTER_MODAL', payload => {
-      this.toggleModal( );
-    } );
+    EventBus.$on('REGISTER_MODAL', payload => {
+      this.toggleModal()
+    })
     this.toggleModal()
   }
 }

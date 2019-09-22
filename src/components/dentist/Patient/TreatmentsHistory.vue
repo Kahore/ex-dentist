@@ -28,7 +28,7 @@ import { mapGetters } from 'vuex'
 export default {
   name: 'PatientTreatments',
   computed: {
-    ...mapGetters(['patientInfoId','treatmentsHistory'])
+    ...mapGetters(['patientInfoId', 'treatmentsHistory'])
   },
   mounted () {
     let patientId = this.$store.getters.patientInfoId

@@ -110,9 +110,9 @@ export default {
     }
   },
   mounted () {
-    EventBus.$on( 'LOGIN_MODAL', payload => {
-      this.toggleModal( );
-    } );
+    EventBus.$on('LOGIN_MODAL', payload => {
+      this.toggleModal()
+    })
     this.toggleModal()
   }
 }

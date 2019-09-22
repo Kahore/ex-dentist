@@ -51,7 +51,7 @@ export default {
       return require('../../../assets/' + pic)
     },
     patientModalCall () {
-      EventBus.$emit( 'PATIENT_MODAL' )
+      EventBus.$emit('PATIENT_MODAL')
     }
   },
   created () {

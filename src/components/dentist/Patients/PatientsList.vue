@@ -73,11 +73,11 @@ export default {
   methods: {
     modalPatientRise () {
       this.resetDetails()
-      EventBus.$emit( 'PATIENT_MODAL' )
+      EventBus.$emit('PATIENT_MODAL')
     },
     resetDetails () {
     // MEMO: reset previously selected data
-      this.$store.commit('LOAD_PATIENT_INFO','')
+      this.$store.commit('LOAD_PATIENT_INFO', '')
     }
   }
 }
