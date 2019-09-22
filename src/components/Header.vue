@@ -25,7 +25,7 @@
           <a @click="logout" class="nav-link">Logout {{ userEmail }}</a>
         </li>
         <router-link to="/register" tag="li" v-if="!isLoggedIn" class="nav-item" active-class="active">
-          <a class="nav-link">Register</a>
+          <a class="nav-link" @click="registerModalCall()">Register</a>
         </router-link>
       </ul>
     </div>
@@ -62,7 +62,10 @@ export default {
       this.isNavOpen = !this.isNavOpen
     },
     loginModalCall () {
-      EventBus.$emit( 'LOGIN_MODAL' );
+      EventBus.$emit( 'LOGIN_MODAL' )
+    },
+    registerModalCall () {
+      EventBus.$emit( 'REGISTER_MODAL' )
     }
   }
 }
