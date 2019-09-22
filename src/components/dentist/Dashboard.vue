@@ -42,30 +42,39 @@
         <th style="width:10%">Lab Slip</th>
       </tr>
     </thead>
-    <tfoot>
-      <tr>
-        <td class="text-center">2019-09-10</td>
-        <td>John Smith</td>
+    <tbody>
+      <tr
+        v-for="(caseOrder, index) in caseOrders"
+        :key="index">
+        <td class="text-center">{{caseOrder.order_date}}</td>
+        <td>{{caseOrder.first_name + ' '+ caseOrder.last_name }}</td>
         <td class="d-none d-sm-table-cell">
           <router-link
-            to="/CaseOrderPage">
-            <a class="dark-link">1234567</a>
+            :to='"/dentist-patients/"+caseOrder.patientId+"/caseOrderDetails/"+caseOrder.id'>
+            <a class="dark-link">{{caseOrder.id}}</a>
           </router-link>
         </td>
-        <td class="d-none d-sm-table-cell">Design</td>
-        <td class="px-0">Some Case Status</td>
-        <td class="px-0">2019-09-15</td>
+        <td class="d-none d-sm-table-cell">{{caseOrder.treatment}}</td>
+        <td class="px-0">{{caseOrder.status}}</td>
+        <td class="px-0">{{caseOrder.appointment_date}}</td>
         <td class="px-0">Some Lab Slip</td>
       </tr>
-    </tfoot>
+    </tbody>
   </table>
   </div>
   <!-- .container -->
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
-  name: 'DentistDashboard'
+  name: 'DentistDashboard',
+  computed: {
+    ...mapGetters(['caseOrders'])
+  },
+  mounted () {
+    this.$store.dispatch('LOAD_ORDERS', 'some data for future implement')
+  }
 }
 </script>
 

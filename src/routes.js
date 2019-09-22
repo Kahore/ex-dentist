@@ -19,8 +19,8 @@ export const routes = [
   { path: '/dentist-dashboard', component: DentistDashboard, name: 'DentistDashboard' },
   { path: '/dentist-patients', component: DentistPatients, name: 'DentistPatients' },
   { path: '/dentist-patients/:id', component: DentistPatientPage, name: 'DentistPatientPage' },
-  { path: '/dentist-patients/:id/caseOrder', component: DentistCaseOrderPage, name: 'DentistCaseOrderPage' },
-  { path: '/dentist-patients/:id/caseOrderDetails', component: DentistCaseDetailsPage, name: 'DentistCaseDetailsPage' },
+  { path: '/dentist-patients/:id/caseOrder/:treatment', component: DentistCaseOrderPage, name: 'DentistCaseOrderPage' },
+  { path: '/dentist-patients/:id/caseOrderDetails/:orderId', component: DentistCaseDetailsPage, name: 'DentistCaseDetailsPage' },
   { path: '/dentist-support', component: DentistSupport, name: 'DentistSupport' },
   { path: '/dentist-myAccount', component: DentistMyAccount, name: 'DentistMyAccount' },
   { path: '*', redirect: '/' }

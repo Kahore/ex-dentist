@@ -3,54 +3,17 @@
     <div class="row">
       <div class="col-12 col-md-8 offset-md-2">
         <h4 class="pl-3 pt-2">Patient's treatments history</h4>
-        <ul class="list-group">
+        <ul
+          class="list-group"
+          v-for="(treatment, index) in treatmentsHistory"
+          :key="index">
           <li class="list-group-item">
             <router-link
-            :to='"/dentist-patients/"+patientInfoId+"/caseOrderDetails"'>
+            :to='"/dentist-patients/"+treatment.patientId+"/caseOrderDetails/"+treatment.id'>
               <a
                 href=""
                 class="dark-link">
-                Design
-              </a>
-            </router-link>
-          </li>
-          <li class="list-group-item">
-            <router-link
-             :to='"/dentist-patients/"+patientInfoId+"/caseOrderDetails"'>
-              <a
-                href=""
-                class="dark-link">
-                Refine
-              </a>
-            </router-link>
-          </li>
-          <li class="list-group-item">
-            <router-link
-              :to='"/dentist-patients/"+patientInfoId+"/caseOrderDetails"'>
-              <a
-                href=""
-                class="dark-link">
-                Align
-              </a>
-            </router-link>
-          </li>
-          <li class="list-group-item">
-            <router-link
-            :to='"/dentist-patients/"+patientInfoId+"/caseOrderDetails"'>
-              <a
-                href=""
-                class="dark-link">
-                Direct
-              </a>
-            </router-link>
-          </li>
-          <li class="list-group-item">
-            <router-link
-              :to='"/dentist-patients/"+patientInfoId+"/caseOrderDetails"'>
-              <a
-                href=""
-                class="dark-link">
-                In-Direct
+                {{ treatment.treatment }}
               </a>
             </router-link>
           </li>
@@ -65,7 +28,11 @@ import { mapGetters } from 'vuex'
 export default {
   name: 'PatientTreatments',
   computed: {
-    ...mapGetters(['patientInfoId'])
+    ...mapGetters(['patientInfoId','treatmentsHistory'])
+  },
+  mounted () {
+    let patientId = this.$store.getters.patientInfoId
+    this.$store.dispatch('LOAD_TREATMENTS', patientId)
   }
 }
 </script>

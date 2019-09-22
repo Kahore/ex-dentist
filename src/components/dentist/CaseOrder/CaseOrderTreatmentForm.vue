@@ -7,7 +7,7 @@
           <div class="row">
             <div class="col-lg-12">
               <div class="text-center">
-                <select name="" id="">
+                <select v-model="newTreatment">
                   <option value=""></option>
                   <option value="Design">Design</option>
                   <option value="Refine">Refine</option>
@@ -42,6 +42,11 @@
 <script>
 export default {
   name: 'CaseOrderTreatmentForm',
+  computed: {
+    newTreatment () {
+      return this.$route.params.treatment
+    }
+  },
   methods: {
     submitTreatment () {
       console.log('TCL: submitTreatment -> submitTreatment')
