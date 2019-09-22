@@ -1,6 +1,6 @@
 import practicesList from '../../data/Practices.json'
 const state = {
-  practices: '',
+  practices: [],
   selectedPractice: {}
 }
 
