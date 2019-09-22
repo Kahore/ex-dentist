@@ -27,7 +27,7 @@
 *	~~Navigational items are Dashboard, Patients, Support, and My Account.~~
 ###	Dashboard 
 *	~~It should display a message asking Dentists to add practices under their profile IF they haven't added already.~~
-* Read from db info above?
+* ~~Read from db info above?~~
 *	~~It should display stats area to show the stats for Total Cases, Cases Completed, Cases Inprogress, Cases Required Attention.~~
 *	~~It should display Case Order Table~~
 ####	Case Order Table 

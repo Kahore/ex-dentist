@@ -5,19 +5,19 @@
       <div class="row">
         <div class="col-12 col-md-4">
           <div>
-            <p>John Doe</p>
-            <button
+            <p>{{ currentUser.first_name + ' ' + currentUser.last_name }}</p>
+            <button v-if="practices === []"
               class="btn btn-light"
               @click="risePracticeModal()">add practices</button>
           </div>
         </div>
         <div class="col-12 col-md-4">
-            <p>Total Cases: 10</p>
-            <p>Cases Completed: 8</p>
+            <p>Total Cases: {{stats.totalCases}}</p>
+            <p>Cases Completed: {{stats.casesCompleted}}</p>
         </div>
         <div class="col-12 col-md-4">
-            <p>Cases Inprogress: 1</p>
-            <p>Cases Required: 1</p>
+            <p>Cases Inprogress: {{stats.casesInprogress}}</p>
+            <p>Cases Required: {{stats.casesRequiredAttention}}</p>
         </div>
       </div>
       <!-- .row -->
@@ -77,7 +77,7 @@ export default {
     practicesModal: () => import('./MyAccount/PracticesModal')
   },
   computed: {
-    ...mapGetters(['caseOrders'])
+    ...mapGetters(['caseOrders', 'currentUser', 'practices', 'stats'])
   },
   methods: {
     risePracticeModal () {
@@ -85,7 +85,9 @@ export default {
     }
   },
   mounted () {
+    // let dentistId = this.$store.getters
     this.$store.dispatch('LOAD_ORDERS', 'some data for future implement')
+    this.$store.dispatch('LOAD_STATS', this.currentUser.id)
   }
 }
 </script>
