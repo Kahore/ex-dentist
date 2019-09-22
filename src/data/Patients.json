@@ -23,7 +23,7 @@
     "PracticeName":"PracticeName 2",
     "date_of_birth":"1990-09-02",
     "gender": "Male",
-    "email": "John.Doe1@example.com",
+    "email": "John.Doe2@example.com",
     "practice_centre_id": "practice_centre_2",
     "profile_picture": "profile_picture.svg"
   },
@@ -37,7 +37,7 @@
     "PracticeName":"PracticeName 3",
     "date_of_birth":"1990-09-03",
     "gender": "Male",
-    "email": "John.Doe1@example.com",
+    "email": "John.Doe3@example.com",
     "practice_centre_id": "practice_centre_3",
     "profile_picture": "profile_picture.svg"
   },
@@ -51,7 +51,7 @@
     "PracticeName":"PracticeName 4",
     "date_of_birth":"1990-09-04",
     "gender": "Male",
-    "email": "John.Doe1@example.com",
+    "email": "John.Doe4@example.com",
     "practice_centre_id": "practice_centre_4",
     "profile_picture": "profile_picture.svg"
   },
@@ -65,7 +65,7 @@
     "PracticeName":"PracticeName 5",
     "date_of_birth":"1990-09-05",
     "gender": "Male",
-    "email": "John.Doe1@example.com",
+    "email": "John.Doe5@example.com",
     "practice_centre_id": "practice_centre_5",
     "profile_picture": "profile_picture.svg"
   }
