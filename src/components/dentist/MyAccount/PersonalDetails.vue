@@ -12,7 +12,7 @@
             class="form-control"
             placeholder="First Name"
             value=""
-            v-model="first_name">
+            v-model="currentUser.first_name">
         </div>
         <div class="form-group">
           <input
@@ -23,7 +23,7 @@
             class="form-control"
             placeholder="Last Name"
             value=""
-            v-model="last_name">
+            v-model="currentUser.last_name">
         </div>
         <div class="form-group">
           <input
@@ -34,7 +34,7 @@
             class="form-control"
             placeholder="GDC Name"
             value=""
-            v-model="gdc_number">
+            v-model="currentUser.gdc_number">
         </div>
         <div class="form-group">
           <input
@@ -45,7 +45,7 @@
             class="form-control"
             placeholder="Email Address"
             value=""
-            v-model="email">
+            v-model="currentUser.email">
         </div>
         <div class="form-group">
           <button
@@ -63,8 +63,12 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
   name: 'DentistPersonalDetails',
+  computed: {
+    ...mapGetters(['currentUser'])
+  },
   methods: {
     updateDetails () {
       console.log('TCL: updateDetails -> updateDetails')

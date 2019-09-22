@@ -52,6 +52,13 @@
 <script>
 export default {
   name: 'DentistUpdatePassword',
+  data () {
+    return {
+      old_password: '',
+      new_password: '',
+      confirm_password: ''
+    }
+  },
   methods: {
     updatePassword () {
       console.log('TCL: updatePassword -> updatePassword')
