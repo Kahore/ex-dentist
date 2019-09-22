@@ -42,7 +42,7 @@
 *	It should provide a Search functionality. So that the Dentist can search a string across all the column data.
 *	It should have the ability to do pagination or lazy loading.
 *	It should color-code each record in the table. So the Dentist can identify quickly whether the case requires attention from the Dentist or the Lab.
-*	When a user clicks on a record, it takes them to the Order Page for that case.
+*	~~When a user clicks on a record, it takes them to the Order Page for that case.~~
 ###	Patients 
 *	~~It should show a table with the list of patients~~
 ####	Patient table 
@@ -53,14 +53,14 @@
 4.	~~Registration Date~~
 5.	~~Practice Name~~
 6.	~~Date of Birth~~
-7.	~~Actions~~ (Edit, Delete, Archive)
+7.	~~Actions (Edit, Delete, Archive)~~
 *	~~It should provide a Search functionality. So that the Dentist can search a string across all the column data.~~
 *	~~It should also provide filters for All, In Treatment, Not In Treatment, Archived patients.~~
 *	It should have the ability to do pagination or lazy loading.
-*	It should provide a button to add a New Patient. Upon clicking the button, a pop-up window appears, where the Dentist can enter the patient details.
+*	~~It should provide a button to add a New Patient. Upon clicking the button, a pop-up window appears, where the Dentist can enter the patient details.~~
 *	~~When the Dentist clicks on a Patient record, it should take them to the Patient Page.~~
-*	Upon clicking the Edit action, a pop-up window appears similar to the New Patient, where the Dentist can update the patient details.
-*	Delete, and Archive action will result in a confirmation pop-up, where the Dentist has to confirm to complete the requested action.
+*	~~Upon clicking the Edit action, a pop-up window appears similar to the New Patient, where the Dentist can update the patient details.~~
+*	~~Delete, and Archive action will result in a confirmation pop-up, where the Dentist has to confirm to complete the requested action.~~
 ####	New/Edit Patient Pop-up Window 
 *	~~It should contain the following fields:~~
 1.	~~First Name* (first_name)~~
@@ -75,7 +75,7 @@
 *	~~It should provide a link to edit Patient profile~~ (pop-up).
 *	~~It should provide a link to Add/Edit Clinical Notes (pop-up with a text-area)~~
 *	~~It should show a table, which contains the details for the Patient's past treatments. When the Dentist clicks on a record, it should take them to the Case Details Page of that treatment.~~
-*	~~It should show all the available treatments [Design, Refine, Align, Direct, and In-Direct] that apply to the Patient.~~ When the Dentist clicks on a treatment, it should take them to the Case Order Page for that treatment.
+*	~~It should show all the available treatments [Design, Refine, Align, Direct, and In-Direct] that apply to the Patient. When the Dentist clicks on a treatment, it should take them to the Case Order Page for that treatment.~~
 ###	Case Order Page 
 *	~~It should show the Patient details.~~
 *	~~It should provide a link to edit Patient profile (pop-up).~~
@@ -89,11 +89,11 @@
 *	~~It should provide a way for the Dentist to specify the order status (Dropdown field with the list of order status)~~
 *	~~It should provide a way for the Dentist to choose the user type that the case will need attention from (Dropdown field with Dentist and Lab Staff as the items).~~
 *	~~It should provide a button to generate the lab slip document.~~
-*	~~It should provide a comments section to record the communication between the Dentist and the Lab Staff.
+*	~~It should provide a comments section to record the communication between the Dentist and the Lab Staff.~~
 *	~~Dentists and the Lab Staff should be able to attach files while adding a comment/note in the comment area.~~
 *	~~It should contain a section with filters to display files uploaded in the comments area by the Dentist, Lab, and Clinician. Options for filters are All, Dentist, Lab, and Clinician.~~
 *	~~Thumbnails will represent files in the files area. Each thumbnail will contain a marker to identify the user type uploaded that file.~~
-* Reorganise comments section as a classical chat on lest part of screen
+* Reorganise comments section as a classical chat on left part of screen
 ###	Support Page 
 *	~~It should display a contact form for the Dentist to ask questions.~~
 *	~~It should display Administration postal address, email, and telephone.~~

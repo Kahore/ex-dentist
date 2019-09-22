@@ -1,0 +1,77 @@
+<template>
+  <div class="modal modal-bg"
+  :class="{'modal-bg--show': isActive}"
+  tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Confirm you operation</h5>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+            @click="toggleModal()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p v-if="mode ==='Delete'">Do you really wanna delete this record?</p>
+          <p v-if="mode ==='Archive'">Do you really wanna archive this record?</p>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-primary"
+            @click="actionWrapper()">Confirm</button>
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-dismiss="modal"
+            @click="toggleModal()">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import EventBus from '../../../EventBus'
+export default {
+  name: 'PatientsListActions_Modal',
+  data () {
+    return {
+      isActive: false,
+      mode: ''
+    }
+  },
+  methods: {
+    toggleModal () {
+      this.isActive = !this.isActive
+    },
+    actionWrapper () {
+      if (this.mode === 'Delete') {
+        this.actionDelete()
+      } else if (this.mode === 'Archive') {
+        this.actionArchive()
+      }
+    },
+    actionDelete () {
+      console.log('TCL: actionDelete -> actionDelete')
+    },
+    actionArchive () {
+      console.log('TCL: actionArchive -> actionArchive')
+    }
+  },
+  mounted () {
+    EventBus.$on('ACTION_PATIENT_MODAL', payload => {
+      this.toggleModal()
+      this.mode = payload.mode
+    })
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+
+</style>

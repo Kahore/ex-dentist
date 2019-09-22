@@ -1,5 +1,6 @@
 <template>
   <div class="container table-responsive mt-2">
+    <modal/>
     <div class="col-md-12">
       <div class="row">
         <table class="table table-hover table-sm">
@@ -41,13 +42,18 @@
                     id="dropdownMenuLink1"
                     data-toggle="dropdown"
                     aria-haspopup="true"
-                    aria-expanded="false">
+                    aria-expanded="false"
+                    @click="dropDownToggler(patient.id)">
                     <i class="far fa-cog"></i>
                   </a>
-                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">Edit</a>
-                    <a class="dropdown-item" href="#">Delete</a>
-                    <a class="dropdown-item" href="#">Archive</a>
+                  <div class="dropdown-menu"
+                    :class="{'dropdown-menu--onEdit': patient.id == patientIDOnAction }">
+                    <a
+                      class="dropdown-item"
+                      href="#"
+                      @click="actionEditRise(patient.id)">Edit</a>
+                    <a class="dropdown-item" href="#" @click="actionModalToggler('Delete', patient.id)">Delete</a>
+                    <a class="dropdown-item" href="#" @click="actionModalToggler('Archive', patient.id)">Archive</a>
                   </div>
                 </div>
               </td>
@@ -70,6 +76,14 @@ export default {
       default: () => []
     }
   },
+  components: {
+    modal: () => import('./PatientsListActions_Modal')
+  },
+  data () {
+    return {
+      patientIDOnAction: null
+    }
+  },
   methods: {
     modalPatientRise () {
       this.resetDetails()
@@ -78,11 +92,33 @@ export default {
     resetDetails () {
     // MEMO: reset previously selected data
       this.$store.commit('LOAD_PATIENT_INFO', '')
+    },
+    dropDownToggler (patientId) {
+      if (this.patientIDOnAction === patientId) {
+        this.patientIDOnAction = null
+      } else {
+        this.patientIDOnAction = patientId
+      }
+    },
+    actionEditRise (patientId) {
+      this.$store.dispatch('LOAD_PATIENT_INFO', patientId)
+      EventBus.$emit('PATIENT_MODAL')
+      this.dropDownToggler(patientId)
+    },
+    actionModalToggler (mode, patientId) {
+      EventBus.$emit('ACTION_PATIENT_MODAL', { mode, patientId })
+      this.dropDownToggler(patientId)
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-
+.dropdown{
+  &-menu{
+    &--onEdit {
+      display: block;
+    }
+  }
+}
 </style>
