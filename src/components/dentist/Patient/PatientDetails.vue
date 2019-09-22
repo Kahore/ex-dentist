@@ -19,8 +19,8 @@
       <!-- .row -->
       <div class="row">
         <div class="col-12 col-md-4">
-            <a class="dark-link" href="" @click.prevent="isModalActive = !isModalActive">Edit Patient profile</a>
-            <patientDetailsModal v-if="isModalActive"/>
+            <a class="dark-link" href="" @click.prevent="patientModalCall()">Edit Patient profile</a>
+            <patientDetailsModal/>
         </div>
         <clinicalNotesModal/>
       </div>
@@ -30,6 +30,7 @@
 </template>
 
 <script>
+import EventBus from '../../../EventBus'
 import { mapGetters } from 'vuex'
 export default {
   name: 'DentistPatientDetails',
@@ -39,7 +40,7 @@ export default {
   },
   data () {
     return {
-      isModalActive: false
+      // isModalActive: false
     }
   },
   computed: {
@@ -48,6 +49,9 @@ export default {
   methods: {
     getImage (pic) {
       return require('../../../assets/' + pic)
+    },
+    patientModalCall () {
+      EventBus.$emit( 'PATIENT_MODAL' )
     }
   },
   created () {

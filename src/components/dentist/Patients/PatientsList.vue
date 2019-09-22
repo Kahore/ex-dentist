@@ -16,7 +16,9 @@
           </thead>
           <tbody>
             <tr>
-              <button class="btn btn-light">add patient</button>
+              <button
+                class="btn btn-light"
+                @click="modalPatientRise()">add patient</button>
             </tr>
             <tr
             v-for="(patient, index) in patients"
@@ -59,12 +61,23 @@
 </template>
 
 <script>
+import EventBus from '../../../EventBus'
 export default {
   name: 'DentistPatientDetails',
   props: {
     patients: {
       type: Array,
       default: () => []
+    }
+  },
+  methods: {
+    modalPatientRise () {
+      this.resetDetails()
+      EventBus.$emit( 'PATIENT_MODAL' )
+    },
+    resetDetails () {
+    // MEMO: reset previously selected data
+      this.$store.commit('LOAD_PATIENT_INFO','')
     }
   }
 }
