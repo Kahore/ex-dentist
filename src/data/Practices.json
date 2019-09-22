@@ -1,0 +1,41 @@
+[
+  {
+    "id":"p1",
+    "dentistId": "d1",
+    "name": "Some Practice d1",
+    "address_line_1": "some address line 1",
+    "address_line_2": "some address line 2",
+    "city": "City 1",
+    "region": "region 1",
+    "country": "country 1",
+    "postcode": "postcode 1",
+    "email": "email1@example.com",
+    "phone": "1234567891"
+  },
+  {
+    "id":"p2",
+    "dentistId": "d1",
+    "name": "Some Practice d1[2]",
+    "address_line_1": "some address line 3",
+    "address_line_2": "some address line 4",
+    "city": "City 2",
+    "region": "region 2",
+    "country": "country 2",
+    "postcode": "postcode 2",
+    "email": "email2@example.com",
+    "phone": "1234567892"
+  },
+  {
+    "id":"p3",
+    "dentistId": "d2",
+    "name": "Some Practice d2",
+    "address_line_1": "some address line 5",
+    "address_line_2": "some address line 6",
+    "city": "City 3",
+    "region": "region 3",
+    "country": "country 3",
+    "postcode": "postcode 3",
+    "email": "email3@example.com",
+    "phone": "1234567893"
+  }
+]

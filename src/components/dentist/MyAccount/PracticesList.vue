@@ -12,7 +12,21 @@
         </thead>
         <tbody>
           <tr>
-            <td><button class="btn btn-light">add practices</button></td>
+            <td>
+              <button
+                class="btn btn-light"
+                @click="risePracticeModal()">add practices</button>
+              </td>
+          </tr>
+          <tr
+          v-for="(practice, index) in practices"
+          :key="index">
+            <td>
+              <a class="dark-link" href="" @click.prevent="risePracticeModal(practice.id)">{{practice.name}}</a>
+            </td>
+            <td>{{practice.city}}</td>
+            <td>{{practice.email}}</td>
+            <td>{{practice.phone}}</td>
           </tr>
         </tbody>
       </table>
@@ -21,8 +35,25 @@
 </template>
 
 <script>
+import EventBus from '../../../EventBus'
+import { mapGetters } from 'vuex'
 export default {
-  name: 'DentistPracticesList'
+  name: 'DentistPracticesList',
+  computed: {
+    ...mapGetters(['practices'])
+  },
+  methods: {
+    risePracticeModal (practiceId) {
+      if (typeof practiceId !== 'undefined') {
+        this.$store.dispatch('LOAD_PRACTICE_INFO', practiceId)
+      }
+      EventBus.$emit('PRACTICE_MODAL')
+    }
+  },
+  mounted () {
+    let dentistId = 'd1'
+    this.$store.dispatch('LOAD_PRACTICES', dentistId)
+  }
 }
 </script>
 

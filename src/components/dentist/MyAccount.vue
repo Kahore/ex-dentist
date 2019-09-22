@@ -1,5 +1,6 @@
 <template>
   <section>
+    <practicesModal/>
     <personalDetails/>
     <updatePassword/>
     <practicesList/>
@@ -12,7 +13,8 @@ export default {
   components: {
     personalDetails: () => import('./MyAccount/PersonalDetails'),
     updatePassword: () => import('./MyAccount/UpdatePassword'),
-    practicesList: () => import('./MyAccount/PracticesList')
+    practicesList: () => import('./MyAccount/PracticesList'),
+    practicesModal: () => import('./MyAccount/PracticesModal')
   }
 }
 </script>

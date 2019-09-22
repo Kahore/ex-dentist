@@ -1,11 +1,14 @@
 <template>
   <div class="container table-responsive mt-2">
+    <practicesModal/>
     <div class="col-md-12">
       <div class="row">
         <div class="col-12 col-md-4">
           <div>
             <p>John Doe</p>
-            <button class="btn btn-light">add practices</button>
+            <button
+              class="btn btn-light"
+              @click="risePracticeModal()">add practices</button>
           </div>
         </div>
         <div class="col-12 col-md-4">
@@ -66,11 +69,20 @@
 </template>
 
 <script>
+import EventBus from '../../EventBus'
 import { mapGetters } from 'vuex'
 export default {
   name: 'DentistDashboard',
+  components: {
+    practicesModal: () => import('./MyAccount/PracticesModal')
+  },
   computed: {
     ...mapGetters(['caseOrders'])
+  },
+  methods: {
+    risePracticeModal () {
+      EventBus.$emit('PRACTICE_MODAL')
+    }
   },
   mounted () {
     this.$store.dispatch('LOAD_ORDERS', 'some data for future implement')

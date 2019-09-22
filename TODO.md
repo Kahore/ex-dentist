@@ -106,8 +106,8 @@
 *	~~It should provide functionality for the Dentist to update the personal details~~
 *	~~It should provide a feature to update the password~~
 *	~~It should provide a feature to manage the practices of the Dentist.~~
-* modal should rise on click add practices
-* modal should rise on click Practice Name at table
+* ~~modal should rise on click add practices~~
+* ~~modal should rise on click Practice Name at table~~
 *	~~Practice should contain the following fields:~~
 1.	~~Practice Name* (name)~~
 2.	~~Address Line 1* (address_line_1)~~
