@@ -1,11 +1,20 @@
 <template>
-  <div class="row pt-5">
-    <div class="col-md-4 offset-md-4 col-sm-12 offset-sm-1">
+  <div
+    class="modal fade show modal-bg"
+    :class="{'modal-bg--show': isActive}">
+  <div class=" modal-dialog modal-dialog-centered row pt-5">
+     <div class="modal-content">
+             <div class="modal-header">
+        <h5 class="modal-title text-center" id="exampleModalLongTitle">Login</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="toggleModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    <div class="col-md-10 col-sm-10 offset-sm-1 ">
       <form
         id="login-form"
         role="form"
-        class="form-group">
-        <h3 class="text-center">Login</h3>
+        class="form-group mt-2">
         <userType v-if="selectedUserType === ''"/>
         <div v-else>
         <div class="form-group">
@@ -65,19 +74,23 @@
         </div>
       </form>
     </div>
+      </div>
   </div>
-  <!-- row -->
+  <!-- .row -->
+  </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
+import EventBus from './../../EventBus'
 export default {
   name: 'Login',
   data () {
     return {
       email: '',
       password: '',
-      isLoading: false
+      isLoading: false,
+      isActive: false
     }
   },
   components: {
@@ -89,7 +102,17 @@ export default {
   methods: {
     loginWithEmailLocal () {
       console.log('TCL: loginWithEmailLocal -> loginWithEmailLocal')
+    },
+    toggleModal () {
+      this.isActive = !this.isActive
+      console.log("TCL: toggleModal -> isActive", this.isActive)
     }
+  },
+  mounted () {
+    EventBus.$on( 'LOGIN_MODAL', payload => {
+      this.toggleModal( );
+    } );
+    this.toggleModal()
   }
 }
 </script>

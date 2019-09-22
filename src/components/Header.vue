@@ -19,7 +19,7 @@
       </ul>
       <ul class="nav navbar-nav">
         <router-link to="/login" tag="li" v-if="!isLoggedIn" class="nav-item" active-class="active">
-          <a class="nav-link">Login</a>
+          <a class="nav-link" @click="loginModalCall()">Login</a>
         </router-link>
         <li v-if="isLoggedIn" class="li-pointer nav-item">
           <a @click="logout" class="nav-link">Logout {{ userEmail }}</a>
@@ -39,6 +39,7 @@
 import {
   mapActions, mapGetters
 } from 'vuex'
+import EventBus from '../EventBus'
 export default {
   name: 'navHeader',
   components: {
@@ -59,6 +60,9 @@ export default {
     ...mapActions(['logout']),
     toggleNavbar () {
       this.isNavOpen = !this.isNavOpen
+    },
+    loginModalCall () {
+      EventBus.$emit( 'LOGIN_MODAL' );
     }
   }
 }

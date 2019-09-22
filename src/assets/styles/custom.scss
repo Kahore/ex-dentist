@@ -1,0 +1,10 @@
+$bg-dark:#212529;
+.modal{
+  &-bg{
+    background: $bg-dark;
+    opacity: 0.8;
+    &--show{
+      display: block;
+    }
+  }
+}
