@@ -1,0 +1,26 @@
+[
+  {
+    "id": "l1",
+    "first_name": "Lab first name 1",
+    "last_name": "Lab last name 1",
+    "email": "labname1@exapmle.com",
+    "user_type": "Staff",
+    "status": "Active"
+  },
+  {
+    "id": "l2",
+    "first_name": "Lab first name 2",
+    "last_name": "Lab last name 2",
+    "email": "labname2@exapmle.com",
+    "user_type": "Staff",
+    "status": "Inactive"
+  },
+  {
+    "id": "l3",
+    "first_name": "Lab first name 3",
+    "last_name": "Lab last name 3",
+    "email": "labname3@exapmle.com",
+    "user_type": "Admin",
+    "status": "Active"
+  }
+]

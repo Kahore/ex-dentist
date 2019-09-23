@@ -1,12 +1,19 @@
 <template>
   <div>
-    LabStaffs here
+    <tableFilter></tableFilter>
+    <staffInfoModal></staffInfoModal>
+    <tableStaffs></tableStaffs>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'LabStaffs'
+  name: 'LabStaffs',
+  components: {
+    staffInfoModal: () => import('../lab/Staffs/StaffInfoModal'),
+    tableFilter: () => import('../lab/Staffs/TableFilter'),
+    tableStaffs: () => import('../lab/Staffs/Table')
+  }
 }
 </script>
 

@@ -8,12 +8,14 @@ import caseOrders from './modules/caseOrders'
 import practices from './modules/practices'
 import dentistStats from './modules/dentistStats'
 import labStats from './modules/labStats'
+import staff from './modules/staff'
+import staffs from './modules/staffs'
 import * as actions from './actions'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   actions,
   modules: {
-    auth, patient, patients, caseOrder, caseOrders, practices, dentistStats, labStats
+    auth, patient, patients, caseOrder, caseOrders, practices, dentistStats, labStats, staff, staffs
   }
 })

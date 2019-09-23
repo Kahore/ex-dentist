@@ -162,15 +162,15 @@
 *	It should provide functionality to alert the Clinician.
 ###	Staffs Page 
 *	It should only be visible to the Lab Admin
-*	It should contain staffs table with the following columns: 
-1.	First Name
-2.	Last Name
-3.	Email
-4.	User Type (Admin/Staff)
-5.	Status (Active/Inactive)
-6.	Action (Edit, Delete)
-*	Table should contain a simple Search functionality
-*	The table should display a button to add New Staff (Pop-up).
+*	~~It should contain staffs table with the following columns:~~
+1.	~~First Name~~
+2.	~~Last Name~~
+3.	~~Email~~
+4.	~~User Type (Admin/Staff)~~
+5.	~~Status (Active/Inactive)~~
+6.	~~Action (Edit, Delete)~~
+*	~~Table should contain a simple Search functionality~~
+*	~~The table should display a button to add New Staff (Pop-up).~~
 ###	My Account Page 
 *	It should provide functionality for the Lab Staff to update the personal details
 *	It should provide a feature to update the password
