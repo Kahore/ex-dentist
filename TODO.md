@@ -122,9 +122,9 @@
 
 ## Lab-staff Area
 ###	Navigation 
-*	Navigation items are Dashboard, Staffs, and My Account.
+*	~~Navigation items are Dashboard, Staffs, and My Account.~~
 ### Dashboard 
-*	It should display lab-specific stats area to show the stats for Total Cases Orders, Cases Completed, Cases in Review, Sent to Practice, and Cases Required Attention.
+*	~~It should display lab-specific stats area to show the stats for Total Cases Orders, Cases Completed, Cases in Review, Sent to Practice, and Cases Required Attention.~~
 *	It should display Case Order Table
 ####	Case Order Table 
 *	It should contain the following columns: 

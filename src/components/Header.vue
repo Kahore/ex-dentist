@@ -14,8 +14,11 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarTop" :class="{show: isNavOpen}">
-      <ul class="navbar-nav mr-auto">
+      <ul class="navbar-nav">
         <NavDentist></NavDentist>
+      </ul>
+      <ul class="navbar-nav mr-auto">
+        <NavLab></NavLab>
       </ul>
       <ul class="nav navbar-nav">
         <router-link to="/login" tag="li" v-if="!isLoggedIn" class="nav-item" active-class="active">
@@ -43,7 +46,8 @@ import EventBus from '../EventBus'
 export default {
   name: 'navHeader',
   components: {
-    NavDentist: () => import('./dentist/_NavRoot')
+    NavDentist: () => import('./dentist/_NavRoot'),
+    NavLab: () => import('./lab/_NavRoot')
   },
   data () {
     return {

@@ -1,0 +1,20 @@
+[
+  {
+    "id": "s10",
+    "labId": "l1",
+    "totalCases" : 10,
+    "casesCompleted" : 7,
+    "casesInReview" :1,
+    "casesSentToPractice" :1,
+    "casesRequiredAttention" :1
+  },
+  {
+    "id": "s11",
+    "labId": "l2",
+    "totalCases" : 16,
+    "casesCompleted" : 6,
+    "casesInReview" : 6,
+    "casesSentToPractice" : 2,
+    "casesRequiredAttention" : 2
+  }
+]
