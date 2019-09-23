@@ -93,7 +93,7 @@
 *	~~Dentists and the Lab Staff should be able to attach files while adding a comment/note in the comment area.~~
 *	~~It should contain a section with filters to display files uploaded in the comments area by the Dentist, Lab, and Clinician. Options for filters are All, Dentist, Lab, and Clinician.~~
 *	~~Thumbnails will represent files in the files area. Each thumbnail will contain a marker to identify the user type uploaded that file.~~
-* Reorganise comments section as a classical chat on left part of screen
+* ~~Reorganise comments section as a classical chat on right part of screen~~~
 ###	Support Page 
 *	~~It should display a contact form for the Dentist to ask questions.~~
 *	~~It should display Administration postal address, email, and telephone.~~

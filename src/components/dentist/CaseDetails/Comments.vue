@@ -1,10 +1,10 @@
 <template>
-  <div>
-    <h3>Comments Section</h3>
+  <div class="overflow-hidden">
     <commentsNew/>
-    <commentsHistory/>
-    <commentsFilter/>
-    <commentsFileList/>
+    <div class="container">
+      <commentsFilter/>
+      <commentsFileList/>
+    </div>
   </div>
 </template>
 
@@ -14,7 +14,6 @@ export default {
   components: {
     commentsNew: () => import('./CommentsNew'),
     commentsFilter: () => import('./CommentsFilter'),
-    commentsHistory: () => import('./CommentsHistory'),
     commentsFileList: () => import('./CommentsFileList')
   }
 }

@@ -1,0 +1,26 @@
+[
+  {
+    "id": "ch2",
+    "orderId": "33",
+    "from":"Lab Staffs",
+    "fileName":"SomeFile Name"
+  },
+  {
+    "id": "ch3",
+    "orderId": "33",
+    "from":"Dentist",
+    "fileName":"SomeFile Name 2"
+  },
+  {
+    "id": "ch4",
+    "orderId": "33",
+    "from":"Dentist",
+    "fileName":"File name"
+  },
+  {
+    "id": "ch5",
+    "orderId": "11",
+    "from":" Dentist",
+    "fileName":"SomeFile Name"
+  }
+]

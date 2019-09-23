@@ -1,37 +1,49 @@
 <template>
   <div>
-    <ul>
-      <li>
-        <div>
-          <img src="../../../assets/clinicians.svg" alt="clinicians" class="uploaded-img">
-          <a href="">name of uploaded doc</a>
-        </div>
-      </li>
-      <li>
-        <div>
-          <img src="../../../assets/dentist.svg" alt="dentist" class="uploaded-img">
-          <a href="">name of uploaded doc</a>
-        </div>
-      </li>
-      <li>
-        <div>
-          <img src="../../../assets/labStaff.svg" alt="labStaff" class="uploaded-img">
-          <a href="">name of uploaded doc</a>
-        </div>
-      </li>
-      <li>
-        <div>
-          <img src="../../../assets/labStaff.svg" alt="labStaff" class="uploaded-img">
-          <a href="">name of uploaded doc</a>
-        </div>
-      </li>
+    <ul v-for="(history, index) in commentsHistoryFile"
+    :key="index">
+      <template v-if="history.fileName !== ''">
+        <li>
+          <div>
+            <template v-if="history.from === 'Dentist'">
+              <img src="../../../assets/dentist.svg" alt="dentist" class="uploaded-img">
+            </template>
+            <template v-else-if="history.from === 'Lab Staffs'">
+              <img src="../../../assets/labStaff.svg" alt="labStaff" class="uploaded-img">
+            </template>
+            <template v-else>
+              <img src="../../../assets/clinicians.svg" alt="clinicians" class="uploaded-img">
+            </template>
+            <a href=""> {{history.fileName}} </a>
+          </div>
+        </li>
+      </template>
     </ul>
+    <template v-if="commentsHistoryFile.length === 0">
+      <p>Oh, looks like there is nothing here</p>
+    </template>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+import EventBus from '../../../EventBus'
 export default {
-  name: 'DentistCommentsFilesList'
+  name: 'DentistCommentsFilesList',
+  computed: {
+    ...mapGetters(['commentsHistoryFile'])
+  },
+  methods: {
+    filterFile (mode) {
+      this.$store.dispatch('LOAD_FILES', { orderId: this.$route.params.orderId, from: mode })
+    }
+  },
+  mounted () {
+    EventBus.$on('FILTER_FILES', payload => {
+      this.filterFile(payload)
+    })
+    this.filterFile('All')
+  }
 }
 </script>
 
