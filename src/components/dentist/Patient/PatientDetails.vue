@@ -18,7 +18,7 @@
       </div>
       <!-- .row -->
       <div class="row">
-        <div class="col-12 col-md-4">
+        <div class="col-8 col-md-4">
             <a class="dark-link" href="" @click.prevent="patientModalCall()">Edit Patient profile</a>
             <patientDetailsModal/>
         </div>
