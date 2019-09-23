@@ -52,7 +52,7 @@ const actions = {
       return el.orderId === payload.orderId
     })
     if (payload.from !== 'All') {
-      filesFiltered = files.filter(function (el) {
+      filesFiltered = filesFiltered.filter(function (el) {
         return el.from === payload.from
       })
     }
