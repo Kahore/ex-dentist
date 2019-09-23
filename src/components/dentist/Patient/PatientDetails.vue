@@ -22,6 +22,7 @@
             <a class="dark-link" href="" @click.prevent="patientModalCall()">Edit Patient profile</a>
             <patientDetailsModal/>
         </div>
+        <a class="dark-link" href="" @click.prevent="clinicalNoteModalCall()">Clinical Notes</a><br>
         <clinicalNotesModal/>
       </div>
       <!-- .row -->
@@ -52,6 +53,9 @@ export default {
     },
     patientModalCall () {
       EventBus.$emit('PATIENT_MODAL')
+    },
+    clinicalNoteModalCall () {
+      EventBus.$emit('CLINICAL_NOTE_MODAL')
     }
   },
   created () {
