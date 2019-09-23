@@ -1,10 +1,13 @@
 <template>
-  <div>
-    <ul
+  <div class="comments">
+    <div
     v-for="(history, index) in commentsHistory"
-    :key="index">
-      <li>{{history.text}}</li>
-    </ul>
+    :key="index"
+    class="mr-2 ml-2">
+      <p class="comments-header">From: {{ history.from }} to: {{ history.to }} at: {{history.sendAt}}<br>
+      {{history.text}}</p>
+      <hr>
+    </div>
   </div>
 </template>
 
@@ -22,5 +25,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.comments{
+  max-height: 18rem;
+  overflow-y: scroll;
+}
 </style>
