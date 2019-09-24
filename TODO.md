@@ -214,5 +214,5 @@
 *	~~Thumbnails will represent files in the files area. Each thumbnail will contain a marker to identify the user type uploaded that file.~~
 *	It should provide functionality to alert the Clinician.
 ###	My Account Page 
-*	It should provide functionality for the Lab Staff to update the personal details
-*	It should provide a feature to update the password 
+*	~~It should provide functionality for the Lab Staff to update the personal details~~
+*	~~It should provide a feature to update the password~~
