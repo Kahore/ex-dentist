@@ -56,7 +56,15 @@ export default {
   },
   methods: {
     getImage (pic) {
-      return require('../../../assets/' + pic)
+      if (typeof pic !== 'undefined') {
+        if (pic !== ''){
+          return require('../../../assets/' + pic)
+        } else{
+           return require('../../../assets/profile_picture.svg')
+        }
+      } else {
+        return require('../../../assets/profile_picture.svg')
+      }
     },
     patientModalCall () {
       EventBus.$emit('PATIENT_MODAL')
