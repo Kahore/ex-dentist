@@ -172,8 +172,8 @@
 *	~~Table should contain a simple Search functionality~~
 *	~~The table should display a button to add New Staff (Pop-up).~~
 ###	My Account Page 
-*	It should provide functionality for the Lab Staff to update the personal details
-*	It should provide a feature to update the password
+*	~~It should provide functionality for the Lab Staff to update the personal details~~
+*	~~It should provide a feature to update the password~~
 
 ## Clinicians Area
 ###	Navigation 

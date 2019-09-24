@@ -1,12 +1,17 @@
 <template>
-  <div>
-    LabMyAccount here
-  </div>
+  <section>
+    <accountDetails/>
+    <updatePassword/>
+  </section>
 </template>
 
 <script>
 export default {
-  name: 'LabMyAccount'
+  name: 'LabMyAccount',
+  components: {
+    accountDetails: () => import('./MyAccount/AccountDetails'),
+    updatePassword: () => import('../dentist/MyAccount/UpdatePassword')
+  }
 }
 </script>
 
