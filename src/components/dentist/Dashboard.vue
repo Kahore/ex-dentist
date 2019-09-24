@@ -10,18 +10,8 @@
       </div>
       <!-- .row -->
     </div>
-    <div class="row">
-      <div class="col-12">
-        <input
-          type="text"
-          name="caseOrderTableFilter"
-          id="caseOrderTableFilter"
-          class="form-control"
-          placeholder="Filter Case Order Table">
-      </div>
-    </div>
-    <!-- .row -->
-    <dentistCaseOrder/>
+    <dentistCaseOrderSearch/>
+    <dentistCaseOrder :modeRoute="'dentist-patients'"/>
   </div>
   <!-- .container -->
 </template>
@@ -34,7 +24,8 @@ export default {
     practicesModal: () => import('./MyAccount/PracticesModal'),
     dentistInfo: () => import('./Dashboard/DentistInfo'),
     dentistStats: () => import('./Dashboard/Stats'),
-    dentistCaseOrder: () => import('./Dashboard/CaseOrders')
+    dentistCaseOrder: () => import('./Dashboard/CaseOrders'),
+    dentistCaseOrderSearch: () => import('./Dashboard/CaseOrdersSearch')
   }
 }
 </script>

@@ -21,7 +21,7 @@
         <td>{{caseOrder.first_name + ' '+ caseOrder.last_name }}</td>
         <td class="d-none d-sm-table-cell">
           <router-link
-            :to='"/dentist-patients/"+caseOrder.patientId+"/caseOrderDetails/"+caseOrder.id'>
+            :to='"/"+modeRoute+"/"+caseOrder.patientId+"/caseOrderDetails/"+caseOrder.id'>
             <a class="dark-link">{{caseOrder.id}}</a>
           </router-link>
         </td>
@@ -38,6 +38,13 @@
 import { mapGetters } from 'vuex'
 export default {
   name: 'DentistCaseOrders',
+  props: {
+    modeRoute: {
+      type: String,
+      required: true,
+      default: ''
+    }
+  },
   computed: {
     ...mapGetters(['caseOrders'])
   },
