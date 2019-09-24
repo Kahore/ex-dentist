@@ -1,6 +1,6 @@
 <template>
   <div>
-    <patientsModal/>
+    <patientsModal :acl="'edit'"/>
     <patientsListFilter/>
     <patientsList :patients ="patients" />
   </div>
