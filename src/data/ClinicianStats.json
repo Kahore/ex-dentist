@@ -1,0 +1,18 @@
+[
+  {
+    "id": "s20",
+    "clinicianId": "c1",
+    "totalCases" : 10,
+    "casesCompleted" : 8,
+    "casesInProgress" :1,
+    "casesWithAlert" :1
+  },
+  {
+    "id": "s21",
+    "clinicianId": "c2",
+    "totalCases" : 16,
+    "casesCompleted" : 6,
+    "casesInProgress" : 6,
+    "casesWithAlert" : 4
+  }
+]

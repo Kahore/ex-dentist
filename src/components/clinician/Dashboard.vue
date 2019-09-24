@@ -1,12 +1,15 @@
 <template>
   <div>
-clinicalDashboard here
+    <clinicianStats/>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'clinicalDashboard'
+  name: 'clinicalDashboard',
+  components: {
+    clinicianStats: () => import('../clinician/Dashboard/Stats')
+  }
 }
 </script>
 
