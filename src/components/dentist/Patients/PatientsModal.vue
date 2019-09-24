@@ -130,6 +130,9 @@ export default {
   },
   mounted () {
     EventBus.$on('PATIENT_MODAL', payload => {
+      if (typeof payload !== 'undefined') {
+        this.acl = payload
+      }
       this.toggleModal()
     })
   },

@@ -87,7 +87,7 @@ export default {
   methods: {
     modalPatientRise () {
       this.resetDetails()
-      EventBus.$emit('PATIENT_MODAL')
+      EventBus.$emit('PATIENT_MODAL', 'edit')
     },
     resetDetails () {
     // MEMO: reset previously selected data
@@ -102,7 +102,7 @@ export default {
     },
     actionEditRise (patientId) {
       this.$store.dispatch('LOAD_PATIENT_INFO', patientId)
-      EventBus.$emit('PATIENT_MODAL')
+      EventBus.$emit('PATIENT_MODAL', 'edit')
       this.dropDownToggler(patientId)
     },
     actionModalToggler (mode, patientId) {
