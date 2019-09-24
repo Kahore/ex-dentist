@@ -1,58 +1,60 @@
 <template>
-  <div class="wrap-commenst">
-    <button v-if="!isActive"
-      :class="{'comments comments-init btn btn-secondary': !isActive, 'offset-btn--right': isInternal}"
-      @click="toggleModal()">
-      <template v-if="isInternal">
-        Open internal
-      </template>
-      <template v-else>
-        Open comments
-      </template>
-      </button>
-    <div class ="modal fade right show modal-scrolling"
-        :class="{'comments': isActive}">
-      <div class="modal-dialog modal-side modal-bottom-right"
-      :class="{'offset-modal--right': isInternal}">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title text-center">Comments</h5>
-            <button
-              type="button"
-              class="close"
-              data-dismiss="modal"
-              aria-label="Close"
-              @click="toggleModal()">
-              <span aria-hidden="true">&times;</span>
-            </button>
+  <div class="overflow-hidden">
+    <div class="wrap-comments">
+      <button v-if="!isActive"
+        :class="{'comments comments-init btn btn-secondary': !isActive, 'offset-btn--right': isInternal}"
+        @click="toggleModal()">
+        <template v-if="isInternal">
+          Open internal
+        </template>
+        <template v-else>
+          Open comments
+        </template>
+        </button>
+      <div class ="modal fade right show modal-scrolling"
+          :class="{'comments': isActive}">
+        <div class="modal-dialog modal-side modal-bottom-right"
+        :class="{'offset-modal--right': isInternal}">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title text-center">Comments</h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+                @click="toggleModal()">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <commentsHistory
+            :commentsHistory="commentsHistory"/>
+            <div class="form-group ml-2 mr-2">
+              <textarea
+              class="w-100"
+              placeholder="New message"></textarea>
+            </div>
+            <div class="form-group ml-2 mr-2">
+              <input
+                type="file"
+                placeholder="attach files"
+                class="btn-outline-light btn">
+            </div>
+            <div class="form-group ml-2 mr-2">
+              <button
+                class="btn btn-success w-100"
+                @click.prevent="sendMessage"
+              >
+              Send
+              </button>
+            </div>
           </div>
-          <commentsHistory
-          :commentsHistory="commentsHistory"/>
-          <div class="form-group ml-2 mr-2">
-            <textarea
-            class="w-100"
-            placeholder="New message"></textarea>
-          </div>
-          <div class="form-group ml-2 mr-2">
-            <input
-              type="file"
-              placeholder="attach files"
-              class="btn-outline-light btn">
-          </div>
-          <div class="form-group ml-2 mr-2">
-            <button
-              class="btn btn-success w-100"
-              @click.prevent="sendMessage"
-            >
-            Send
-            </button>
-          </div>
+          <!-- .modal-content -->
         </div>
-        <!-- .modal-content -->
+        <!-- .modal-dialog -->
       </div>
-      <!-- .modal-dialog -->
+      <!-- .modal -->
     </div>
-    <!-- .modal -->
   </div>
 </template>
 

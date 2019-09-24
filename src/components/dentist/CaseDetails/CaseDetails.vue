@@ -3,7 +3,8 @@
     <h3>Case Details</h3>
     <patientDetails :acl="'edit'"/>
     <caseDetailsItem/>
-    <caseDetailsComments/>
+    <comments/>
+    <commentsFiles/>
   </div>
 </template>
 
@@ -13,7 +14,8 @@ export default {
   components: {
     patientDetails: () => import('../Patient/PatientDetails'),
     caseDetailsItem: () => import('./CaseDetailsItem'),
-    caseDetailsComments: () => import('./Comments')
+    commentsFiles: () => import('./CommentsFiles'),
+    comments: () => import('./CommentsNew')
   }
 }
 </script>

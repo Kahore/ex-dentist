@@ -4,7 +4,8 @@
     <patientDetails :acl="'view'"/>
     <alertClinicals/>
     <caseDetailsItem/>
-    <caseDetailsComments/>
+    <commentsFiles/>
+    <comments :acl="'view'"/>
     <commentsInternal :isInternal="true"/>
   </div>
 </template>
@@ -15,7 +16,8 @@ export default {
     patientDetails: () => import('../../dentist/Patient/PatientDetails'),
     alertClinicals: () => import('./AlertClinicals'),
     caseDetailsItem: () => import('../../dentist/CaseDetails/CaseDetailsItem'),
-    caseDetailsComments: () => import('../../dentist/CaseDetails/Comments'),
+    commentsFiles: () => import('../../dentist/CaseDetails/CommentsFiles'),
+    comments: () => import('../../dentist/CaseDetails/CommentsNew'),
     commentsInternal: () => import('../../dentist/CaseDetails/CommentsNew')
   }
 }
