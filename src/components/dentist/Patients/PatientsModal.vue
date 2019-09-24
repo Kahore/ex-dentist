@@ -11,6 +11,7 @@
           </button>
         </div>
           <form id="patient-details" role="form" class="form-group ml-2">
+            <input type="hidden" v-model="patientInfo.id">
             <div class="form-group">
               <input
                 type="text"
@@ -86,7 +87,7 @@
               <button
                 class="btn btn-success"
                 style="width: 100%"
-                @click.prevent="savePatient"
+                @click.prevent="savePatient(patientInfo)"
                 >
                 Save Patient
               </button>
@@ -121,8 +122,24 @@ export default {
     ...mapGetters(['patientInfo'])
   },
   methods: {
-    savePatient () {
-      console.log('TCL: savePatient -> savePatient')
+    savePatient (patientInfo) {
+      console.log("TCL: savePatient -> patientInfo", patientInfo)
+      let isNew = this._isNew(patientInfo)
+      console.log("TCL: savePatient -> isNew", isNew)
+      if (isNew){
+        this.$store.dispatch('ADD_PATIENT', patientInfo)
+      } else {
+        this.$store.dispatch('EDIT_PATIENT', patientInfo)
+      }
+      this.toggleModal()
+    },
+    _isNew (patientInfo) {
+      if (typeof patientInfo.id ==='undefined') {
+        return true
+      } else {
+        return false
+      }
+      // return true
     },
     toggleModal () {
       this.isActive = !this.isActive

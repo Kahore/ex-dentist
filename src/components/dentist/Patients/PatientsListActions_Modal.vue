@@ -42,7 +42,8 @@ export default {
   data () {
     return {
       isActive: false,
-      mode: ''
+      mode: '',
+      patientId: ''
     }
   },
   methods: {
@@ -57,7 +58,8 @@ export default {
       }
     },
     actionDelete () {
-      console.log('TCL: actionDelete -> actionDelete')
+      this.$store.dispatch('DELETE_PATIENT', this.patientId)
+      this.toggleModal();
     },
     actionArchive () {
       console.log('TCL: actionArchive -> actionArchive')
@@ -67,6 +69,7 @@ export default {
     EventBus.$on('ACTION_PATIENT_MODAL', payload => {
       this.toggleModal()
       this.mode = payload.mode
+      this.patientId = payload.patientId
     })
   }
 }

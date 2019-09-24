@@ -1,6 +1,19 @@
-import patientsList from '../../data/Patients.json'
+import db from '../../config/firebaseConfig'
 const state = {
-  patientInfo: ''
+  patientInfo: {
+    'id': '',
+    'first_name': '',
+    'last_name': ' ',
+    'Treatment': '',
+    'Status': '',
+    'RegistrationDate': '',
+    'PracticeName': '',
+    'date_of_birth': '',
+    'gender': '',
+    'email': '',
+    'practice_centre_id': '',
+    'profile_picture': ''
+  }
 }
 
 const getters = {
@@ -20,11 +33,36 @@ const mutations = {
 
 const actions = {
   LOAD_PATIENT_INFO ({ commit }, payload) {
-    let patients = patientsList
-    let patient = patients.filter(function (el) {
-      return el.id === payload
+    db.collection('patients').doc(payload).get().then(doc => {
+      let patient = { ...doc.data(), id: doc.id }
+      console.log('TCL: LOAD_PATIENT_INFO -> patient', patient)
+      commit('LOAD_PATIENT_INFO', patient)
     })
-    commit('LOAD_PATIENT_INFO', patient[0])
+  },
+  ADD_PATIENT ({ commit }, payload) {
+    let id = db.collection('patients').doc().id
+    let patient = { ...payload, id: id }
+    db.collection('patients').doc(id).set(patient).then(docRef => {
+      commit('ADD_PATIENT_AT_LIST', patient)
+    }).catch(error => console.log('TCL: ADD_PATIENT -> error', error))
+  },
+  EDIT_PATIENT ({ commit }, payload) {
+    db.collection('patients').where('id', '==', payload.id).get().then(querySnapshot => {
+      querySnapshot.forEach(doc => {
+        doc.ref.update(payload)
+      })
+      commit('EDIT_PATIENT_AT_LIST', payload)
+    })
+  },
+  DELETE_PATIENT ({ commit }, payload) {
+    // TODO: Delete all data, where patientId reference is
+    db.collection('patients').where('id', '==', payload).get().then(querySnapshot => {
+      console.log('TCL: DELETE_PATIENT -> querySnapshot', querySnapshot)
+      querySnapshot.forEach(doc => {
+        doc.ref.delete()
+      })
+      commit('DELETE_PATIENT_AT_LIST', payload)
+    })
   }
 }
 

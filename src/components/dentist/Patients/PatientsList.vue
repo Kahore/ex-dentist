@@ -68,6 +68,7 @@
 
 <script>
 import EventBus from '../../../EventBus'
+import { PATIENT_INFO } from '../../../store/models/patient'
 export default {
   name: 'DentistPatientDetails',
   props: {
@@ -91,7 +92,9 @@ export default {
     },
     resetDetails () {
     // MEMO: reset previously selected data
-      this.$store.commit('LOAD_PATIENT_INFO', '')
+          console.log("TCL: resetDetails -> PATIENT_INFO", JSON.parse(JSON.stringify(PATIENT_INFO)))
+      this.$store.commit('LOAD_PATIENT_INFO', JSON.parse(JSON.stringify(PATIENT_INFO)))
+
     },
     dropDownToggler (patientId) {
       if (this.patientIDOnAction === patientId) {

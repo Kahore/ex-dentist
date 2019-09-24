@@ -1,12 +1,17 @@
 import firebase from 'firebase'
+import 'firebase/firestore'
 
 const config = {
   apiKey: 'AIzaSyCPVyRcZKAH_8a5NT4wmUtsqAfh-Yb_i28',
   authDomain: 'ex-dentist.firebaseapp.com',
-  databaseURL: 'https://vuejs-shopping-cart.firebaseio.com/'
+  databaseURL: 'https://ex-dentist.firebaseio.com',
+  projectId: 'ex-dentist',
+  storageBucket: 'ex-dentist.appspot.com',
+  messagingSenderId: '241661668517',
+  appId: '1:241661668517:web:e20169cc1a6ce53212714c'
 }
 
-firebase.initializeApp(config)
+const firebaseApp = firebase.initializeApp(config)
 
 export function firebaseListener (func) {
   firebase.auth().onAuthStateChanged(function (user) {
@@ -21,6 +26,6 @@ export function firebaseListener (func) {
     console.log(error)
   })
 }
-
+export default firebaseApp.firestore()
 export const ref = firebase.database().ref()
 export const firebaseAuth = firebase.auth
