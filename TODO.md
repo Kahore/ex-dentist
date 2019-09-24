@@ -146,13 +146,13 @@
 *	It should color-code each record in the table. So the Lab Staff can identify quickly whether the case requires attention from the Dentist or the Lab.
 *	~~When a user clicks on a record, it takes them to the Case Details Page.~~
 ###	Case Details Page - Lab version 
-*	It should show the Patient details.
-*	It should provide a link to view Patient profile (pop-up).
-*	It should provide a link to view Clinical Notes (pop-up)
-*	It should display the Case Order details which the Dentist has provided.
-*	It should provide a way for the Lab Staff to specify the order status (Dropdown field with the list of order status)
-*	It should provide a way for the Lab Staff to choose the user type that the case will need attention from (Dropdown field with Dentist and Lab Staff as the items).
-*	It should provide a button to generate the lab slip document.
+*	~~It should show the Patient details.~~
+*	~~It should provide a link to view Patient profile (pop-up).~~
+*	~~It should provide a link to view Clinical Notes (pop-up)~~
+*	~~It should display the Case Order details which the Dentist has provided.~~
+*	~~It should provide a way for the Lab Staff to specify the order status (Dropdown field with the list of order status)~~
+*	~~It should provide a way for the Lab Staff to choose the user type that the case will need attention from (Dropdown field with Dentist and Lab Staff as the items).~~
+*	~~It should provide a button to generate the lab slip document.~~
 *	It should provide a comments section to record the communication between the Dentist and the Lab Staff. 
 *	Dentists and the Lab Staff should be able to attach files while adding a comment/note in the comment area.
 *	It should also provide a comments section called internal notes to record the communication between the Lab Staff and the Clinician. 
