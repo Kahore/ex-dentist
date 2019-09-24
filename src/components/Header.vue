@@ -17,8 +17,11 @@
       <ul class="navbar-nav">
         <NavDentist></NavDentist>
       </ul>
-      <ul class="navbar-nav mr-auto">
+      <ul class="navbar-nav">
         <NavLab></NavLab>
+      </ul>
+      <ul class="navbar-nav mr-auto">
+        <NavClinician></NavClinician>
       </ul>
       <ul class="nav navbar-nav">
         <router-link to="/login" tag="li" v-if="!isLoggedIn" class="nav-item" active-class="active">
@@ -47,7 +50,8 @@ export default {
   name: 'navHeader',
   components: {
     NavDentist: () => import('./dentist/_NavRoot'),
-    NavLab: () => import('./lab/_NavRoot')
+    NavLab: () => import('./lab/_NavRoot'),
+    NavClinician: () => import('./clinician/_NavRoot')
   },
   data () {
     return {

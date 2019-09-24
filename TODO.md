@@ -177,7 +177,7 @@
 
 ## Clinicians Area
 ###	Navigation 
-*	Navigation items are Dashboard and My Account.
+*	~~Navigation items are Dashboard and My Account.~~
 ###	Dashboard 
 *	It should display stats area to show the stats for Total Cases Orders, Cases Completed, Cases in progress, and Cases with Clinician Alert.
 *	It should display Case Order Table

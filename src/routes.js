@@ -15,6 +15,9 @@ import LabDashboard from './components/lab/Dashboard.vue'
 import LabStaffs from './components/lab/Staffs.vue'
 import LabMyAccount from './components/lab/MyAccount.vue'
 import LabCaseDetailsPage from './components/lab/CaseDetails/CaseDetails.vue'
+/**/
+import ClinicianDashboard from './components/clinician/Dashboard.vue'
+import ClinicianMyAccount from './components/clinician/MyAccount.vue'
 export const routes = [
   { path: '/', component: Main, name: 'mainpage' },
   { path: '/recovery', component: PasswordRecovery, name: 'recovery', onlyGuest: true },
@@ -31,5 +34,7 @@ export const routes = [
   { path: '/lab-staffs', component: LabStaffs, name: 'LabStaffs' },
   { path: '/lab-myAccount', component: LabMyAccount, name: 'LabMyAccount' },
   { path: '/lab-patients/:id/caseOrderDetails/:orderId', component: LabCaseDetailsPage, name: 'LabCaseDetailsPage' },
+  { path: '/clinician-dashboard', component: ClinicianDashboard, name: 'ClinicianDashboard' },
+  { path: '/clinician-myAccount', component: ClinicianMyAccount, name: 'ClinicianMyAccount' },
   { path: '*', redirect: '/' }
 ]
