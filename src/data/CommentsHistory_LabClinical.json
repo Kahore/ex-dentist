@@ -1,0 +1,47 @@
+[
+  {
+    "id": "ch1",
+    "orderId": "33",
+    "from":"Clinical",
+    "to":"Lab Staffs",
+    "text":"Some message",
+    "fileName":"",
+    "sendAt": "2019-09-23 15:41"
+  },
+  {
+    "id": "ch2",
+    "orderId": "33",
+    "from":"Lab Staffs",
+    "to":"Clinical",
+    "text":"Some message 2",
+    "fileName":"SomeFile Name",
+    "sendAt": "2019-09-23 15:41"
+  },
+  {
+    "id": "ch3",
+    "orderId": "33",
+    "from":"Clinical",
+    "to":"Lab Staffs",
+    "text":"Some message 2",
+    "fileName":"SomeFile Name 2",
+    "sendAt": "2019-09-23 15:41"
+  },
+  {
+    "id": "ch4",
+    "orderId": "33",
+    "from":"Clinical",
+    "to":"Lab Staffs",
+    "text":"Some message",
+    "fileName":"File name",
+    "sendAt": "2019-09-23 15:41"
+  },
+  {
+    "id": "ch5",
+    "orderId": "11",
+    "from":"Lab Staffs",
+    "to":"Clinical",
+    "text":"Some message",
+    "fileName":"SomeFile Name",
+    "sendAt": "2019-09-23 15:41"
+  }
+]

@@ -12,14 +12,14 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
 export default {
   name: 'DentistCommentsList',
-  computed: {
-    ...mapGetters(['commentsHistory'])
-  },
-  created () {
-    this.$store.dispatch('LOAD_HISTORY', this.$route.params.orderId)
+  props: {
+    commentsHistory: {
+      type: Array,
+      required: true,
+      default: () => []
+    }
   }
 }
 </script>

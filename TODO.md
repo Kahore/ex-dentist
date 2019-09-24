@@ -153,13 +153,13 @@
 *	~~It should provide a way for the Lab Staff to specify the order status (Dropdown field with the list of order status)~~
 *	~~It should provide a way for the Lab Staff to choose the user type that the case will need attention from (Dropdown field with Dentist and Lab Staff as the items).~~
 *	~~It should provide a button to generate the lab slip document.~~
-*	It should provide a comments section to record the communication between the Dentist and the Lab Staff. 
-*	Dentists and the Lab Staff should be able to attach files while adding a comment/note in the comment area.
-*	It should also provide a comments section called internal notes to record the communication between the Lab Staff and the Clinician. 
-*	Lab Staff and the Clinician should be able to attach files while adding a comment/note in the comment area.
-*	It should contain a section with filters to display files uploaded in the comments area by the Dentist, Lab, and Clinician. Options for filters are All, Dentist, Lab, and Clinician. 
-*	Thumbnails will represent files in the files area. Each thumbnail will contain a marker to identify the user type uploaded that file.
-*	It should provide functionality to alert the Clinician.
+*	~~It should provide a comments section to record the communication between the Dentist and the Lab Staff.~~
+*	~~Dentists and the Lab Staff should be able to attach files while adding a comment/note in the comment area.~~
+*	~~It should also provide a comments section called internal notes to record the communication between the Lab Staff and the Clinician.~~
+*	~~Lab Staff and the Clinician should be able to attach files while adding a comment/note in the comment area.~~
+*	~~It should contain a section with filters to display files uploaded in the comments area by the Dentist, Lab, and Clinician. Options for filters are All, Dentist, Lab, and Clinician.~~
+*	~~Thumbnails will represent files in the files area. Each thumbnail will contain a marker to identify the user type uploaded that file.~~
+*	~~It should provide functionality to alert the Clinician.~~
 ###	Staffs Page 
 *	It should only be visible to the Lab Admin
 *	~~It should contain staffs table with the following columns:~~

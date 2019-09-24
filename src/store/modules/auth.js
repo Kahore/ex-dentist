@@ -9,7 +9,8 @@ const state = {
     'first_name': 'DentistFirstName',
     'last_name': 'DentistLastName',
     'gdc_number': 'DentistGDScnumber',
-    'email': 'Dentist@example.com'
+    'email': 'Dentist@example.com',
+    'type': 'Dentist'
   },
   userType: ''
 }

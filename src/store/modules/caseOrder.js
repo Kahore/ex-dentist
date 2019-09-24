@@ -1,9 +1,11 @@
 import caseOrders from '../../data/CaseOrders.json'
-import commentsList from '../../data/CommentsHistory.json'
+import commentsListDentistLab from '../../data/CommentsHistory_DentistLab.json'
+import commentsListLabClinical from '../../data/CommentsHistory_LabClinical.json'
 import filesList from '../../data/CommentsHistory_Files.json'
 const state = {
   caseOrder: {},
-  commentsHistory: [],
+  commentsHistoryDentistLab: [],
+  commentsHistoryLabClinicals: [],
   commentsHistoryFile: []
 }
 
@@ -11,8 +13,11 @@ const getters = {
   caseOrder: (state) => {
     return state.caseOrder
   },
-  commentsHistory: (state) => {
-    return state.commentsHistory
+  commentsHistoryDentistLab: (state) => {
+    return state.commentsHistoryDentistLab
+  },
+  commentsHistoryLabClinicals: (state) => {
+    return state.commentsHistoryLabClinicals
   },
   commentsHistoryFile: (state) => {
     return state.commentsHistoryFile
@@ -24,7 +29,11 @@ const mutations = {
     state.caseOrder = payload
   },
   LOAD_HISTORY: (state, payload) => {
-    state.commentsHistory = payload
+    if (payload.mode === 'lab') {
+      state.commentsHistoryLabClinicals = payload.data
+    } else {
+      state.commentsHistoryDentistLab = payload.data
+    }
   },
   LOAD_FILES: (state, payload) => {
     state.commentsHistoryFile = payload
@@ -40,11 +49,14 @@ const actions = {
     commit('LOAD_ORDER', order[0])
   },
   LOAD_HISTORY ({ commit }, payload) {
-    let comments = commentsList
+    let comments = commentsListDentistLab
+    if (payload.mode === 'lab') {
+      comments = commentsListLabClinical
+    }
     let commentsFiltered = comments.filter(function (el) {
-      return el.orderId === payload
+      return el.orderId === payload.id
     })
-    commit('LOAD_HISTORY', commentsFiltered)
+    commit('LOAD_HISTORY', { data: commentsFiltered, mode: payload.mode })
   },
   LOAD_FILES ({ commit }, payload) {
     let files = filesList

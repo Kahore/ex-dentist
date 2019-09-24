@@ -20,7 +20,7 @@
   {
     "id": "ch3",
     "orderId": "33",
-    "from":"Clinical",
+    "from":"Lab Staffs",
     "to":"Dentist",
     "text":"Some message 2",
     "fileName":"SomeFile Name 2",
@@ -38,8 +38,8 @@
   {
     "id": "ch5",
     "orderId": "11",
-    "from":" Dentist",
-    "to":"Clinical",
+    "from":"Dentist",
+    "to":"Lab Staffs",
     "text":"Some message",
     "fileName":"SomeFile Name",
     "sendAt": "2019-09-23 15:41"

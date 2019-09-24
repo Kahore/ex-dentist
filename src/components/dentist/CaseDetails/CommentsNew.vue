@@ -1,11 +1,19 @@
 <template>
   <div class="wrap-commenst">
     <button v-if="!isActive"
-      :class="{'comments comments-init btn btn-secondary': !isActive}"
-      @click="toggleModal()">Open comments</button>
+      :class="{'comments comments-init btn btn-secondary': !isActive, 'offset-btn--right': isInternal}"
+      @click="toggleModal()">
+      <template v-if="isInternal">
+        Open internal
+      </template>
+      <template v-else>
+        Open comments
+      </template>
+      </button>
     <div class ="modal fade right show modal-scrolling"
         :class="{'comments': isActive}">
-      <div class="modal-dialog modal-side modal-bottom-right">
+      <div class="modal-dialog modal-side modal-bottom-right"
+      :class="{'offset-modal--right': isInternal}">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title text-center">Comments</h5>
@@ -18,16 +26,8 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <commentsHistory/>
-          <div class="form-group ml-2 mr-2">
-            <label for="messageTo"></label>
-            <select name="" id="messageTo">
-              <option value="" disabled selected>Select who is the recipient</option>
-              <option value="Dentist">Dentist</option>
-              <option value="Lab Staff">Lab Staff</option>
-              <option value="Clinician">Clinician</option>
-            </select>
-          </div>
+          <commentsHistory
+          :commentsHistory="commentsHistory"/>
           <div class="form-group ml-2 mr-2">
             <textarea
             class="w-100"
@@ -59,6 +59,22 @@
 <script>
 export default {
   name: 'DentistCommentsNew',
+  props: {
+    isInternal: {
+      type: Boolean,
+      required: false,
+      default: false
+    }
+  },
+  computed: {
+    commentsHistory () {
+      if (this.isInternal) {
+        return this.$store.getters.commentsHistoryLabClinicals
+      } else {
+        return this.$store.getters.commentsHistoryDentistLab
+      }
+    }
+  },
   components: {
     commentsHistory: () => import('./CommentsHistory')
   },
@@ -74,6 +90,14 @@ export default {
     toggleModal () {
       this.isActive = !this.isActive
     }
+  },
+  created () {
+    let mode = this.isInternal ? 'lab' : 'dentist'
+    let params = {
+      id: this.$route.params.orderId,
+      mode: mode
+    }
+    this.$store.dispatch('LOAD_HISTORY', params)
   },
   mounted () {
     this.toggleModal()
@@ -95,6 +119,20 @@ export default {
     bottom: 10px;
     right: 0.8rem;
     position: fixed;
+    &.offset-modal--right{
+      right: 25rem;
+    }
+}
+.offset-btn--right{
+  right: 10rem;
+}
+@media screen and (max-width: 425px){
+  .modal-dialog.modal-side.modal-bottom-right{
+    width: 288px;
+    &.offset-modal--right{
+      right: 0rem;
+    }
+  }
 }
 
 </style>
