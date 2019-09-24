@@ -127,24 +127,24 @@
 *	~~It should display lab-specific stats area to show the stats for Total Cases Orders, Cases Completed, Cases in Review, Sent to Practice, and Cases Required Attention.~~
 *	It should display Case Order Table
 ####	Case Order Table 
-*	It should contain the following columns: 
-1.	Order Date
-2.	Patient Name
-3.	ID
-4.	Treatment
-5.	Case Status
-6.	Appointment Date
-7.	Lab Slip - Icon which generates the lab slip for that case
-*	It should provide a Search functionality. So that the Lab Staff can search a string across all the column data.
+*	~~It should contain the following columns:~~
+1.	~~Order Date~~
+2.	~~Patient Name~~
+3.	~~ID~~
+4.	~~Treatment~~
+5.	~~Case Status~~
+6.	~~Appointment Date~~
+7.	~~Lab Slip - Icon which generates the lab slip for that case~~
+*	~~It should provide a Search functionality.~~ So that the Lab Staff can search a string across all the column data.
 *	It should provide filters for the following: 
-1.	All active order
-2.	All orders in review
-3.	All orders assigned to the Dentist
-4.	All orders assigned to the Lab
-5.	All orders with clinician alert
+1.	~~All active order~~
+2.	~~All orders in review~~
+3.	~~All orders assigned to the Dentist~~
+4.	~~All orders assigned to the Lab~~
+5.	~~All orders with clinician alert~~
 *	It should have the ability to do pagination or lazy loading.
 *	It should color-code each record in the table. So the Lab Staff can identify quickly whether the case requires attention from the Dentist or the Lab.
-*	When a user clicks on a record, it takes them to the Case Details Page.
+*	~~When a user clicks on a record, it takes them to the Case Details Page.~~
 ###	Case Details Page - Lab version 
 *	It should show the Patient details.
 *	It should provide a link to view Patient profile (pop-up).
