@@ -18,6 +18,9 @@
           <textarea
             rows="2"
             class="m-2"></textarea>
+            <div v-if="acl ==='edit'" class="d-flex flex-row-reverse mr-2 mb-2">
+              <button class="btn btn-success"> Save</button>
+            </div>
       </div>
     </div>
   </div>
@@ -27,6 +30,13 @@
 import EventBus from '../../../EventBus'
 export default {
   name: 'ClinicalNotesModal',
+  props: {
+    acl: {
+      type: String,
+      required: true,
+      default: 'view'
+    }
+  },
   data () {
     return {
       isActive: false

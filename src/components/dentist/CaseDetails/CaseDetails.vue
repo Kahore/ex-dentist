@@ -1,7 +1,7 @@
 <template>
   <div>
     <h3>Case Details</h3>
-    <patientDetails/>
+    <patientDetails :acl="'edit'"/>
     <caseDetailsItem/>
     <caseDetailsComments/>
   </div>

@@ -20,10 +20,10 @@
       <div class="row">
         <div class="col-8 col-md-4">
             <a class="dark-link" href="" @click.prevent="patientModalCall()">Edit Patient profile</a>
-            <patientDetailsModal/>
+            <patientDetailsModal :acl="acl"/>
         </div>
         <a class="dark-link" href="" @click.prevent="clinicalNoteModalCall()">Clinical Notes</a><br>
-        <clinicalNotesModal/>
+        <clinicalNotesModal :acl="acl"/>
       </div>
       <!-- .row -->
     </div>
@@ -35,6 +35,13 @@ import EventBus from '../../../EventBus'
 import { mapGetters } from 'vuex'
 export default {
   name: 'DentistPatientDetails',
+  props: {
+    acl: {
+      type: String,
+      required: true,
+      default: 'view'
+    }
+  },
   components: {
     clinicalNotesModal: () => import('./ClinicalNotesModal'),
     patientDetailsModal: () => import('../Patients/PatientsModal')

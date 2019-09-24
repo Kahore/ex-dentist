@@ -82,7 +82,7 @@
                 <option value="practice_centre_3">practice_centre_3</option>
               </select>
             </div>
-            <div class="form-group">
+            <div class="form-group" v-if="acl==='edit'">
               <button
                 class="btn btn-success"
                 style="width: 100%"
@@ -105,6 +105,13 @@ import EventBus from '../../../EventBus'
 import { mapGetters } from 'vuex'
 export default {
   name: 'DentistPatientModal',
+  props: {
+    acl: {
+      type: String,
+      required: true,
+      default: 'view'
+    }
+  },
   data () {
     return {
       isActive: false

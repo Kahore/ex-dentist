@@ -1,6 +1,6 @@
 <template>
   <div>
-    <patientDetails/>
+    <patientDetails :acl="'edit'"/>
     <patientTreatmentsHistory/>
     <patientTreatmentsNew/>
   </div>
