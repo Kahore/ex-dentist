@@ -2,19 +2,19 @@
   <div>
     <h3>Case Details</h3>
     <patientDetails :acl="'view'"/>
-    <alertClinicals/>
     <caseDetailsItem/>
     <commentsFiles/>
-    <comments/>
+    <comments :acl="'view'"/>
     <commentsInternal :isInternal="true"/>
   </div>
 </template>
+
 <script>
 export default {
-  name: 'LabCaseDetailsPage',
+  name: 'ClinicianCaseDetailsPage',
   components: {
     patientDetails: () => import('../../dentist/Patient/PatientDetails'),
-    alertClinicals: () => import('./AlertClinicals'),
+    // alertClinicals: () => import('./AlertClinicals'),
     caseDetailsItem: () => import('../../dentist/CaseDetails/CaseDetailsItem'),
     commentsFiles: () => import('../../dentist/CaseDetails/CommentsFiles'),
     comments: () => import('../../dentist/CaseDetails/CommentsNew'),
@@ -22,7 +22,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-
-</style>

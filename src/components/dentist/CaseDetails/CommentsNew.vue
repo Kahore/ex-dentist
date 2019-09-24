@@ -29,25 +29,27 @@
             </div>
             <commentsHistory
             :commentsHistory="commentsHistory"/>
-            <div class="form-group ml-2 mr-2">
-              <textarea
-              class="w-100"
-              placeholder="New message"></textarea>
-            </div>
-            <div class="form-group ml-2 mr-2">
-              <input
-                type="file"
-                placeholder="attach files"
-                class="btn-outline-light btn">
-            </div>
-            <div class="form-group ml-2 mr-2">
-              <button
-                class="btn btn-success w-100"
-                @click.prevent="sendMessage"
-              >
-              Send
-              </button>
-            </div>
+            <section v-if="acl === 'edit'">
+              <div class="form-group ml-2 mr-2">
+                <textarea
+                class="w-100"
+                placeholder="New message"></textarea>
+              </div>
+              <div class="form-group ml-2 mr-2">
+                <input
+                  type="file"
+                  placeholder="attach files"
+                  class="btn-outline-light btn">
+              </div>
+              <div class="form-group ml-2 mr-2">
+                <button
+                  class="btn btn-success w-100"
+                  @click.prevent="sendMessage"
+                >
+                Send
+                </button>
+              </div>
+            </section>
           </div>
           <!-- .modal-content -->
         </div>
@@ -66,6 +68,11 @@ export default {
       type: Boolean,
       required: false,
       default: false
+    },
+    acl: {
+      type: String,
+      required: false,
+      default: 'edit'
     }
   },
   computed: {
