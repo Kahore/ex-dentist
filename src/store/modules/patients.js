@@ -30,13 +30,13 @@ const mutations = {
 
 const actions = {
   LOAD_PATIENTS ({ commit }, payload) {
-    payload = []
-    db.collection('patients').get().then(querySnapshot => {
+    let patients = []
+    db.collection('patients').where('dentistId', '==', payload).get().then(querySnapshot => {
       querySnapshot.forEach(doc => {
         let patient = { ...doc.data(), id: doc.id }
-        payload.push(patient)
+        patients.push(patient)
       })
-      commit('LOAD_PATIENTS', payload)
+      commit('LOAD_PATIENTS', patients)
     })
   }
 }

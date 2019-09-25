@@ -1,4 +1,5 @@
 const patentModel = {
+  'dentistId': '',
   'first_name': '',
   'last_name': '',
   'Treatment': '',

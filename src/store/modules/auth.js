@@ -18,8 +18,8 @@ const getters = {
   currentUser: (state) => {
     return state.user
   },
-  currentUserAuth () {
-    return state.currentUserAuth
+  currentUserId () {
+    return state.user.id
   }
 }
 

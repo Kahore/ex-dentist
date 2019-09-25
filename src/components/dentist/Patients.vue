@@ -16,10 +16,11 @@ export default {
     patientsList: () => import('./Patients/PatientsList')
   },
   computed: {
-    ...mapGetters(['patients'])
+    ...mapGetters(['patients','currentUserId'])
   },
   mounted () {
-    this.$store.dispatch('LOAD_PATIENTS', 'someData')
+    let dentistId = this.currentUserId
+    this.$store.dispatch('LOAD_PATIENTS', dentistId)
   }
 }
 </script>
