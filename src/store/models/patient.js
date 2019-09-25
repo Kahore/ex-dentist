@@ -1,4 +1,4 @@
-const patentModel = {
+const patientModel = {
   'dentistId': '',
   'first_name': '',
   'last_name': '',
@@ -14,4 +14,4 @@ const patentModel = {
   'note': ''
 }
 
-export const PATIENT_INFO = patentModel
+export const PATIENT_INFO = patientModel

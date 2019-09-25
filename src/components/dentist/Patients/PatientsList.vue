@@ -31,7 +31,7 @@
               <td>{{patient.Treatment}}</td>
               <td>{{patient.Status}}</td>
               <td>{{patient.RegistrationDate}}</td>
-              <td>{{patient.PracticeName}}</td>
+              <td>{{patient.practice_centre_id}}</td>
               <td>{{patient.date_of_birth}}</td>
               <td>
                 <div class="dropdown">
@@ -92,9 +92,8 @@ export default {
     },
     resetDetails () {
     // MEMO: reset previously selected data
-          console.log("TCL: resetDetails -> PATIENT_INFO", JSON.parse(JSON.stringify(PATIENT_INFO)))
+      console.log('TCL: resetDetails -> PATIENT_INFO', JSON.parse(JSON.stringify(PATIENT_INFO)))
       this.$store.commit('LOAD_PATIENT_INFO', JSON.parse(JSON.stringify(PATIENT_INFO)))
-
     },
     dropDownToggler (patientId) {
       if (this.patientIDOnAction === patientId) {
