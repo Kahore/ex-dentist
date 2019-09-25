@@ -40,6 +40,7 @@
 
 <script>
 import { CASE_ORDER } from '../../../store/models/caseOrder'
+import { getDate } from '../../../tools/dateSetter'
 export default {
   name: 'CaseOrderTreatmentForm',
   data () {
@@ -55,7 +56,9 @@ export default {
         ...data,
         patientId: this.$route.params.id,
         treatment: this.newTreatment,
-        details: this.details
+        details: this.details,
+        order_date: getDate(),
+        appointment_date: getDate()
       }
       this.$store.dispatch('ADD_ORDER', data)
       console.log('TCL: submitTreatment -> submitTreatment', data)
