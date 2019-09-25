@@ -31,7 +31,25 @@ const mutations = {
 const actions = {
   LOAD_PATIENTS ({ commit }, payload) {
     let patients = []
-    db.collection('patients').where('dentistId', '==', payload).get().then(querySnapshot => {
+    let { where, orderBy, limit } = payload
+    let query = db.collection('patients')
+    if (where) {
+      if (where[0] instanceof Array) {
+        for (let w of where) {
+          query = query.where(...w)
+        }
+      } else {
+        query = query.where(...where)
+      }
+    }
+    if (orderBy) {
+      query = query.orderBy(...orderBy)
+    }
+
+    if (limit) {
+      query = query.limit(limit)
+    }
+    query.get().then(querySnapshot => {
       querySnapshot.forEach(doc => {
         let patient = { ...doc.data(), id: doc.id }
         patients.push(patient)

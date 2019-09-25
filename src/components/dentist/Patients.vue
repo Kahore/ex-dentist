@@ -21,7 +21,8 @@ export default {
   },
   mounted () {
     let dentistId = firebase.auth().currentUser.uid
-    this.$store.dispatch('LOAD_PATIENTS', dentistId)
+    let options = { where: ['dentistId', '==', dentistId] }
+    this.$store.dispatch('LOAD_PATIENTS', options)
   }
 }
 </script>

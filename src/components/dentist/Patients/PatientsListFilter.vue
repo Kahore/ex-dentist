@@ -15,23 +15,46 @@
     <div class="row">
       <div class="col-md-12">
       <span class="btn-group-toggle ml-2" data-toggle="buttons">
-        <label class="btn btn-secondary">
-          <input type="checkbox" checked autocomplete="off"> All
+        <label
+        class="btn btn-secondary"
+        :class="{'active' : currentFilter==='All'}">
+          <input
+            type="checkbox"
+            checked autocomplete="off"
+            @change="filterAction('All')"> All
         </label>
       </span>
         <span class="btn-group-toggle ml-2" data-toggle="buttons">
-          <label class="btn btn-secondary active">
-            <input type="checkbox" checked autocomplete="off"> In Treatment
+          <label
+            class="btn btn-secondary"
+            :class="{'active' : currentFilter==='In Treatment'}">
+            <input
+              type="checkbox"
+              checked
+              autocomplete="off"
+              @change="filterAction('In Treatment')"> In Treatment
           </label>
         </span>
         <span class="btn-group-toggle ml-2" data-toggle="buttons">
-          <label class="btn btn-secondary">
-            <input type="checkbox" checked autocomplete="off"> Not In Treatment
+          <label
+            class="btn btn-secondary"
+            :class="{'active' : currentFilter==='Not In Treatment'}">
+            <input
+              type="checkbox"
+              checked
+              autocomplete="off"
+              @change="filterAction('Not In Treatment')"> Not In Treatment
           </label>
         </span>
         <span class="btn-group-toggle ml-2" data-toggle="buttons">
-          <label class="btn btn-secondary">
-            <input type="checkbox" checked autocomplete="off"> Archived
+          <label
+            class="btn btn-secondary"
+            :class="{'active' : currentFilter==='Archived'}">
+            <input
+              type="checkbox"
+              checked
+              autocomplete="off"
+               @change="filterAction('Archived')"> Archived
           </label>
         </span>
       </div>
@@ -41,8 +64,36 @@
 </template>
 
 <script>
+import firebase from 'firebase'
 export default {
-  name: 'DentistPatientListFilter'
+  name: 'DentistPatientListFilter',
+  data () {
+    return {
+      currentFilter: 'All'
+    }
+  },
+  methods: {
+    filterAction (param) {
+      this.currentFilter = param
+      let dentistId = firebase.auth().currentUser.uid
+      let options = { where: [['dentistId', '==', dentistId]] }
+      switch (param) {
+        case 'In Treatment':
+          options.where.push(['Treatment', '>', ''])
+          break
+        case 'Not In Treatment':
+          options.where.push(['Treatment', '==', ''])
+          break
+        case 'Archived':
+          options.where.push(['Status', '==', 'Archive'])
+          break
+
+        default:
+          break
+      }
+      this.$store.dispatch('LOAD_PATIENTS', options)
+    }
+  }
 }
 </script>
 
