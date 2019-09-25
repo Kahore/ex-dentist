@@ -1,4 +1,3 @@
-import caseOrders from '../../data/CaseOrders.json'
 import commentsListDentistLab from '../../data/CommentsHistory_DentistLab.json'
 import commentsListLabClinical from '../../data/CommentsHistory_LabClinical.json'
 import filesList from '../../data/CommentsHistory_Files.json'
@@ -44,11 +43,14 @@ const mutations = {
 
 const actions = {
   LOAD_ORDER ({ commit }, payload) {
-    let orders = caseOrders
-    let order = orders.filter(function (el) {
-      return el.id === payload
+    // let orders = caseOrders
+    // let order = orders.filter(function (el) {
+    //   return el.id === payload
+    // })
+    // commit('LOAD_ORDER', order[0])
+    db.collection('caseOrders').doc(payload).get().then(doc => {
+      commit('LOAD_ORDER', doc.data())
     })
-    commit('LOAD_ORDER', order[0])
   },
   LOAD_HISTORY ({ commit }, payload) {
     let comments = commentsListDentistLab
