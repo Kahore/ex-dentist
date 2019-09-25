@@ -78,9 +78,9 @@
             <div class="form-group">
               <select name="" id="" v-model="patientInfo.practice_centre_id">
                 <option value="" disabled selected>Select practice centre</option>
-                <option value="practice_centre_1">practice_centre_1</option>
-                <option value="practice_centre_2">practice_centre_2</option>
-                <option value="practice_centre_3">practice_centre_3</option>
+                <option
+                  v-for="(practice, index) in practices"
+                  :key="index" :value="practice.name">{{practice.name}}</option>
               </select>
             </div>
             <div class="form-group" v-if="acl==='edit'">
@@ -121,7 +121,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['patientInfo'])
+    ...mapGetters(['patientInfo','practices'])
   },
   methods: {
     savePatient (patientInfo) {
@@ -145,6 +145,12 @@ export default {
     },
     toggleModal () {
       this.isActive = !this.isActive
+    },
+    loadPractice(){
+      if(this.practices.length === 0) {
+        let dentistId = firebase.auth().currentUser.uid
+        this.$store.dispatch('LOAD_PRACTICES', dentistId)
+      }
     }
   },
   mounted () {
@@ -154,6 +160,7 @@ export default {
       }
       this.toggleModal()
     })
+    this.loadPractice()
   },
   created () {
     // MEMO: reset state if user not close modal and select another page with this modal
