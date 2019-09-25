@@ -16,12 +16,7 @@ const getters = {
     return state.userType
   },
   currentUser: (state) => {
-    // if (state && state.user) {
-    if (state) {
-      return state.user
-    } else {
-      return {}
-    }
+    return state.user
   },
   currentUserAuth () {
     return state.currentUserAuth
