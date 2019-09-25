@@ -23,7 +23,7 @@
             <patientDetailsModal :acl="acl"/>
         </div>
         <a class="dark-link" href="" @click.prevent="clinicalNoteModalCall()">Clinical Notes</a><br>
-        <clinicalNotesModal :acl="acl"/>
+        <clinicalNotesModal :note.sync ="patientInfo.note" :acl="acl"/>
       </div>
       <!-- .row -->
     </div>
@@ -57,10 +57,10 @@ export default {
   methods: {
     getImage (pic) {
       if (typeof pic !== 'undefined') {
-        if (pic !== ''){
+        if (pic !== '') {
           return require('../../../assets/' + pic)
-        } else{
-           return require('../../../assets/profile_picture.svg')
+        } else {
+          return require('../../../assets/profile_picture.svg')
         }
       } else {
         return require('../../../assets/profile_picture.svg')
@@ -72,6 +72,11 @@ export default {
     clinicalNoteModalCall () {
       EventBus.$emit('CLINICAL_NOTE_MODAL')
     }
+  },
+  mounted () {
+    EventBus.$on('SAVE_CLINICAL_NOTE', payload => {
+      this.$store.dispatch('EDIT_PATIENT', this.patientInfo)
+    })
   },
   created () {
     this.$store.dispatch('LOAD_PATIENT_INFO', this.$route.params.id)

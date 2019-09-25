@@ -17,9 +17,12 @@
         </div>
           <textarea
             rows="2"
-            class="m-2"></textarea>
+            class="m-2"
+            v-model="noteLocal"></textarea>
             <div v-if="acl ==='edit'" class="d-flex flex-row-reverse mr-2 mb-2">
-              <button class="btn btn-success"> Save</button>
+              <button
+                class="btn btn-success"
+                @click="saveNotes()">Save</button>
             </div>
       </div>
     </div>
@@ -35,6 +38,11 @@ export default {
       type: String,
       required: true,
       default: 'view'
+    },
+    note: {
+      type: String,
+      required: true,
+      default: ''
     }
   },
   data () {
@@ -42,9 +50,23 @@ export default {
       isActive: false
     }
   },
+  computed: {
+    noteLocal: {
+      get: function () {
+        return this.note
+      },
+      set: function (newValue) {
+        this.$emit('update:note', newValue)
+      }
+    }
+  },
   methods: {
     toggleModal () {
       this.isActive = !this.isActive
+    },
+    saveNotes () {
+      // MEMO: value is Update dynamically because of .sync modifier in parent
+      EventBus.$emit('SAVE_CLINICAL_NOTE')
     }
   },
   mounted () {

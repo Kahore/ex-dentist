@@ -9,7 +9,8 @@ const patentModel = {
   'gender': '',
   'email': '',
   'practice_centre_id': '',
-  'profile_picture': ''
+  'profile_picture': '',
+  'note': ''
 }
 
 export const PATIENT_INFO = patentModel
