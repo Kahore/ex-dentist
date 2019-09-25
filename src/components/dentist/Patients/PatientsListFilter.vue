@@ -79,7 +79,7 @@ export default {
       let options = { where: [['dentistId', '==', dentistId]] }
       switch (param) {
         case 'In Treatment':
-          options.where.push(['Treatment', '>', ''])
+          options.where.push(['Treatment', '>', ''], ['Status', '==', 'Active'])
           break
         case 'Not In Treatment':
           options.where.push(['Treatment', '==', ''])
