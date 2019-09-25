@@ -127,7 +127,8 @@ export default {
       let isNew = this._isNew(patientInfo)
       if (isNew) {
         let today = getDate()
-        patientInfo = { ...patientInfo, RegistrationDate: today }
+        let dentistId = this.$store.getters.currentUserId
+        patientInfo = { ...patientInfo, RegistrationDate: today, dentistId: dentistId }
         this.$store.dispatch('ADD_PATIENT', patientInfo)
       } else {
         this.$store.dispatch('EDIT_PATIENT', patientInfo)
