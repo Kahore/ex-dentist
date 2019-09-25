@@ -41,6 +41,7 @@
 <script>
 import { CASE_ORDER } from '../../../store/models/caseOrder'
 import { getDate } from '../../../tools/dateSetter'
+import { mapGetters } from 'vuex'
 export default {
   name: 'CaseOrderTreatmentForm',
   data () {
@@ -49,12 +50,17 @@ export default {
       details: ''
     }
   },
+  computed: {
+    ...mapGetters(['patientInfo'])
+  },
   methods: {
     submitTreatment () {
       let data = JSON.parse(JSON.stringify(CASE_ORDER))
       data = {
         ...data,
         patientId: this.$route.params.id,
+        first_name: this.patientInfo.first_name,
+        last_name: this.patientInfo.last_name,
         treatment: this.newTreatment,
         details: this.details,
         order_date: getDate(),
