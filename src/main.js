@@ -6,6 +6,8 @@ import VueRouter from 'vue-router'
 import store from './store/store'
 // import { firebaseListener } from './config/firebaseConfig'
 import './assets/styles/app.scss'
+import firebase from 'firebase'
+import './config/firebaseConfig'
 
 Vue.use(VueRouter)
 Vue.config.productionTip = false
@@ -16,8 +18,41 @@ const router = new VueRouter({
   base: process.env.BASE_URL
 })
 
-new Vue({
-  router,
-  store,
-  render: h => h(App)
-}).$mount('#app')
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    if (!firebase.auth().currentUser) {
+      next({
+        path: '/login',
+        query: {
+          redirect: to.fullPath
+        }
+      })
+    } else {
+      next()
+    }
+  } else if (to.matched.some(record => record.meta.requiresGuest)) {
+    if (firebase.auth().currentUser && to.path !== '/login') {
+      next({
+        path: '/',
+        query: {
+          redirect: to.fullPath
+        }
+      })
+    } else {
+      next()
+    }
+  } else {
+    next()
+  }
+})
+
+let app
+firebase.auth().onAuthStateChanged(user => {
+  if (!app) {
+    app = new Vue({
+      router,
+      store,
+      render: h => h(App)
+    }).$mount('#app')
+  }
+})

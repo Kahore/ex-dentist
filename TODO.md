@@ -4,7 +4,7 @@
 *	~~It should provide an option for the user to choose what type of user (i.e., Dentist, Lab, Clinician) before entering their registered email and password for authentication.~~
 *	~~It should provide a link to the Password-recovery page.~~
 *	~~It should provide a link to the Register page if the user chooses "Dentist" as the user-type — otherwise, no need to show the link to the Register page.~~
-* Integrate with firebase
+* ~~Integrate with firebase~~
 ###	Registration Page 
 *	~~It should highlight to specify that the registration process is only for "Dentist" and NOT for "Lab" or "Clinicians" in a pleasant way.~~
 *	~~It should show a link to the Login page. Something like "Already have an account? Login"~~
@@ -16,7 +16,7 @@
 5.	~~Password* (password)~~
 6.	~~Confirm Password* (confirm_password)~~
 7.	~~Checkbox - I have read and accept the Terms of Service and Privacy Policy* (term_and_privacy_policy_acceptance)~~
-* Integrate with firebase
+* ~~Integrate with firebase~~
 ###	Password-recovery Page 
 *	~~It should show a blurb and a text field to enter their registered email address.~~
 *	~~The blurb should say, "Enter your registered email address, and we will send an email with the instructions on resetting your password."~~

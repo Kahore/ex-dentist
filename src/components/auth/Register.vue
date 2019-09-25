@@ -131,6 +131,7 @@
 
 <script>
 import EventBus from './../../EventBus'
+import firebase from 'firebase'
 export default {
   name: 'Register',
   data () {
@@ -148,7 +149,21 @@ export default {
   },
   methods: {
     registerByEmailLocal () {
-      console.log('TCL: registerByEmailLocal -> registerByEmailLocal')
+      firebase.auth().createUserWithEmailAndPassword(this.email, this.password).then(res => {
+        let regData = {
+          first_name: this.first_name,
+          last_name: this.last_name,
+          gdc_number: this.gdc_number,
+          email: this.email,
+          term_and_privacy_policy_acceptance: this.term_and_privacy_policy_acceptance,
+          /* MEMO: this hardcode because of register poosible only for dentist */
+          type: 'Dentist'
+        }
+        regData = { ...regData, id: res.user.uid }
+        this.$store.dispatch('CREATE_USER_WITH_LOGIN', regData)
+      }).catch(error => {
+        console.log('TCL: registerByEmailLocal -> error', error)
+      })
     },
     toggleModal () {
       this.isActive = !this.isActive

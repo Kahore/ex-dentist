@@ -87,6 +87,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import EventBus from './../../EventBus'
+import firebase from 'firebase'
 export default {
   name: 'Login',
   data () {
@@ -105,7 +106,13 @@ export default {
   },
   methods: {
     loginWithEmailLocal () {
-      console.log('TCL: loginWithEmailLocal -> loginWithEmailLocal')
+      firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(res => {
+        console.log('TCL: loginWithEmailLocal -> res', res)
+        this.$store.dispatch('LOAD_USER', res.user.uid)
+        this.$router.push('/')
+      }).catch(error => {
+        console.log('TCL: loginWithEmailLocal -> error', error)
+      })
     },
     toggleModal () {
       this.isActive = !this.isActive

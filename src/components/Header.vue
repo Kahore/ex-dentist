@@ -28,7 +28,7 @@
           <a class="nav-link" @click="loginModalCall()">Login</a>
         </router-link>
         <li v-if="isLoggedIn" class="li-pointer nav-item">
-          <a @click="logout" class="nav-link">Logout {{ userEmail }}</a>
+         <a @click="logout" class="nav-link">Logout {{ userEmail }}</a>
         </li>
         <router-link to="/register" tag="li" v-if="!isLoggedIn" class="nav-item" active-class="active">
           <a class="nav-link" @click="registerModalCall()">Register</a>
@@ -42,9 +42,8 @@
 </template>
 
 <script>
-import {
-  mapActions, mapGetters
-} from 'vuex'
+import { mapGetters } from 'vuex'
+import firebase from 'firebase'
 import EventBus from '../EventBus'
 export default {
   name: 'navHeader',
@@ -65,7 +64,13 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['logout']),
+    // ...mapActions(['logout']),
+    logout () {
+      firebase.auth().signOut().then(() => {
+        this.$router.push('/')
+        this.$store.commit('AUTH_STATUS_CHANGE')
+      })
+    },
     toggleNavbar () {
       this.isNavOpen = !this.isNavOpen
     },
@@ -74,6 +79,11 @@ export default {
     },
     registerModalCall () {
       EventBus.$emit('REGISTER_MODAL')
+    }
+  },
+  created () {
+    if (firebase.auth().currentUser) {
+      this.$store.commit('AUTH_STATUS_CHANGE')
     }
   }
 }
