@@ -121,7 +121,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['patientInfo','practices'])
+    ...mapGetters(['patientInfo', 'practices'])
   },
   methods: {
     savePatient (patientInfo) {
@@ -129,7 +129,7 @@ export default {
       if (isNew) {
         let today = getDate()
         let dentistId = firebase.auth().currentUser.uid
-        patientInfo = { ...patientInfo, RegistrationDate: today, dentistId: dentistId }
+        patientInfo = { ...patientInfo, RegistrationDate: today, dentistId: dentistId, Status: 'Active' }
         this.$store.dispatch('ADD_PATIENT', patientInfo)
       } else {
         this.$store.dispatch('EDIT_PATIENT', patientInfo)
@@ -146,8 +146,8 @@ export default {
     toggleModal () {
       this.isActive = !this.isActive
     },
-    loadPractice(){
-      if(this.practices.length === 0) {
+    loadPractice () {
+      if (this.practices.length === 0) {
         let dentistId = firebase.auth().currentUser.uid
         this.$store.dispatch('LOAD_PRACTICES', dentistId)
       }
