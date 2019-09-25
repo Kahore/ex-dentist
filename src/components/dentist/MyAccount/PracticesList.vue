@@ -37,6 +37,7 @@
 <script>
 import EventBus from '../../../EventBus'
 import { mapGetters } from 'vuex'
+import firebase from 'firebase'
 export default {
   name: 'DentistPracticesList',
   computed: {
@@ -51,7 +52,7 @@ export default {
     }
   },
   mounted () {
-    let dentistId = 'd1'
+    let dentistId = firebase.auth().currentUser.uid
     this.$store.dispatch('LOAD_PRACTICES', dentistId)
   }
 }

@@ -1,4 +1,4 @@
-import practicesList from '../../data/Practices.json'
+import db from '../../config/firebaseConfig'
 const state = {
   practices: [],
   selectedPractice: {}
@@ -19,17 +19,27 @@ const mutations = {
   },
   LOAD_PRACTICE_INFO: (state, payload) => {
     state.selectedPractice = payload
+  },
+  MUTATE_PRACTICE_INFO: (state, payload) => {
+    let index = state.practices.findIndex(practice => practice.id === payload.id)
+    state.practices.splice(index, 1)
+    state.practices = state.practices.concat(payload)
+  },
+  ADD_PRACTICE_AT_LIST: (state, payload) => {
+    state.practices = state.practices.concat(payload)
   }
 }
 
 const actions = {
   LOAD_PRACTICES ({ commit }, payload) {
-    let practices = practicesList
-    // MEMO: This just a mock db select/ In real app this filter should be on server side
-    let practicesByCurrentDentist = practices.filter(function (el) {
-      return el.dentistId === payload
+    let practices = []
+    db.collection('practices').where('dentistId', '==', payload).get().then(querySnapshot => {
+      querySnapshot.forEach(doc => {
+        let patient = { ...doc.data(), id: doc.id }
+        practices.push(patient)
+      })
+      commit('LOAD_PRACTICES', practices)
     })
-    commit('LOAD_PRACTICES', practicesByCurrentDentist)
   },
   LOAD_PRACTICE_INFO ({ commit, state }, payload) {
     let practices = state.practices
@@ -38,7 +48,22 @@ const actions = {
     })
     commit('LOAD_PRACTICE_INFO', practicesById[0])
   },
+  ADD_PRACTICE ({ commit }, payload) {
+    let id = db.collection('practices').doc().id
+    let practice = { ...payload, id: id }
+    db.collection('practices').doc(id).set(practice).then(docRef => {
+      commit('ADD_PRACTICE_AT_LIST', practice)
+    }).catch(error => console.log('TCL: ADD_PRACTICE -> error', error))
+  },
   MUTATE_PRACTICE_INFO ({ commit }, payload) {
+    db.collection('practices').where('id', '==', payload.id).get().then(querySnapshot => {
+      querySnapshot.forEach(doc => {
+        doc.ref.update(payload)
+      })
+      commit('MUTATE_PRACTICE_INFO', payload)
+    })
+  },
+  RESET_PRACTICE_INFO ({ commit }, payload) {
     commit('LOAD_PRACTICE_INFO', payload)
   }
 }
