@@ -31,7 +31,7 @@ export default {
     ...mapGetters(['patientInfoId', 'treatmentsHistory'])
   },
   mounted () {
-    let patientId = this.$store.getters.patientInfoId
+    let patientId = this.$route.params.id
     this.$store.dispatch('LOAD_TREATMENTS', patientId)
   }
 }

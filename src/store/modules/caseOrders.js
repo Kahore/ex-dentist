@@ -1,18 +1,13 @@
-import caseOrders from '../../data/CaseOrders.json'
+
 import db from '../../config/firebaseConfig'
 const state = {
-  caseOrders: [],
-  treatmentsHistory: []
+  caseOrders: []
 }
 
 const getters = {
   // @caseOrders is a list of all case
   caseOrders: (state) => {
     return state.caseOrders
-  },
-  // @treatmentsHistory list of treatment by selected patient
-  treatmentsHistory: (state) => {
-    return state.treatmentsHistory
   }
 }
 
@@ -22,9 +17,6 @@ const mutations = {
   },
   ADD_CASEORDER_AT_LIST: (state, payload) => {
     state.caseOrders = state.caseOrders.concat(payload)
-  },
-  LOAD_TREATMENTS: (state, payload) => {
-    state.treatmentsHistory = payload
   }
 }
 
@@ -37,13 +29,6 @@ const actions = {
       })
     })
     commit('LOAD_ORDERS', orders)
-  },
-  LOAD_TREATMENTS ({ commit }, payload) {
-    let orders = caseOrders
-    let treatments = orders.filter(function (el) {
-      return el.patientId === payload
-    })
-    commit('LOAD_TREATMENTS', treatments)
   }
 }
 

@@ -13,7 +13,8 @@ const state = {
     'email': '',
     'practice_centre_id': '',
     'profile_picture': ''
-  }
+  },
+  treatmentsHistory: []
 }
 
 const getters = {
@@ -22,12 +23,19 @@ const getters = {
   },
   patientInfoId: (state) => {
     return state.patientInfo.id
+  },
+  // @treatmentsHistory list of treatment by selected patient
+  treatmentsHistory: (state) => {
+    return state.treatmentsHistory
   }
 }
 
 const mutations = {
   LOAD_PATIENT_INFO: (state, payload) => {
     state.patientInfo = payload
+  },
+  LOAD_TREATMENTS: (state, payload) => {
+    state.treatmentsHistory = payload
   }
 }
 
@@ -62,6 +70,20 @@ const actions = {
         doc.ref.delete()
       })
       commit('DELETE_PATIENT_AT_LIST', payload)
+    })
+  },
+  LOAD_TREATMENTS ({ commit }, payload) {
+    // let orders = caseOrders
+    // let treatments = orders.filter(function (el) {
+    //   return el.patientId === payload
+    // })
+    // commit('LOAD_TREATMENTS', treatments)
+    let _treatmentHistory = []
+    db.collection('caseOrders').where('patientId', '==', payload).get().then(querySnapshot => {
+      querySnapshot.forEach(doc => {
+        _treatmentHistory.push(doc.data())
+      })
+      commit('LOAD_TREATMENTS', _treatmentHistory)
     })
   }
 }
