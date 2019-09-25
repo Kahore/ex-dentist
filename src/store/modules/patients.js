@@ -18,7 +18,7 @@ const mutations = {
     state.patients = state.patients.concat(payload)
   },
   EDIT_PATIENT_AT_LIST: (state, payload) => {
-    let index = state.patients.findIndex(patient => patient.id === payload)
+    let index = state.patients.findIndex(patient => patient.id === payload.id)
     state.patients.splice(index, 1)
     state.patients = state.patients.concat(payload)
   },

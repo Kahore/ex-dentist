@@ -73,11 +73,6 @@ const actions = {
     })
   },
   LOAD_TREATMENTS ({ commit }, payload) {
-    // let orders = caseOrders
-    // let treatments = orders.filter(function (el) {
-    //   return el.patientId === payload
-    // })
-    // commit('LOAD_TREATMENTS', treatments)
     let _treatmentHistory = []
     db.collection('caseOrders').where('patientId', '==', payload).get().then(querySnapshot => {
       querySnapshot.forEach(doc => {

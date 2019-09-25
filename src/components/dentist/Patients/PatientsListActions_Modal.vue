@@ -59,10 +59,15 @@ export default {
     },
     actionDelete () {
       this.$store.dispatch('DELETE_PATIENT', this.patientId)
-      this.toggleModal();
+      this.toggleModal()
     },
     actionArchive () {
-      console.log('TCL: actionArchive -> actionArchive')
+      let patients = this.$store.getters.patients
+      let index = patients.findIndex(patient => patient.id === this.patientId)
+      let patientInfo = patients[index]
+      patientInfo = { ...patientInfo, Status: 'Archive' }
+      this.$store.dispatch('EDIT_PATIENT', patientInfo)
+      this.toggleModal()
     }
   },
   mounted () {
