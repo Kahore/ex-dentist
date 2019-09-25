@@ -33,13 +33,16 @@
               <div class="form-group ml-2 mr-2">
                 <textarea
                 class="w-100"
-                placeholder="New message"></textarea>
+                placeholder="New message"
+                v-model="text"></textarea>
               </div>
               <div class="form-group ml-2 mr-2">
                 <input
                   type="file"
                   placeholder="attach files"
-                  class="btn-outline-light btn">
+                  ref="fileupload"
+                  class="btn-outline-light btn"
+                  @change="fileLoader">
               </div>
               <div class="form-group ml-2 mr-2">
                 <button
@@ -61,6 +64,7 @@
 </template>
 
 <script>
+import { getDateTime } from '../../../tools/dateTimeSetter'
 export default {
   name: 'DentistCommentsNew',
   props: {
@@ -82,6 +86,10 @@ export default {
       } else {
         return this.$store.getters.commentsHistoryDentistLab
       }
+    },
+    mode () {
+      let _mode = this.isInternal ? 'lab' : 'dentist'
+      return _mode
     }
   },
   components: {
@@ -89,22 +97,69 @@ export default {
   },
   data () {
     return {
-      isActive: false
+      isActive: false,
+      text: '',
+      fileName: ''
     }
   },
   methods: {
+    fileLoader (e) {
+      let files = e.target.files || e.dataTransfer.files
+      if (!files.length) {
+
+      } else {
+        this.fileName = files[0].name
+      }
+    },
     sendMessage () {
-      console.log('TCL: sendMessage -> sendMessage')
+      let userType = this._defSenderType()
+      let to = this._defTo(userType)
+
+      let data = {
+        orderId: this.$route.params.orderId,
+        from: userType,
+        to: to,
+        text: this.text,
+        fileName: this.fileName,
+        sendAt: getDateTime()
+      }
+      let mode = this.mode
+      let obj = { data, mode }
+      this.$store.dispatch('ADD_COMMENT', obj)
+      this._clearComment()
+    },
+    _defSenderType () {
+      return this.$store.getters.currentUser.type
+    },
+    _defTo (userType) {
+      let to
+      if (userType === 'Dentist') {
+        to = 'Lab Staffs'
+      } else if (userType === 'Clinical') {
+        to = 'Lab Staffs'
+      } else {
+        if (this.isInternal) {
+          to = 'Clinical'
+        } else {
+          to = 'Dentist'
+        }
+      }
+      return to
+    },
+    _clearComment () {
+      this.text = ''
+      const input = this.$refs.fileupload
+      input.type = 'text'
+      input.type = 'file'
     },
     toggleModal () {
       this.isActive = !this.isActive
     }
   },
   created () {
-    let mode = this.isInternal ? 'lab' : 'dentist'
     let params = {
       id: this.$route.params.orderId,
-      mode: mode
+      mode: this.mode
     }
     this.$store.dispatch('LOAD_HISTORY', params)
   },
