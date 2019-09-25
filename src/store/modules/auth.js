@@ -17,10 +17,10 @@ const getters = {
   },
   currentUser: (state) => {
     return state.user
-  },
-  currentUserId () {
-    return state.user.id
   }
+  // currentUserId () {
+  //   return state.user.id
+  // }
 }
 
 const mutations = {

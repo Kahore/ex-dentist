@@ -105,6 +105,7 @@
 import EventBus from '../../../EventBus'
 import { mapGetters } from 'vuex'
 import { getDate } from '../../../tools/dateSetter'
+import firebase from 'firebase'
 export default {
   name: 'DentistPatientModal',
   props: {
@@ -127,7 +128,7 @@ export default {
       let isNew = this._isNew(patientInfo)
       if (isNew) {
         let today = getDate()
-        let dentistId = this.$store.getters.currentUserId
+        let dentistId = firebase.auth().currentUser.uid
         patientInfo = { ...patientInfo, RegistrationDate: today, dentistId: dentistId }
         this.$store.dispatch('ADD_PATIENT', patientInfo)
       } else {
