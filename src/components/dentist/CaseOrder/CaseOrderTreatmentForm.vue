@@ -22,13 +22,12 @@
         </div>
         <!-- .form-group -->
         <div class="form-group">
-          <textarea name="" id="" rows="2" placeholder="Details"></textarea>
+          <textarea name="" id="" rows="2" placeholder="Details" v-model="details"></textarea>
         </div>
         <!-- .form-group -->
         <div class="form-group">
           <button
-            class="btn btn-success"
-            style="width: 100%"
+            class="btn btn-success w-100"
             @click.prevent="submitTreatment">
             Submit
           </button>
@@ -40,16 +39,34 @@
 </template>
 
 <script>
+import { CASE_ORDER } from '../../../store/models/caseOrder'
 export default {
   name: 'CaseOrderTreatmentForm',
-  computed: {
-    newTreatment () {
-      return this.$route.params.treatment
+  data () {
+    return {
+      newTreatment: this.$route.params.treatment,
+      details: ''
     }
   },
   methods: {
     submitTreatment () {
-      console.log('TCL: submitTreatment -> submitTreatment')
+      let data = JSON.parse(JSON.stringify(CASE_ORDER))
+      data = {
+        ...data,
+        patientId: this.$route.params.id,
+        treatment: this.newTreatment,
+        details: this.details
+      }
+      this.$store.dispatch('ADD_ORDER', data)
+      console.log('TCL: submitTreatment -> submitTreatment', data)
+      this.updatePersonalData(data.treatment)
+      this.$router.push('/dentist-patients')
+    },
+    // MEMO: @updatePersonalData Pass current treatment to user info
+    updatePersonalData (newTreatment) {
+      let personalData = this.$store.getters.patientInfo
+      personalData = { ...personalData, Treatment: newTreatment }
+      this.$store.dispatch('EDIT_PATIENT', personalData)
     }
   }
 }

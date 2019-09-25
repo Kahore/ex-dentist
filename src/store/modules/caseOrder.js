@@ -2,6 +2,8 @@ import caseOrders from '../../data/CaseOrders.json'
 import commentsListDentistLab from '../../data/CommentsHistory_DentistLab.json'
 import commentsListLabClinical from '../../data/CommentsHistory_LabClinical.json'
 import filesList from '../../data/CommentsHistory_Files.json'
+/**/
+import db from '../../config/firebaseConfig'
 const state = {
   caseOrder: {},
   commentsHistoryDentistLab: [],
@@ -69,6 +71,13 @@ const actions = {
       })
     }
     commit('LOAD_FILES', filesFiltered)
+  },
+  ADD_ORDER ({ commit }, payload) {
+    let id = db.collection('caseOrders').doc().id
+    let caseOrder = { ...payload, id: id }
+    db.collection('caseOrders').doc(id).set(caseOrder).then(docRef => {
+      commit('ADD_CASEORDER_AT_LIST', caseOrder)
+    }).catch(error => console.log('TCL: ADD_ORDER -> error', error))
   }
 }
 

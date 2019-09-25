@@ -1,4 +1,5 @@
 import caseOrders from '../../data/CaseOrders.json'
+import db from '../../config/firebaseConfig'
 const state = {
   caseOrders: [],
   treatmentsHistory: []
@@ -19,6 +20,9 @@ const mutations = {
   LOAD_ORDERS: (state, payload) => {
     state.caseOrders = payload
   },
+  ADD_CASEORDER_AT_LIST: (state, payload) => {
+    state.caseOrders = state.caseOrders.concat(payload)
+  },
   LOAD_TREATMENTS: (state, payload) => {
     state.treatmentsHistory = payload
   }
@@ -26,7 +30,12 @@ const mutations = {
 
 const actions = {
   LOAD_ORDERS ({ commit }, payload) {
-    let orders = caseOrders
+    let orders = []
+    db.collection('caseOrders').get().then(querySnapshot => {
+      querySnapshot.forEach(order => {
+        orders.push(order.data())
+      })
+    })
     commit('LOAD_ORDERS', orders)
   },
   LOAD_TREATMENTS ({ commit }, payload) {
