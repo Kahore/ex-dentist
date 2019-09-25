@@ -104,6 +104,7 @@
 <script>
 import EventBus from '../../../EventBus'
 import { mapGetters } from 'vuex'
+import { getDate } from '../../../tools/dateSetter'
 export default {
   name: 'DentistPatientModal',
   props: {
@@ -123,10 +124,10 @@ export default {
   },
   methods: {
     savePatient (patientInfo) {
-      console.log("TCL: savePatient -> patientInfo", patientInfo)
       let isNew = this._isNew(patientInfo)
-      console.log("TCL: savePatient -> isNew", isNew)
-      if (isNew){
+      if (isNew) {
+        let today = getDate()
+        patientInfo = { ...patientInfo, RegistrationDate: today }
         this.$store.dispatch('ADD_PATIENT', patientInfo)
       } else {
         this.$store.dispatch('EDIT_PATIENT', patientInfo)
@@ -134,12 +135,11 @@ export default {
       this.toggleModal()
     },
     _isNew (patientInfo) {
-      if (typeof patientInfo.id ==='undefined') {
+      if (typeof patientInfo.id === 'undefined') {
         return true
       } else {
         return false
       }
-      // return true
     },
     toggleModal () {
       this.isActive = !this.isActive
