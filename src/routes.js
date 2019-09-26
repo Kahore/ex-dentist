@@ -1,4 +1,5 @@
 import Main from './components/Main.vue'
+import NoAccess from './components/NoAccess.vue'
 import Login from './components/auth/Login.vue'
 import Register from './components/auth/Register.vue'
 import PasswordRecovery from './components/auth/PasswordRecovery.vue'
@@ -55,7 +56,8 @@ export const routes = [
     component: DentistDashboard,
     name: 'DentistDashboard',
     meta: {
-      requiresAuth: true
+      requiresAuth: true,
+      typeToProtect: 'Dentist'
     }
   },
   {
@@ -63,7 +65,8 @@ export const routes = [
     component: DentistPatients,
     name: 'DentistPatients',
     meta: {
-      requiresAuth: true
+      requiresAuth: true,
+      typeToProtect: 'Dentist'
     }
   },
   {
@@ -71,7 +74,8 @@ export const routes = [
     component: DentistPatientPage,
     name: 'DentistPatientPage',
     meta: {
-      requiresAuth: true
+      requiresAuth: true,
+      typeToProtect: 'Dentist'
     }
   },
   {
@@ -79,7 +83,8 @@ export const routes = [
     component: DentistCaseOrderPage,
     name: 'DentistCaseOrderPage',
     meta: {
-      requiresAuth: true
+      requiresAuth: true,
+      typeToProtect: 'Dentist'
     }
   },
   {
@@ -87,7 +92,8 @@ export const routes = [
     component: DentistCaseDetailsPage,
     name: 'DentistCaseDetailsPage',
     meta: {
-      requiresAuth: true
+      requiresAuth: true,
+      typeToProtect: 'Dentist'
     }
   },
   {
@@ -95,7 +101,8 @@ export const routes = [
     component: DentistSupport,
     name: 'DentistSupport',
     meta: {
-      requiresAuth: true
+      requiresAuth: true,
+      typeToProtect: 'Dentist'
     }
   },
   {
@@ -103,7 +110,8 @@ export const routes = [
     component: DentistMyAccount,
     name: 'DentistMyAccount',
     meta: {
-      requiresAuth: true
+      requiresAuth: true,
+      typeToProtect: 'Dentist'
     }
   },
   {
@@ -111,7 +119,8 @@ export const routes = [
     component: LabDashboard,
     name: 'LabDashboard',
     meta: {
-      requiresAuth: true
+      requiresAuth: true,
+      typeToProtect: 'Lab'
     }
   },
   {
@@ -119,7 +128,8 @@ export const routes = [
     component: LabStaffs,
     name: 'LabStaffs',
     meta: {
-      requiresAuth: true
+      requiresAuth: true,
+      typeToProtect: 'Lab'
     }
   },
   {
@@ -127,7 +137,8 @@ export const routes = [
     component: LabMyAccount,
     name: 'LabMyAccount',
     meta: {
-      requiresAuth: true
+      requiresAuth: true,
+      typeToProtect: 'Lab'
     }
   },
   {
@@ -135,7 +146,8 @@ export const routes = [
     component: LabCaseDetailsPage,
     name: 'LabCaseDetailsPage',
     meta: {
-      requiresAuth: true
+      requiresAuth: true,
+      typeToProtect: 'Lab'
     }
   },
   {
@@ -143,7 +155,8 @@ export const routes = [
     component: ClinicianDashboard,
     name: 'ClinicianDashboard',
     meta: {
-      requiresAuth: true
+      requiresAuth: true,
+      typeToProtect: 'Clinician'
     }
   },
   {
@@ -151,7 +164,8 @@ export const routes = [
     component: ClinicianMyAccount,
     name: 'ClinicianMyAccount',
     meta: {
-      requiresAuth: true
+      requiresAuth: true,
+      typeToProtect: 'Clinician'
     }
   },
   {
@@ -159,8 +173,14 @@ export const routes = [
     component: ClinicianCaseDetailsPage,
     name: 'ClinicianCaseDetailsPage',
     meta: {
-      requiresAuth: true
+      requiresAuth: true,
+      typeToProtect: 'Clinician'
     }
+  },
+  {
+    path: '/noAccess',
+    component: NoAccess,
+    name: 'NoAccess'
   },
   {
     path: '*',

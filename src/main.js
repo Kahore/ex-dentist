@@ -17,12 +17,21 @@ const router = new VueRouter({
   routes,
   base: process.env.BASE_URL
 })
+let userType
 
 router.beforeEach((to, from, next) => {
+  userType = store.getters.currentUser.type
   if (to.matched.some(record => record.meta.requiresAuth)) {
     if (!firebase.auth().currentUser) {
       next({
         path: '/login',
+        query: {
+          redirect: to.fullPath
+        }
+      })
+    } else if (userType !== to.meta.typeToProtect) {
+      next({
+        path: '/NoAccess',
         query: {
           redirect: to.fullPath
         }
