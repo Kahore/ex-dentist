@@ -102,14 +102,26 @@ export default {
     userType: () => import('./_UserType')
   },
   computed: {
-    ...mapGetters(['selectedUserType'])
+    ...mapGetters(['selectedUserType', 'currentUser'])
   },
   methods: {
     loginWithEmailLocal () {
       firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(res => {
-        console.log('TCL: loginWithEmailLocal -> res', res)
         this.$store.dispatch('LOAD_USER', res.user.uid)
-        this.$router.push('/')
+
+        switch (this.currentUser.type) {
+          case 'Dentist':
+            this.$router.push('/dentist-dashboard')
+            break
+          case 'Lab':
+            this.$router.push('/lab-dashboard')
+            break
+          case 'Clinician':
+            this.$router.push('/clinician-dashboard')
+            break
+          default: this.$router.push('/')
+            break
+        }
       }).catch(error => {
         console.log('TCL: loginWithEmailLocal -> error', error)
       })

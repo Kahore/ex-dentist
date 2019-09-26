@@ -7,7 +7,6 @@
   </div>
 </template>
 <script>
-import { firebaseAuth } from './config/firebaseConfig'
 import { mapGetters } from 'vuex'
 import firebase from 'firebase'
 export default {
