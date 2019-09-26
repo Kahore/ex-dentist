@@ -13,13 +13,15 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import firebase from 'firebase'
 export default {
   name: 'DentistStats',
   computed: {
-    ...mapGetters([ 'stats', 'currentUser' ])
+    ...mapGetters(['stats'])
   },
   mounted () {
-    this.$store.dispatch('LOAD_STATS', this.currentUser.id)
+    let dentistId = firebase.auth().currentUser.uid
+    this.$store.dispatch('LOAD_STATS', dentistId)
   }
 }
 </script>

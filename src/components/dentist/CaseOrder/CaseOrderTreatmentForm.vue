@@ -42,6 +42,7 @@
 import { CASE_ORDER } from '../../../store/models/caseOrder'
 import { getDate } from '../../../tools/dateSetter'
 import { mapGetters } from 'vuex'
+import firebase from 'firebase'
 export default {
   name: 'CaseOrderTreatmentForm',
   data () {
@@ -67,8 +68,8 @@ export default {
         appointment_date: getDate()
       }
       this.$store.dispatch('ADD_ORDER', data)
-      console.log('TCL: submitTreatment -> submitTreatment', data)
       this.updatePersonalData(data.treatment)
+      this.updateTotalCase()
       this.$router.push('/dentist-patients')
     },
     // MEMO: @updatePersonalData Pass current treatment to user info
@@ -76,6 +77,11 @@ export default {
       let personalData = this.$store.getters.patientInfo
       personalData = { ...personalData, Treatment: newTreatment }
       this.$store.dispatch('EDIT_PATIENT', personalData)
+    },
+    // @updateTotalCase simple increment count of case
+    updateTotalCase () {
+      let dentistId = firebase.auth().currentUser.uid
+      this.$store.dispatch('UPDATE_DENTIST_TOTAL_CASE', dentistId)
     }
   }
 }

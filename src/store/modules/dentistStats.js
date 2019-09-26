@@ -1,4 +1,4 @@
-import dentistStats from '../../data/DentistStats.json'
+import db from '../../config/firebaseConfig'
 const state = {
   stats: {}
 }
@@ -17,12 +17,27 @@ const mutations = {
 
 const actions = {
   LOAD_STATS ({ commit }, payload) {
-    let practices = dentistStats
-    // MEMO: This just a mock db select. In real app this filter should be on server side
-    let practicesByCurrentDentist = practices.filter(function (el) {
-      return el.dentistId === payload
+    db.collection('statsDentist').where('dentistId', '==', payload).get().then(querySnapshot => {
+      querySnapshot.forEach(doc => {
+        commit('LOAD_STATS', doc.data())
+      })
     })
-    commit('LOAD_STATS', practicesByCurrentDentist[0])
+  },
+  UPDATE_DENTIST_TOTAL_CASE  ({ commit }, payload) {
+    let collectionId
+    let totalCases
+    db.collection('statsDentist').where('dentistId', '==', payload).get().then(querySnapshot => {
+      querySnapshot.forEach(doc => {
+        collectionId = doc.data().id
+        totalCases = doc.data().totalCases
+        totalCases = totalCases + 1
+        db.collection('statsDentist')
+          .doc(collectionId)
+          .update({
+            'totalCases': totalCases
+          })
+      })
+    })
   }
 }
 
