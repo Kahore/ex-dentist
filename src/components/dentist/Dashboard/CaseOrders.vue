@@ -58,12 +58,10 @@ export default {
     let userType = this._getUserType()
     let options = {}
     if (userType === 'Dentist') {
-      console.log('TCL: mounted -> userType', userType)
       let dentistId = this.currentUserId
       options = { where: ['dentistId', '==', dentistId] }
     }
     this.$store.dispatch('LOAD_ORDERS', options)
-    console.log('TCL: mounted -> options', options)
   }
 }
 </script>
