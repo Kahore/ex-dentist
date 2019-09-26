@@ -35,6 +35,13 @@ const actions = {
       })
       commit('EDIT_CASEORDER_AT_LIST', payload)
     })
+  },
+  ORDER_ALERT ({ commit }, payload) {
+    db.collection('caseOrders')
+      .doc(payload)
+      .update({
+        'clinical_alert': true
+      })
   }
 }
 

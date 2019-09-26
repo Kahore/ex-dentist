@@ -9,7 +9,8 @@ const caseOrderModel = {
   'treatment': '',
   'details': '',
   'status': '',
-  'attention_require': ''
+  'attention_require': '',
+  'clinical_alert': ''
 }
 
 export const CASE_ORDER = caseOrderModel

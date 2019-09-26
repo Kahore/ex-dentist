@@ -15,7 +15,8 @@ export default {
   name: 'AlertClinicals',
   methods: {
     alertClinical () {
-      console.log('TCL: alertClinical -> alertClinical')
+      let orderId = this.$route.params.orderId
+      this.$store.dispatch('ORDER_ALERT', orderId)
     }
   }
 }
