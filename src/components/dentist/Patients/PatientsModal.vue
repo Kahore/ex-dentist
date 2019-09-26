@@ -105,7 +105,6 @@
 import EventBus from '../../../EventBus'
 import { mapGetters } from 'vuex'
 import { getDate } from '../../../tools/dateSetter'
-import firebase from 'firebase'
 export default {
   name: 'DentistPatientModal',
   props: {
@@ -121,14 +120,14 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['patientInfo', 'practices'])
+    ...mapGetters(['patientInfo', 'practices', 'currentUserId'])
   },
   methods: {
     savePatient (patientInfo) {
       let isNew = this._isNew(patientInfo)
       if (isNew) {
         let today = getDate()
-        let dentistId = firebase.auth().currentUser.uid
+        let dentistId = this.currentUserId
         patientInfo = { ...patientInfo, RegistrationDate: today, dentistId: dentistId, Status: 'Active' }
         this.$store.dispatch('ADD_PATIENT', patientInfo)
       } else {
@@ -148,7 +147,7 @@ export default {
     },
     loadPractice () {
       if (this.practices.length === 0) {
-        let dentistId = firebase.auth().currentUser.uid
+        let dentistId = this.currentUserId
         this.$store.dispatch('LOAD_PRACTICES', dentistId)
       }
     }

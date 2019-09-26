@@ -1,5 +1,5 @@
 import db, { firebaseAuth } from '../../config/firebaseConfig'
-
+import firebase from 'firebase'
 const state = {
   isLoggedIn: false,
   currentUser: {},
@@ -17,10 +17,14 @@ const getters = {
   },
   currentUser: (state) => {
     return state.user
+  },
+  currentUserId: (state) => {
+    if (state.isLoggedIn) {
+      return firebase.auth().currentUser.uid
+    } else {
+      return ''
+    }
   }
-  // currentUserId () {
-  //   return state.user.id
-  // }
 }
 
 const mutations = {

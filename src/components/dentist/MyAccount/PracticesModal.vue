@@ -131,7 +131,6 @@
 import EventBus from '../../../EventBus'
 import { mapGetters } from 'vuex'
 import { PRACTICE } from '../../../store/models/practice'
-import firebase from 'firebase'
 export default {
   name: 'DentistPracticesModal',
   data () {
@@ -140,7 +139,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['selectedPractice'])
+    ...mapGetters(['selectedPractice', 'currentUserId'])
   },
   methods: {
     toggleModal () {
@@ -149,7 +148,7 @@ export default {
     savePractice () {
       let isNew = this._isNew(this.selectedPractice)
       if (isNew) {
-        let dentistId = firebase.auth().currentUser.uid
+        let dentistId = this.currentUserId
         let practices = { ...this.selectedPractice, dentistId: dentistId }
         this.$store.dispatch('ADD_PRACTICE', practices)
       } else {

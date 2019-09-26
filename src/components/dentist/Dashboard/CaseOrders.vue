@@ -47,10 +47,10 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['caseOrders', 'currentUser'])
+    ...mapGetters(['caseOrders', 'currentUser', 'currentUserId'])
   },
   methods: {
-    _getUserType () {      
+    _getUserType () {
       return this.currentUser.type
     }
   },
@@ -58,11 +58,13 @@ export default {
     let userType = this._getUserType()
     let options = {}
     if (userType === 'Dentist') {
-      options= { where: ['dentistId', '==', dentistId] }
+      console.log('TCL: mounted -> userType', userType)
+      let dentistId = this.currentUserId
+      options = { where: ['dentistId', '==', dentistId] }
     }
     this.$store.dispatch('LOAD_ORDERS', options)
+    console.log('TCL: mounted -> options', options)
   }
-  
 }
 </script>
 

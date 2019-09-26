@@ -8,7 +8,6 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import firebase from 'firebase'
 export default {
   name: 'DentistPatients',
   components: {
@@ -17,10 +16,10 @@ export default {
     patientsList: () => import('./Patients/PatientsList')
   },
   computed: {
-    ...mapGetters(['patients'])
+    ...mapGetters(['patients', 'currentUserId'])
   },
   mounted () {
-    let dentistId = firebase.auth().currentUser.uid
+    let dentistId = this.currentUserId
     let options = { where: ['dentistId', '==', dentistId] }
     this.$store.dispatch('LOAD_PATIENTS', options)
   }

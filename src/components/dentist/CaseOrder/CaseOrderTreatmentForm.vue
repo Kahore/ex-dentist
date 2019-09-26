@@ -42,7 +42,6 @@
 import { CASE_ORDER } from '../../../store/models/caseOrder'
 import { getDate } from '../../../tools/dateSetter'
 import { mapGetters } from 'vuex'
-import firebase from 'firebase'
 export default {
   name: 'CaseOrderTreatmentForm',
   data () {
@@ -52,7 +51,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['patientInfo'])
+    ...mapGetters(['patientInfo', 'currentUserId'])
   },
   methods: {
     submitTreatment () {
@@ -80,7 +79,7 @@ export default {
     },
     // @updateTotalCase simple increment count of case
     updateTotalCase () {
-      let dentistId = firebase.auth().currentUser.uid
+      let dentistId = this.currentUserId
       this.$store.dispatch('UPDATE_DENTIST_TOTAL_CASE', dentistId)
     }
   }

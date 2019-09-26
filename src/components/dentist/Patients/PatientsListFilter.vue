@@ -64,7 +64,7 @@
 </template>
 
 <script>
-import firebase from 'firebase'
+import { mapGetters } from 'vuex'
 export default {
   name: 'DentistPatientListFilter',
   data () {
@@ -72,10 +72,13 @@ export default {
       currentFilter: 'All'
     }
   },
+  computed: {
+    ...mapGetters(['currentUserId'])
+  },
   methods: {
     filterAction (param) {
       this.currentFilter = param
-      let dentistId = firebase.auth().currentUser.uid
+      let dentistId = this.currentUserId
       let options = { where: [['dentistId', '==', dentistId]] }
       switch (param) {
         case 'In Treatment':

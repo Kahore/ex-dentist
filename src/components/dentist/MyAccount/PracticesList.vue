@@ -37,11 +37,10 @@
 <script>
 import EventBus from '../../../EventBus'
 import { mapGetters } from 'vuex'
-import firebase from 'firebase'
 export default {
   name: 'DentistPracticesList',
   computed: {
-    ...mapGetters(['practices'])
+    ...mapGetters(['practices', 'currentUserId'])
   },
   methods: {
     risePracticeModal (practiceId) {
@@ -52,7 +51,7 @@ export default {
     }
   },
   mounted () {
-    let dentistId = firebase.auth().currentUser.uid
+    let dentistId = this.currentUserId
     this.$store.dispatch('LOAD_PRACTICES', dentistId)
   }
 }
