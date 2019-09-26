@@ -6,9 +6,17 @@
       <strong><label for="treatment">Treatment: </label></strong>
       <span id="treatment"> {{caseOrder.treatment}}</span>
     </div>
-    <div class="form-group col-lg-6 col-md-6 col-6">
+    <div class="form-group col-lg-4 col-md-4 col-6">
       <strong><label for="treatmentDetails">Details: </label></strong>
       <p id="treatmentDetails">{{caseOrder.details}}</p>
+    </div>
+    <div class="form-group">
+      <button
+        class="btn btn-success"
+        style="width: 100%"
+        @click.prevent="generateLabSlip">
+         generate the lab slip
+      </button>
     </div>
     <div class="form-group col-lg-4 col-md-4 col-6">
       <strong><label for="orderStatus">Order status: </label></strong>
@@ -17,8 +25,10 @@
         class="border-0"
         v-model="caseOrder.status">
         <option value=""></option>
-        <option value="orderStatus1">orderStatus1</option>
-        <option value="orderStatus2">orderStatus2</option>
+        <option value="Completed">Completed</option>
+        <option value="Inprogress">Inprogress</option>
+        <option value="In review">In review</option>
+        <option value="Require attention">Require attention</option>
       </select>
     </div>
     <div class="form-group col-4">
@@ -36,8 +46,8 @@
       <button
         class="btn btn-success"
         style="width: 100%"
-        @click.prevent="generateLabSlip">
-         generate the lab slip
+        @click.prevent="saveDetails">
+         Save details
       </button>
     </div>
   </div>
@@ -50,15 +60,34 @@ import { mapGetters } from 'vuex'
 export default {
   name: 'CaseDetailsItem',
   computed: {
-    ...mapGetters(['caseOrder'])
+    ...mapGetters(['caseOrder', 'currentUser'])
+  },
+  data () {
+    return {
+      tmp_status: '',
+      tmp_attention_require: ''
+    }
   },
   methods: {
     generateLabSlip () {
-      console.log('TCL: generateLabSlip -> generateLabSlip')
+      alert('Generating pdf document here')
+    },
+    saveDetails () {
+      let updatedCase = { ...this.caseOrder, status: this.caseOrder.status, attention_require: this.caseOrder.attention_require }
+      this.$store.dispatch('EDIT_ORDER', updatedCase)
     }
+    // _getUserType () {
+    //   let userType = this.currentUser.type
+    //   return userType
+    // }
+    // fixTmpValue () {
+    //   this.tmp_status = this.caseOrder.status
+    //   this.tmp_attention_require = this.caseOrder.attention_require
+    // }
   },
   mounted () {
     this.$store.dispatch('LOAD_ORDER', this.$route.params.orderId)
+    // this.fixTmpValue()
   }
 }
 </script>

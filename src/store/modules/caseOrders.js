@@ -17,6 +17,11 @@ const mutations = {
   },
   ADD_CASEORDER_AT_LIST: (state, payload) => {
     state.caseOrders = state.caseOrders.concat(payload)
+  },
+  EDIT_CASEORDER_AT_LIST: (state, payload) => {
+    let index = state.caseOrders.findIndex(patient => patient.id === payload.id)
+    state.caseOrders.splice(index, 1)
+    state.caseOrders = state.caseOrders.concat(payload)
   }
 }
 

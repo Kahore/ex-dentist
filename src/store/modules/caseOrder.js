@@ -27,6 +27,14 @@ const actions = {
     db.collection('caseOrders').doc(id).set(caseOrder).then(docRef => {
       commit('ADD_CASEORDER_AT_LIST', caseOrder)
     }).catch(error => console.log('TCL: ADD_ORDER -> error', error))
+  },
+  EDIT_ORDER ({ commit }, payload) {
+    db.collection('caseOrders').where('id', '==', payload.id).get().then(querySnapshot => {
+      querySnapshot.forEach(doc => {
+        doc.ref.update(payload)
+      })
+      commit('EDIT_CASEORDER_AT_LIST', payload)
+    })
   }
 }
 
