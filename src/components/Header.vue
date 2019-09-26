@@ -62,11 +62,12 @@ export default {
     }
   },
   methods: {
-    // ...mapActions(['logout']),
     logout () {
       firebase.auth().signOut().then(() => {
         this.$router.push('/')
         this.$store.commit('AUTH_STATUS_CHANGE')
+        this.$store.dispatch('MUTATE_USER_TYPE', '')
+        this.$store.commit('LOAD_USER', {})
       })
     },
     toggleNavbar () {

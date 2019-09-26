@@ -12,11 +12,9 @@ import labStats from './modules/labStats'
 import staff from './modules/staff'
 import staffs from './modules/staffs'
 import clinicianStats from './modules/clinicianStats'
-import * as actions from './actions'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-  actions,
   modules: {
     auth, patient, patients, caseOrder, caseOrders, comments, practices, dentistStats, labStats, staff, staffs, clinicianStats
   }
