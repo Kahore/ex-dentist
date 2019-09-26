@@ -1,29 +1,15 @@
 <template>
-  <div>
-      <li class="nav-item dropdown">
-        <a
-          class="nav-link dropdown-toggle"
-          id="navbarDropdown"
-          role="button"
-          data-toggle="dropdown"
-          aria-haspopup="true"
-          aria-expanded="false"
-          @click="toggleDDbar"
-          @blur="toggleDDbar">
-          Clinician Area
-        </a>
-        <div
-          class="dropdown-menu"
-          aria-labelledby="navbarDropdown"
-          :class="{show: isDDOpen}">
-          <router-link to="/clinician-dashboard">
-            <a class="dropdown-item" @click="toggleDDbar">Dashboard</a>
-          </router-link>
-          <router-link to="/clinician-myAccount">
-            <a class="dropdown-item" @click="toggleDDbar">My Account</a>
-          </router-link>
-        </div>
-      </li>
+  <div class="nav mr-auto">
+    <ul class="navbar-nav">
+      <router-link class="nav-link" to="/clinician-dashboard">
+        Dashboard
+      </router-link>
+    </ul>
+    <ul class="navbar-nav">
+      <router-link class="nav-link" to="/clinician-myAccount">
+        My Account
+      </router-link>
+    </ul>
   </div>
 </template>
 

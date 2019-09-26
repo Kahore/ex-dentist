@@ -14,15 +14,9 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarTop" :class="{show: isNavOpen}">
-      <ul class="navbar-nav">
-        <NavDentist></NavDentist>
-      </ul>
-      <ul class="navbar-nav">
-        <NavLab></NavLab>
-      </ul>
-      <ul class="navbar-nav mr-auto">
-        <NavClinician></NavClinician>
-      </ul>
+        <NavDentist v-if="userType === 'Dentist'"/>
+        <NavLab v-if="userType === 'Lab'"/>
+        <NavClinician v-if="userType === 'Clinician'"/>
       <ul class="nav navbar-nav">
         <router-link to="/login" tag="li" v-if="!isLoggedIn" class="nav-item" active-class="active">
           <a class="nav-link" @click="loginModalCall()">Login</a>
@@ -59,6 +53,9 @@ export default {
   },
   computed: {
     ...mapGetters(['isLoggedIn', 'currentUser']),
+    userType () {
+      return this.isLoggedIn ? this.currentUser.type : ''
+    },
     userEmail () {
       return this.isLoggedIn ? this.currentUser.email : ''
     }
