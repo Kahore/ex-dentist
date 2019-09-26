@@ -41,7 +41,7 @@
 7.	~~Lab Slip - Icon which generates the lab slip for that case~~
 *	It should provide a Search functionality. So that the Dentist can search a string across all the column data.
 *	It should have the ability to do pagination or lazy loading.
-*	It should color-code each record in the table. So the Dentist can identify quickly whether the case requires attention from the Dentist or the Lab.
+*	~~It should color-code each record in the table. So the Dentist can identify quickly whether the case requires attention from the Dentist or the Lab.~~
 *	~~When a user clicks on a record, it takes them to the Order Page for that case.~~
 ###	Patients 
 *	~~It should show a table with the list of patients~~
@@ -143,7 +143,7 @@
 4.	~~All orders assigned to the Lab~~
 5.	~~All orders with clinician alert~~
 *	It should have the ability to do pagination or lazy loading.
-*	It should color-code each record in the table. So the Lab Staff can identify quickly whether the case requires attention from the Dentist or the Lab.
+*	~~It should color-code each record in the table. So the Lab Staff can identify quickly whether the case requires attention from the Dentist or the Lab.~~
 *	~~When a user clicks on a record, it takes them to the Case Details Page.~~
 ###	Case Details Page - Lab version 
 *	~~It should show the Patient details.~~

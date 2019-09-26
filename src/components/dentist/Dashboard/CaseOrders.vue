@@ -16,7 +16,8 @@
     <tbody>
       <tr
         v-for="(caseOrder, index) in caseOrders"
-        :key="index">
+        :key="index"
+        :class="{'attention-dentist': caseOrder.attention_require ==='Dentist', 'attention-lab':caseOrder.attention_require ==='Lab Staff' }">
         <td class="text-center">{{caseOrder.order_date}}</td>
         <td>{{caseOrder.first_name + ' '+ caseOrder.last_name }}</td>
         <td class="d-none d-sm-table-cell">
@@ -53,3 +54,14 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.attention {
+  &-dentist {
+    background: #fbffc4fb
+  }
+  &-lab {
+     background: #c4fd8ffb
+  }
+}
+</style>
