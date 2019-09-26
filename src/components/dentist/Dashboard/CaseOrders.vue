@@ -47,11 +47,22 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['caseOrders'])
+    ...mapGetters(['caseOrders', 'currentUser'])
+  },
+  methods: {
+    _getUserType () {      
+      return this.currentUser.type
+    }
   },
   mounted () {
-    this.$store.dispatch('LOAD_ORDERS', 'some data for future implement')
+    let userType = this._getUserType()
+    let options = {}
+    if (userType === 'Dentist') {
+      options= { where: ['dentistId', '==', dentistId] }
+    }
+    this.$store.dispatch('LOAD_ORDERS', options)
   }
+  
 }
 </script>
 

@@ -27,8 +27,19 @@ const mutations = {
 
 const actions = {
   LOAD_ORDERS ({ commit }, payload) {
+    let { where } = payload
+    let query = db.collection('caseOrders')
+    if (where) {
+      if (where[0] instanceof Array) {
+        for (let w of where) {
+          query = query.where(...w)
+        }
+      } else {
+        query = query.where(...where)
+      }
+    }
     let orders = []
-    db.collection('caseOrders').get().then(querySnapshot => {
+    query.get().then(querySnapshot => {
       querySnapshot.forEach(order => {
         orders.push(order.data())
       })
