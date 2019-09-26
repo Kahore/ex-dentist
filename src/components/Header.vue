@@ -82,7 +82,7 @@ export default {
     }
   },
   created () {
-    if (firebase.auth().currentUser) {
+    if (firebase.auth().currentUser !== null) {
       this.$store.commit('AUTH_STATUS_CHANGE')
     }
   }

@@ -1,23 +1,29 @@
 <template>
   <div id="app">
     <div id="nav">
-      <appHeader/>
+      <appHeader :key="$route.fullPath"/>
       <router-view/>
     </div>
   </div>
 </template>
 <script>
 import { firebaseAuth } from './config/firebaseConfig'
+import { mapGetters } from 'vuex'
 import firebase from 'firebase'
 export default {
   name: 'App',
   components: {
     appHeader: () => import('@/components/Header.vue')
   },
-  created () {
-    if (firebaseAuth().currentUser != null) {
-      let userId = firebase.auth().currentUser.uid
-      this.$store.dispatch('LOAD_USER', userId)
+  computed: {
+    ...mapGetters(['currentUser', 'currentUserId'])
+  },
+  updated () {
+    if (firebase.auth().currentUser !== null) {
+      if (Object.entries(this.currentUser).length === 0) {
+        let userId = this.currentUserId
+        this.$store.dispatch('LOAD_USER', userId)
+      }
     }
   }
 }
