@@ -17,6 +17,7 @@
         <NavDentist v-if="userType === 'Dentist'"/>
         <NavLab v-if="userType === 'Lab'"/>
         <NavClinician v-if="userType === 'Clinician'"/>
+        <div class="mr-auto" v-if="userType === ''"></div>
       <ul class="nav navbar-nav">
         <router-link to="/login" tag="li" v-if="!isLoggedIn" class="nav-item" active-class="active">
           <a class="nav-link" @click="loginModalCall()">Login</a>
