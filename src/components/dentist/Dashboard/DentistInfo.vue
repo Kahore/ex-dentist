@@ -1,7 +1,7 @@
 <template>
   <div>
     <p>{{ currentUser.first_name + ' ' + currentUser.last_name }}</p>
-    <button v-if="practices === []"
+    <button v-if="practices.length === 0 && currentUser.type === 'Dentist'"
             class="btn btn-light"
             @click="risePracticeModal()">add practices</button>
   </div>
