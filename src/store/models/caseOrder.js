@@ -1,6 +1,7 @@
 const caseOrderModel = {
   'id': '',
   'patientId': '',
+  'dentistId': '',
   'first_name': '',
   'last_name': '',
   'order_date': '',

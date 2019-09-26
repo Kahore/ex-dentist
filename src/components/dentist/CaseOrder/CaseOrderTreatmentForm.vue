@@ -59,6 +59,7 @@ export default {
       data = {
         ...data,
         patientId: this.$route.params.id,
+        dentistId: this.currentUserId,
         first_name: this.patientInfo.first_name,
         last_name: this.patientInfo.last_name,
         treatment: this.newTreatment,
