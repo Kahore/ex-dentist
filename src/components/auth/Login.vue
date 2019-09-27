@@ -108,20 +108,7 @@ export default {
     loginWithEmailLocal () {
       firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(res => {
         this.$store.dispatch('LOAD_USER', res.user.uid)
-
-        switch (this.currentUser.type) {
-          case 'Dentist':
-            this.$router.push('/dentist-dashboard')
-            break
-          case 'Lab':
-            this.$router.push('/lab-dashboard')
-            break
-          case 'Clinician':
-            this.$router.push('/clinician-dashboard')
-            break
-          default: this.$router.push('/')
-            break
-        }
+        this.$router.push('/')
       }).catch(error => {
         console.log('TCL: loginWithEmailLocal -> error', error)
       })

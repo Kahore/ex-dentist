@@ -16,7 +16,11 @@ const getters = {
     return state.userType
   },
   currentUser: (state) => {
-    return state.user
+    if (localStorage.getItem('userInfo')) {
+      return JSON.parse(localStorage.getItem('userInfo'))
+    } else {
+      return state.user
+    }
   },
   currentUserId: (state) => {
     if (state.isLoggedIn) {
@@ -53,6 +57,7 @@ const actions = {
     db.collection('users').where('id', '==', payload).get().then(querySnapshot => {
       querySnapshot.forEach(doc => {
         let data = doc.data()
+        localStorage.setItem('userInfo', JSON.stringify(data))
         commit('LOAD_USER', data)
       })
     })
