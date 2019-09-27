@@ -92,7 +92,6 @@ export default {
     },
     resetDetails () {
     // MEMO: reset previously selected data
-      console.log('TCL: resetDetails -> PATIENT_INFO', JSON.parse(JSON.stringify(PATIENT_INFO)))
       this.$store.commit('LOAD_PATIENT_INFO', JSON.parse(JSON.stringify(PATIENT_INFO)))
     },
     dropDownToggler (patientId) {

@@ -50,10 +50,33 @@
                 v-model="staffInfo.email">
             </div>
             <div class="form-group">
-              <select v-model="staffInfo.user_type">
+            <input
+              v-if="staffInfo.id ==''"
+              type="password"
+              name="password"
+              id="password"
+              required
+              class="form-control"
+              placeholder="Password"
+              v-model="staffInfo.password">
+          </div>
+          <!-- <div class="form-group">
+            <input
+              v-if="staffInfo.id ==''"
+              type="password"
+              name="confirm_password"
+              id="confirm_password"
+              required
+              class="form-control"
+              placeholder="Confirm password"
+              v-model="confirm_password">
+          </div> -->
+            <div class="form-group">
+              <select v-model="staffInfo.type">
                 <option value="" disabled selected>Select staff user type</option>
                 <option value="Admin">Admin</option>
-                <option value="Staff">Staff</option>
+                <option value="Clinician">Clinician</option>
+                <option value="Lab">Lab</option>
               </select>
             </div>
             <div class="form-group">
@@ -66,7 +89,7 @@
             <div class="form-group">
               <button
                 class="btn btn-success w-100"
-                @click.prevent="saveStaff"
+                @click.prevent="saveStaff(staffInfo)"
                 >
                 Save Patient
               </button>
@@ -83,19 +106,43 @@
 <script>
 import EventBus from '../../../EventBus'
 import { mapGetters } from 'vuex'
+import { firebaseAppInit, configApp } from '../../../config/firebaseConfig'
 export default {
   name: 'StaffInfoModal',
   data () {
     return {
-      isActive: false
+      isActive: false,
+      mode: ''
     }
   },
   computed: {
     ...mapGetters(['staffInfo'])
   },
   methods: {
-    saveStaff () {
-      console.log('TCL: saveStaff -> saveStaff')
+    saveStaff (staffInfo) {
+      let isNew = this._isNew()
+      if (isNew) {
+        this._addStaff(staffInfo)
+      } else {
+        this._editStaff(staffInfo)
+      }
+    },
+    _isNew () {
+      return this.mode !== 'edit'
+    },
+    _addStaff (staffInfo) {
+      let detachedAuth = firebaseAppInit.firebase_.initializeApp(configApp, 'secondary')
+      detachedAuth.auth().createUserWithEmailAndPassword(staffInfo.email, staffInfo.password).then(res => {
+        let regData = { ...staffInfo, id: res.user.uid }
+        this.$store.dispatch('CREATE_STAFF', regData)
+      }).then(() => {
+        detachedAuth.delete()
+      }).catch(error => {
+        console.log('TCL: _addStaff -> error', error)
+      })
+    },
+    _editStaff (staffInfo) {
+      this.$store.dispatch('EDIT_STAFF', staffInfo)
     },
     toggleModal () {
       this.isActive = !this.isActive
@@ -103,6 +150,8 @@ export default {
   },
   mounted () {
     EventBus.$on('STAFF_MODAL', payload => {
+      this.mode = payload
+      console.log('TCL: mounted -> this.mode', this.mode)
       this.toggleModal()
     })
   },

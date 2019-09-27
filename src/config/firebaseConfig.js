@@ -29,3 +29,5 @@ const firebaseApp = firebase.initializeApp(config)
 export default firebaseApp.firestore()
 export const ref = firebase.database().ref()
 export const firebaseAuth = firebase.auth
+export const firebaseAppInit = firebaseApp
+export const configApp = config

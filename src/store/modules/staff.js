@@ -1,4 +1,4 @@
-import staffList from '../../data/Staffs.json'
+import db from '../../config/firebaseConfig'
 const state = {
   staffInfo: ''
 }
@@ -17,11 +17,25 @@ const mutations = {
 
 const actions = {
   LOAD_STAFF_INFO ({ commit }, payload) {
-    let staffs = staffList
-    let staff = staffs.filter(function (el) {
-      return el.id === payload
+    db.collection('users').where('id', '==', payload).get().then(querySnapshot => {
+      querySnapshot.forEach(doc => {
+        let data = doc.data()
+        commit('LOAD_STAFF_INFO', data)
+      })
     })
-    commit('LOAD_STAFF_INFO', staff[0])
+  },
+  CREATE_STAFF ({ commit }, payload) {
+    db.collection('users').add(payload).then(() => {
+      commit('ADD_STAFF_AT_LIST', payload)
+    })
+  },
+  EDIT_STAFF ({ commit }, payload) {
+    db.collection('users').where('id', '==', payload.id).get().then(querySnapshot => {
+      querySnapshot.forEach(doc => {
+        doc.ref.update(payload)
+      })
+      commit('EDIT_STAFF_AT_LIST', payload)
+    })
   }
 }
 

@@ -26,7 +26,7 @@
               <td>{{staff.first_name}}</td>
               <td>{{staff.last_name}}</td>
               <td>{{staff.email}}</td>
-              <td>{{staff.user_type}}</td>
+              <td>{{staff.type}}</td>
               <td>{{staff.status}}</td>
               <td>
                 <div class="dropdown">
@@ -65,6 +65,7 @@
 <script>
 import EventBus from '../../../EventBus'
 import { mapGetters } from 'vuex'
+import { STAFF_INFO } from '../../../store/models/staff'
 export default {
   name: 'staffsTable',
   data () {
@@ -81,11 +82,11 @@ export default {
   methods: {
     modalStaffRise () {
       this.resetDetails()
-      EventBus.$emit('STAFF_MODAL')
+      EventBus.$emit('STAFF_MODAL', 'add')
     },
     resetDetails () {
     // MEMO: reset previously selected data
-      this.$store.commit('LOAD_STAFF_INFO', '')
+      this.$store.commit('LOAD_STAFF_INFO', JSON.parse(JSON.stringify(STAFF_INFO)))
     },
     dropDownToggler (staffId) {
       if (this.staffIDOnAction === staffId) {
@@ -95,8 +96,9 @@ export default {
       }
     },
     actionEditRise (staffId) {
+      console.log('TCL: actionEditRise -> staffId', staffId)
       this.$store.dispatch('LOAD_STAFF_INFO', staffId)
-      EventBus.$emit('STAFF_MODAL')
+      EventBus.$emit('STAFF_MODAL', 'edit')
       this.dropDownToggler(staffId)
     },
     actionModalToggler (mode, staffId) {
