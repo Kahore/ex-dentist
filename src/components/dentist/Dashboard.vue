@@ -17,7 +17,7 @@
 </template>
 
 <script>
-
+import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'DentistDashboard',
   components: {
@@ -26,6 +26,21 @@ export default {
     dentistStats: () => import('./Dashboard/Stats'),
     dentistCaseOrder: () => import('./Dashboard/CaseOrders'),
     dentistCaseOrderSearch: () => import('./Dashboard/CaseOrdersSearch')
+  },
+  computed: {
+    ...mapGetters(['practices', 'currentUserId'])
+  },
+  methods: {
+    ...mapActions(['LOAD_PRACTICES']),
+    loadPractice () {
+      if (this.practices.length === 0) {
+        let dentistId = this.currentUserId
+        this.LOAD_PRACTICES(dentistId)
+      }
+    }
+  },
+  mounted () {
+    this.loadPractice()
   }
 }
 </script>

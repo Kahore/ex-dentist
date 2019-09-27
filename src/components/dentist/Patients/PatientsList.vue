@@ -69,6 +69,7 @@
 <script>
 import EventBus from '../../../EventBus'
 import { PATIENT_INFO } from '../../../store/models/patient'
+import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'DentistPatientDetails',
   props: {
@@ -80,12 +81,16 @@ export default {
   components: {
     modal: () => import('./PatientsListActions_Modal')
   },
+  computed: {
+    ...mapGetters(['practices'])
+  },
   data () {
     return {
       patientIDOnAction: null
     }
   },
   methods: {
+    ...mapActions(['LOAD_PRACTICES']),
     modalPatientRise () {
       this.resetDetails()
       EventBus.$emit('PATIENT_MODAL', 'edit')
@@ -109,6 +114,12 @@ export default {
     actionModalToggler (mode, patientId) {
       EventBus.$emit('ACTION_PATIENT_MODAL', { mode, patientId })
       this.dropDownToggler(patientId)
+    }
+  },
+  mounted () {
+    if (this.practices.length === 0) {
+      let dentistId = this.currentUserId
+      this.LOAD_PRACTICES(dentistId)
     }
   }
 }

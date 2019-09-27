@@ -120,7 +120,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['patientInfo', 'practices', 'currentUserId'])
+    ...mapGetters(['patientInfo', 'currentUserId', 'practices'])
   },
   methods: {
     savePatient (patientInfo) {
@@ -144,12 +144,6 @@ export default {
     },
     toggleModal () {
       this.isActive = !this.isActive
-    },
-    loadPractice () {
-      if (this.practices.length === 0) {
-        let dentistId = this.currentUserId
-        this.$store.dispatch('LOAD_PRACTICES', dentistId)
-      }
     }
   },
   mounted () {
@@ -159,7 +153,6 @@ export default {
       }
       this.toggleModal()
     })
-    this.loadPractice()
   },
   created () {
     // MEMO: reset state if user not close modal and select another page with this modal
