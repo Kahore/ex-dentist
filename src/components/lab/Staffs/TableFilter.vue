@@ -21,7 +21,3 @@ export default {
   name: 'staffsTableFilter'
 }
 </script>
-
-<style lang="scss" scoped>
-
-</style>

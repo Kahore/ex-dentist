@@ -1,7 +1,7 @@
 <template>
-  <div class="container">
+  <div class="container pt-2">
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-md-12 offset-md-2">
         <h4>Available treatments</h4>
           <router-link :to='"/dentist-patients/"+patientInfoId+"/caseOrder/Refine"'>
             <a href="" class="dark-link"> Refine </a>
@@ -29,7 +29,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-
-</style>

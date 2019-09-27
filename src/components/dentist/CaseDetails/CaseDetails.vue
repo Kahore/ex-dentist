@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h3>Case Details</h3>
     <patientDetails :acl="'edit'"/>
     <caseDetailsItem/>
     <comments/>
@@ -19,7 +18,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-
-</style>

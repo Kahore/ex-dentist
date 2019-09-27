@@ -1,32 +1,29 @@
 <template>
-  <div class="row pt-5">
-    <div class="col-md-4 offset-md-4 col-sm-12 offset-sm-1">
-      <form id="treatment-form" role="form" class="form-group ml-2">
-        <h3 class="text-center">Treatment specific form</h3>
+  <div class="container pt-5">
+   <div class="row">
+    <h4 class="col-12 offset-md-2 pl-4">Treatment specific form</h4>
+    <div class="col-lg-3 col-md-4 offset-md-2 col-12">
+      <form id="treatment-form" role="form" class="form ml-2">
         <div class="form-group">
-          <div class="row">
-            <div class="col-lg-12">
-              <div class="text-center">
-                <select v-model="newTreatment">
-                  <option value=""></option>
-                  <option value="Design">Design</option>
-                  <option value="Refine">Refine</option>
-                  <option value="Align">Align</option>
-                  <option value="Direct">Direct</option>
-                  <option value="In-Direct">In-Direct</option>
-                </select>
-              </div>
-            </div>
-          </div>
-          <!-- .row -->
+          <label for="treatmentNew">New treatment</label>
+          <select required v-model="newTreatment" id="treatmentNew" class="form-control">
+            <option value=""></option>
+            <option value="Design">Design</option>
+            <option value="Refine">Refine</option>
+            <option value="Align">Align</option>
+            <option value="Direct">Direct</option>
+            <option value="In-Direct">In-Direct</option>
+          </select>
         </div>
         <!-- .form-group -->
         <div class="form-group">
-          <textarea name="" id="" rows="2" placeholder="Details" v-model="details"></textarea>
+          <label class="col-form-label" for="treatmentDetails">Details</label>
+          <textarea name="" class="form-control" id="treatmentDetails" rows="2" placeholder="Details" v-model="details"></textarea>
         </div>
         <!-- .form-group -->
         <div class="form-group">
           <button
+            type="submit"
             class="btn btn-success w-100"
             @click.prevent="submitTreatment">
             Submit
@@ -36,6 +33,8 @@
       </form>
     </div>
   </div>
+</div>
+
 </template>
 
 <script>

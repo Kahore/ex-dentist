@@ -13,18 +13,16 @@
           @click="toggleNavbar">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarTop" :class="{show: isNavOpen}">
-        <NavDentist v-if="userType === 'Dentist'"/>
-        <NavLab v-if="userType === 'Lab'"/>
-        <NavClinician v-if="userType === 'Clinician'"/>
+      <div class=" collapse navbar-collapse" id="navbarTop" :class="{show: isNavOpen}">
+        <NavDentist :isOpen="isNavOpen" v-if="userType === 'Dentist'"/>
+        <NavLab :isOpen="isNavOpen" v-if="userType === 'Lab'"/>
+        <NavClinician :isOpen="isNavOpen" v-if="userType === 'Clinician'"/>
         <div class="mr-auto" v-if="userType === ''"></div>
       <ul class="nav navbar-nav">
         <router-link to="/login" tag="li" v-if="!isLoggedIn" class="nav-item" active-class="active">
           <a class="nav-link" @click="loginModalCall()">Login</a>
         </router-link>
-        <li v-if="isLoggedIn" class="li-pointer nav-item">
-         <a @click="logout" class="nav-link">Logout {{ userEmail }}</a>
-        </li>
+         <a @click="logout" v-if="isLoggedIn" href="" class="nav-link">Logout </a>
         <router-link to="/register" tag="li" v-if="!isLoggedIn" class="nav-item" active-class="active">
           <a class="nav-link" @click="registerModalCall()">Register</a>
         </router-link>
@@ -90,15 +88,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.navbar-btn a {
-  color: white;
-}
-.li-pointer {
-  cursor: pointer;
-}
-.li-pointer:hover {
-  cursor: pointer;
-}
-</style>

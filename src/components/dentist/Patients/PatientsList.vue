@@ -2,24 +2,27 @@
   <div class="container table-responsive mt-2">
     <modal/>
     <div class="col-md-12">
-      <div class="row">
+      <div class="row pb-5">
         <table class="table table-hover table-sm">
           <thead>
             <tr>
-              <th style="width:10%">Patient name</th>
-              <th style="width:22%">Treatment</th>
-              <th style="width:10%">Status</th>
-              <th style="width:10%">Registration Date</th>
-              <th style="width:10%">Practice Name</th>
-              <th style="width:15%">Date of Birth</th>
-              <th style="width:10%">Actions</th>
+              <th>Patient name</th>
+              <th class="d-none d-md-table-cell">Treatment</th>
+              <th class="d-none d-md-table-cell">Status</th>
+              <th class="d-table-cell d-md-none">Treat-Stat</th>
+              <th class="d-none d-md-table-cell">Registration Date</th>
+              <th>Practice Name</th>
+              <th class="d-none d-md-table-cell">Date of Birth</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <button
+              <td colspan="8">
+                <button
                 class="btn btn-light"
                 @click="modalPatientRise()">add patient</button>
+              </td>
             </tr>
             <tr
             v-for="(patient, index) in patients"
@@ -28,11 +31,12 @@
                 <router-link  :to="{path:'/dentist-patients/'+patient.id}">
                   <a>{{patient.first_name + ' ' + patient.last_name}}</a>
                 </router-link></td>
-              <td>{{patient.Treatment}}</td>
-              <td>{{patient.Status}}</td>
-              <td>{{patient.RegistrationDate}}</td>
+              <td class="d-none d-md-table-cell">{{patient.Treatment}}</td>
+              <td class="d-none d-md-table-cell">{{patient.Status}}</td>
+              <td class="d-table-cell d-md-none">{{patient.Treatment}} - {{patient.Status}}</td>
+              <td class="d-none d-md-table-cell">{{patient.RegistrationDate}}</td>
               <td>{{patient.practice_centre_id}}</td>
-              <td>{{patient.date_of_birth}}</td>
+              <td class="d-none d-md-table-cell">{{patient.date_of_birth}}</td>
               <td>
                 <div class="dropdown">
                   <a
@@ -44,7 +48,7 @@
                     aria-haspopup="true"
                     aria-expanded="false"
                     @click="dropDownToggler(patient.id)">
-                    <i class="far fa-cog"></i>
+                    <i class="far fa-arrow-alt-circle-down"></i>
                   </a>
                   <div class="dropdown-menu"
                     :class="{'dropdown-menu--onEdit': patient.id == patientIDOnAction }">
@@ -59,6 +63,17 @@
               </td>
             </tr>
           </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="3" v-if="isLoading_PatientList">
+                <i class="fa fa-spinner fa-spin" ></i>
+                <span class="ml-2">Loading data...</span>
+              </td>
+              <td v-if="!isLoading_PatientList && patients.length === 0" colspan="3">
+                Looks like there is nothing here...
+              </td>
+            </tr>
+          </tfoot>
         </table>
       </div>
       <!-- .row -->
@@ -82,7 +97,7 @@ export default {
     modal: () => import('./PatientsListActions_Modal')
   },
   computed: {
-    ...mapGetters(['practices', 'currentUserId'])
+    ...mapGetters(['practices', 'currentUserId', 'isLoading_PatientList'])
   },
   data () {
     return {

@@ -1,31 +1,31 @@
 <template>
-   <div class="container table-responsive mt-2">
+   <div class="container table-responsive pb-5 mt-2 overflow-hidden ">
      <modal/>
-     <div class="col-md-12">
-      <div class="row">
+      <div class="row pb-5">
+        <div class="col-md-12">
         <table class="table table-hover table-sm">
           <thead>
             <tr>
-              <th style="width:10%">First Name</th>
-              <th style="width:22%">Last Name</th>
-              <th style="width:10%">Email</th>
-              <th style="width:10%">User Type</th>
-              <th style="width:10%">Status</th>
-              <th style="width:15%">Action</th>
+              <th>Name</th>
+              <th class="d-none d-md-table-cell">Email</th>
+              <th>User Type</th>
+              <th>Status</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <button
+              <td colspan="5">
+                <button
                 class="btn btn-light"
                 @click="modalStaffRise()">add staff</button>
+              </td>
             </tr>
             <tr
             v-for="(staff, index) in staffs"
             :key="index">
-              <td>{{staff.first_name}}</td>
-              <td>{{staff.last_name}}</td>
-              <td>{{staff.email}}</td>
+              <td>{{staff.first_name}} {{staff.last_name}}</td>
+              <td class="d-none d-md-table-cell">{{staff.email}}</td>
               <td>{{staff.type}}</td>
               <td>{{staff.status}}</td>
               <td>
@@ -56,6 +56,17 @@
               </td>
             </tr>
           </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="3" v-if="isLoading_StaffList">
+                <i class="fa fa-spinner fa-spin" ></i>
+                <span class="ml-2">Loading data...</span>
+              </td>
+              <td v-if="!isLoading_StaffList && staffs.length === 0" colspan="3">
+                Looks like there is nothing here...
+              </td>
+            </tr>
+          </tfoot>
         </table>
       </div>
     </div>
@@ -77,7 +88,7 @@ export default {
     modal: () => import('../../dentist/Patients/PatientsListActions_Modal')
   },
   computed: {
-    ...mapGetters(['staffs'])
+    ...mapGetters(['staffs', 'isLoading_StaffList'])
   },
   methods: {
     modalStaffRise () {
@@ -96,7 +107,6 @@ export default {
       }
     },
     actionEditRise (staffId) {
-      console.log('TCL: actionEditRise -> staffId', staffId)
       this.$store.dispatch('LOAD_STAFF_INFO', staffId)
       EventBus.$emit('STAFF_MODAL', 'edit')
       this.dropDownToggler(staffId)

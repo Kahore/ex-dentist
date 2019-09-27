@@ -1,12 +1,12 @@
 <template>
-  <div class="conteiner">
-    <div class="col-12 col-md-10">
+  <div class="container ">
       <div class="row pt-2">
+        <div class="col-12 offset-md-2">
         <button
-          class="btn btn-danger offset-2"
+          class="btn btn-danger"
           @click="alertClinical()">Alert clinical</button>
+           </div>
       </div>
-    </div>
   </div>
 </template>
 

@@ -1,7 +1,9 @@
 <template>
   <section>
-    <accountDetails/>
-    <updatePassword/>
+    <div class="row pt-3">
+      <accountDetails/>
+      <updatePassword/>
+    </div>
   </section>
 </template>
 

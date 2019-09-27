@@ -1,8 +1,8 @@
 <template>
   <section>
-    <div class="row">
+    <div class="row ml-2 mr-1">
       <div class="col-12 col-md-8 offset-md-2">
-        <h4 class="pl-3 pt-2">FAQ's</h4>
+        <h4 class="pt-2">FAQ's</h4>
         <div>
           <h6 class="panel-title">Q: What is Lorem Ipsum?</h6>
           <div>
@@ -44,7 +44,3 @@ export default {
   name: 'DentistSupport'
 }
 </script>
-
-<style lang="scss" scoped>
-
-</style>

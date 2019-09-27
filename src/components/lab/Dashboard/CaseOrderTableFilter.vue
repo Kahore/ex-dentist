@@ -3,7 +3,7 @@
       <div class="col-md-12">
       <span class="btn-group-toggle ml-2" data-toggle="buttons">
         <label
-          class="btn btn-secondary"
+          class="btn btn-secondary mb-2 mt-1"
           :class="{'active' : currentFilter==='All'}">
           <input
             type="checkbox"
@@ -14,7 +14,7 @@
       </span>
         <span class="btn-group-toggle ml-2" data-toggle="buttons">
           <label
-            class="btn btn-secondary"
+            class="btn btn-secondary mb-2 mt-1"
             :class="{'active' : currentFilter==='In review'}">
             <input
               type="checkbox"
@@ -25,7 +25,7 @@
         </span>
         <span class="btn-group-toggle ml-2" data-toggle="buttons">
           <label
-            class="btn btn-secondary"
+            class="btn btn-secondary mb-2 mt-1"
             :class="{'active' : currentFilter==='Assigned to the Dentist' }">
             <input
               type="checkbox"
@@ -36,7 +36,7 @@
         </span>
         <span class="btn-group-toggle ml-2" data-toggle="buttons">
           <label
-            class="btn btn-secondary"
+            class="btn btn-secondary mb-2 mt-1"
             :class="{'active' : currentFilter==='Assigned to the Lab'}">
             <input
               type="checkbox"
@@ -47,7 +47,7 @@
         </span>
         <span class="btn-group-toggle ml-2" data-toggle="buttons">
           <label
-            class="btn btn-secondary"
+            class="btn btn-secondary mb-2 mt-1"
             :class="{'active' : currentFilter==='With clinician alert'}">
             <input
               type="checkbox"
@@ -98,7 +98,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-
-</style>

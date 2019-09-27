@@ -2,7 +2,7 @@
   <div>
     <SupportContact/>
     <div class="row">
-      <div class="col-12 col-md-12 offset-md-2">
+      <div class="col-12 col-md-10 offset-md-2">
         <SupportAdministration/>
         <SupportLaboratory/>
       </div>
@@ -26,7 +26,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-
-</style>

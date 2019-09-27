@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="col-12 col-md-8 offset-md-2">
-        <h4 class="pl-3 pt-2">Patient's treatments history</h4>
+        <h4 class="pt-2">Patient's treatments history</h4>
         <ul
           class="list-group"
           v-for="(treatment, index) in treatmentsHistory"
@@ -14,6 +14,9 @@
                 href=""
                 class="dark-link">
                 {{ treatment.treatment }}
+                <span v-if="treatment.details !== ''">
+                  - {{ treatment.details }}
+                </span>
               </a>
             </router-link>
           </li>
@@ -36,7 +39,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-
-</style>

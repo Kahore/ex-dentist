@@ -151,7 +151,6 @@ export default {
   mounted () {
     EventBus.$on('STAFF_MODAL', payload => {
       this.mode = payload
-      console.log('TCL: mounted -> this.mode', this.mode)
       this.toggleModal()
     })
   },
@@ -161,7 +160,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-
-</style>

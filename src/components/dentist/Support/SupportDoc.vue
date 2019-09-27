@@ -7,35 +7,40 @@
           <li class="list-group-item">
             <a
               href=""
-              class="dark-link">
+              class="dark-link"
+              @click.prevent="downloadDoc()">
             Cras justo odio.pdf
             </a>
           </li>
           <li class="list-group-item">
             <a
               href=""
-              class="dark-link">
+              class="dark-link"
+              @click.prevent="downloadDoc()">
             Dapibus ac facilisis in.pdf
             </a>
           </li>
           <li class="list-group-item">
             <a
               href=""
-              class="dark-link">
+              class="dark-link"
+              @click.prevent="downloadDoc()">
             Morbi leo risus.pdf
             </a>
           </li>
           <li class="list-group-item">
             <a
               href=""
-              class="dark-link">
+              class="dark-link"
+              @click.prevent="downloadDoc()">
             Porta ac consectetur ac.pdf
             </a>
           </li>
           <li class="list-group-item">
             <a
               href=""
-              class="dark-link">
+              class="dark-link"
+              @click.prevent="downloadDoc()">
             Vestibulum at eros.pdf
             </a>
           </li>
@@ -47,10 +52,11 @@
 
 <script>
 export default {
-  name: 'DentistSupportDoc'
+  name: 'DentistSupportDoc',
+  methods: {
+    downloadDoc () {
+      alert('downloadDoc here')
+    }
+  }
 }
 </script>
-
-<style lang="scss" scoped>
-
-</style>

@@ -2,15 +2,15 @@
 <div class="container">
     <div class="row pt-5">
     <h4 class="col-12">Case Order details</h4>
-    <div class="form-group col-lg-4 col-md-4 col-6">
+    <div class="form-group col-lg-4 col-md-4 col-12">
       <strong><label for="treatment">Treatment: </label></strong>
       <span id="treatment"> {{caseOrder.treatment}}</span>
     </div>
-    <div class="form-group col-lg-4 col-md-4 col-6">
+    <div class="form-group col-lg-4 col-md-4 col-12">
       <strong><label for="treatmentDetails">Details: </label></strong>
       <p id="treatmentDetails">{{caseOrder.details}}</p>
     </div>
-    <div class="form-group">
+    <div class="form-group col-lg-3 col-md-4 col-12">
       <button
         class="btn btn-success"
         style="width: 100%"
@@ -18,7 +18,7 @@
          generate the lab slip
       </button>
     </div>
-    <div class="form-group col-lg-4 col-md-4 col-6">
+    <div class="form-group col-lg-4 col-md-4 col-12">
       <strong><label for="orderStatus">Order status: </label></strong>
       <select
         id="orderStatus"
@@ -31,7 +31,7 @@
         <option value="Require attention">Require attention</option>
       </select>
     </div>
-    <div class="form-group col-4">
+    <div class="form-group col-lg-4 col-md-4 col-12">
       <strong><label for="attentionReq">Attention require: </label></strong>
       <select
         id="attentionReq"
@@ -42,7 +42,7 @@
         <option value="Lab Staff">Lab Staff</option>
       </select>
     </div>
-    <div class="form-group">
+    <div class="form-group col-lg-3 col-md-4 col-12">
       <button
         class="btn btn-success"
         style="width: 100%"
@@ -76,22 +76,9 @@ export default {
       let updatedCase = { ...this.caseOrder, status: this.caseOrder.status, attention_require: this.caseOrder.attention_require }
       this.$store.dispatch('EDIT_ORDER', updatedCase)
     }
-    // _getUserType () {
-    //   let userType = this.currentUser.type
-    //   return userType
-    // }
-    // fixTmpValue () {
-    //   this.tmp_status = this.caseOrder.status
-    //   this.tmp_attention_require = this.caseOrder.attention_require
-    // }
   },
   mounted () {
     this.$store.dispatch('LOAD_ORDER', this.$route.params.orderId)
-    // this.fixTmpValue()
   }
 }
 </script>
-
-<style lang="scss" scoped>
-
-</style>

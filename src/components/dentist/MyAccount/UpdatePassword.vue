@@ -1,8 +1,7 @@
 <template>
-  <div class="row pt-5">
-    <div class="col-md-4 offset-md-4 col-sm-12 offset-sm-1">
+    <div class="col-lg-4 col-md-5 col-sm-12">
       <form id="login-form" role="form" class="form-group ml-2">
-        <h4 class="text-center">Update your password here</h4>
+        <h4 class="text-center">Update your password</h4>
         <div class="form-group">
           <input
             type="password"
@@ -46,7 +45,7 @@
         </div>
       </form>
     </div>
-  </div>
+  <!-- .col -->
 </template>
 
 <script>
@@ -66,7 +65,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-
-</style>

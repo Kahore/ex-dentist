@@ -1,7 +1,7 @@
 <template>
   <div>
     <labStats/>
-    <div class="container table-responsive mt-2">
+    <div class="container table-responsive table-responsive-sm mt-2">
       <labCaseOrderFilters/>
       <labCaseOrderSearch/>
       <labCaseOrders :modeRoute="'lab-patients'"/>
@@ -20,7 +20,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-
-</style>

@@ -1,10 +1,10 @@
 <template>
-  <section class="col-12 col-md-6 col-sm-8">
-    <div class="col-6 stats-block">
+  <section class="col-12 col-md-12 col-sm-12">
+    <div class="col-12 col-md-6 stats-block">
       <p>Total Cases: {{ statsTotalCase }}</p>
       <p>Cases Completed: {{ statsCaseCompleted }}</p>
     </div>
-    <div class="col-6 stats-block">
+    <div class="col-12 col-md-6 stats-block">
       <p>Cases Inprogress: {{ statsCaseInprogress }}</p>
       <p>Cases Required: {{ stats_Dentist_CaseAttention }}</p>
     </div>

@@ -1,5 +1,7 @@
 <template>
-  <div class="nav mr-auto">
+  <div
+  class="nav mr-auto"
+  :class="{'d-block' : isOpen}">
     <ul class="navbar-nav">
       <router-link class="nav-link" to="/clinician-dashboard">
         Dashboard
@@ -16,19 +18,12 @@
 <script>
 export default {
   name: 'NavDentistRoot',
-  data () {
-    return {
-      isDDOpen: false
-    }
-  },
-  methods: {
-    toggleDDbar () {
-      this.isDDOpen = !this.isDDOpen
+  props: {
+    isOpen: {
+      type: Boolean,
+      required: true,
+      default: false
     }
   }
 }
 </script>
-
-<style lang="scss" scoped>
-
-</style>

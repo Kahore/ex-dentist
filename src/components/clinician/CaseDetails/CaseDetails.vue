@@ -14,7 +14,6 @@ export default {
   name: 'ClinicianCaseDetailsPage',
   components: {
     patientDetails: () => import('../../dentist/Patient/PatientDetails'),
-    // alertClinicals: () => import('./AlertClinicals'),
     caseDetailsItem: () => import('../../dentist/CaseDetails/CaseDetailsItem'),
     commentsFiles: () => import('../../dentist/CaseDetails/CommentsFiles'),
     comments: () => import('../../dentist/CaseDetails/CommentsNew'),

@@ -16,7 +16,7 @@
       <div class="col-md-12">
       <span class="btn-group-toggle ml-2" data-toggle="buttons">
         <label
-        class="btn btn-secondary"
+        class="btn btn-secondary mb-2 mt-1"
         :class="{'active' : currentFilter==='All'}">
           <input
             type="checkbox"
@@ -26,7 +26,7 @@
       </span>
         <span class="btn-group-toggle ml-2" data-toggle="buttons">
           <label
-            class="btn btn-secondary"
+            class="btn btn-secondary mb-2 mt-1"
             :class="{'active' : currentFilter==='In Treatment'}">
             <input
               type="checkbox"
@@ -37,7 +37,7 @@
         </span>
         <span class="btn-group-toggle ml-2" data-toggle="buttons">
           <label
-            class="btn btn-secondary"
+            class="btn btn-secondary mb-2 mt-1"
             :class="{'active' : currentFilter==='Not In Treatment'}">
             <input
               type="checkbox"
@@ -48,7 +48,7 @@
         </span>
         <span class="btn-group-toggle ml-2" data-toggle="buttons">
           <label
-            class="btn btn-secondary"
+            class="btn btn-secondary mb-2 mt-1"
             :class="{'active' : currentFilter==='Archived'}">
             <input
               type="checkbox"
@@ -99,7 +99,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-
-</style>

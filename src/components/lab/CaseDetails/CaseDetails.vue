@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h3>Case Details</h3>
     <patientDetails :acl="'view'"/>
     <alertClinicals/>
     <caseDetailsItem/>
@@ -22,7 +21,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-
-</style>

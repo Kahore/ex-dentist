@@ -1,8 +1,8 @@
 <template>
   <div>
     <patientDetails :acl="'edit'"/>
-    <patientTreatmentsHistory/>
     <patientTreatmentsNew/>
+    <patientTreatmentsHistory/>
   </div>
 </template>
 
@@ -16,7 +16,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-
-</style>

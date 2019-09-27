@@ -1,7 +1,8 @@
 import db from '../../config/firebaseConfig'
 const state = {
   practices: [],
-  selectedPractice: {}
+  selectedPractice: {},
+  isLoading_PractiseList: false
 }
 
 const getters = {
@@ -10,6 +11,9 @@ const getters = {
   },
   selectedPractice: (state) => {
     return state.selectedPractice
+  },
+  isLoading_PractiseList: (state) => {
+    return state.isLoading_PractiseList
   }
 }
 
@@ -27,18 +31,23 @@ const mutations = {
   },
   ADD_PRACTICE_AT_LIST: (state, payload) => {
     state.practices = state.practices.concat(payload)
+  },
+  MUTATE_isLoading_PractiseList: (state) => {
+    state.isLoading_PractiseList = !state.isLoading_PractiseList
   }
 }
 
 const actions = {
   LOAD_PRACTICES ({ commit }, payload) {
     let practices = []
+    commit('MUTATE_isLoading_PractiseList')
     db.collection('practices').where('dentistId', '==', payload).get().then(querySnapshot => {
       querySnapshot.forEach(doc => {
         let patient = { ...doc.data(), id: doc.id }
         practices.push(patient)
       })
       commit('LOAD_PRACTICES', practices)
+      commit('MUTATE_isLoading_PractiseList')
     })
   },
   LOAD_PRACTICE_INFO ({ commit, state }, payload) {

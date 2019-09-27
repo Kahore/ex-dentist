@@ -101,7 +101,7 @@
 *	~~It should show the list of downloadable PDF forms.~~
 *	~~It should display the instructional videos section.~~
 *	~~It should display FAQ's section.~~
-* fix mobile responsive
+* ~~fix mobile responsive~~
 ###	My Account 
 *	~~It should provide functionality for the Dentist to update the personal details~~
 *	~~It should provide a feature to update the password~~
@@ -118,7 +118,7 @@
 7.	~~Postcode* (postcode)~~
 8.	~~Email* (email)~~
 9.	~~Phone number* (phone)~~
-* fix mobile responsive
+* ~~fix mobile responsive~~
 
 ## Lab-staff Area
 ###	Navigation 
@@ -136,7 +136,7 @@
 6.	~~Appointment Date~~
 7.	~~Lab Slip - Icon which generates the lab slip for that case~~
 *	~~It should provide a Search functionality.~~ So that the Lab Staff can search a string across all the column data.
-*	It should provide filters for the following: 
+*	~~It should provide filters for the following:~~ 
 1.	~~All active order~~
 2.	~~All orders in review~~
 3.	~~All orders assigned to the Dentist~~
@@ -180,7 +180,7 @@
 *	~~Navigation items are Dashboard and My Account.~~
 ###	Dashboard 
 *	~~It should display stats area to show the stats for Total Cases Orders, Cases Completed, Cases in progress, and Cases with Clinician Alert.~~
-*	It should display Case Order Table
+*	~~It should display Case Order Table~~
 #### Case Order Table 
 *	~~It should contain the following columns:~~
 1.	~~Order Date~~

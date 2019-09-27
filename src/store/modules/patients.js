@@ -1,18 +1,24 @@
 import db from '../../config/firebaseConfig'
 const state = {
-  patients: []
+  patients: [],
+  isLoading_PatientList: false
 }
 
 const getters = {
   patients: (state) => {
     return state.patients
+  },
+  isLoading_PatientList: (state) => {
+    return state.isLoading_PatientList
   }
 }
 
 const mutations = {
   LOAD_PATIENTS: (state, payload) => {
     state.patients = payload
-    console.log('TCL: payload', payload)
+  },
+  MUTATE_isLoading_PatientList: (state) => {
+    state.isLoading_PatientList = !state.isLoading_PatientList
   },
   ADD_PATIENT_AT_LIST: (state, payload) => {
     state.patients = state.patients.concat(payload)
@@ -30,6 +36,8 @@ const mutations = {
 
 const actions = {
   LOAD_PATIENTS ({ commit }, payload) {
+    commit('MUTATE_isLoading_PatientList')
+    commit('LOAD_PATIENTS', [])
     let patients = []
     let { where, orderBy, limit } = payload
     let query = db.collection('patients')
@@ -54,6 +62,7 @@ const actions = {
         let patient = { ...doc.data(), id: doc.id }
         patients.push(patient)
       })
+      commit('MUTATE_isLoading_PatientList')
       commit('LOAD_PATIENTS', patients)
     })
   }

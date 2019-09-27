@@ -1,8 +1,10 @@
 <template>
-  <section>
+  <section class="container ml-1 mr-1">
     <practicesModal/>
-    <personalDetails/>
-    <updatePassword/>
+    <div class="row pt-3">
+      <personalDetails/>
+      <updatePassword/>
+    </div>
     <practicesList/>
   </section>
 </template>
@@ -18,7 +20,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-
-</style>

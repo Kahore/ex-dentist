@@ -1,13 +1,12 @@
 <template>
-  <div class="container">
-    <div class="col-md-12">
-      <div class="row">
-        <div class="col-12 col-md-4">
+  <div class="container pt-2">
+    <div class="row">
+      <div class="col-12 col-md-3 offset-md-2">
             <img
               :src="getImage(patientInfo.profile_picture)"
               alt="profile_picture"
               class="profile-picture__resize">
-        </div>
+      </div>
         <div class="col-12 col-md-4">
             <p> {{ patientInfo.first_name + ' ' + patientInfo.last_name + ' - ' + patientInfo.gender}}</p>
             <p> {{ patientInfo.date_of_birth }}
@@ -18,15 +17,16 @@
       </div>
       <!-- .row -->
       <div class="row">
-        <div class="col-8 col-md-4">
-            <a class="dark-link" href="" @click.prevent="patientModalCall()">Edit Patient profile</a>
+        <div class="col-6 col-md-3 offset-md-2">
+            <a class="dark-link" href="" @click.prevent="patientModalCall()">Edit profile</a>
             <patientDetailsModal :acl="acl"/>
         </div>
+         <div class="col-6 col-md-4">
         <a class="dark-link" href="" @click.prevent="clinicalNoteModalCall()">Clinical Notes</a><br>
         <clinicalNotesModal :note.sync ="patientInfo.note" :acl="acl"/>
+        </div>
       </div>
       <!-- .row -->
-    </div>
   </div>
 </template>
 

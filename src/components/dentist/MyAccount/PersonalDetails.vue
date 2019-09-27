@@ -1,6 +1,5 @@
 <template>
-  <div class="row pt-5">
-    <div class="col-md-4 offset-md-4 col-sm-12 offset-sm-1">
+    <div class="col-lg-4 col-md-5 offset-md-2 col-sm-12 offset-sm-1">
       <form id="login-form" role="form" class="form-group ml-2">
         <h4 class="text-center">Personal Details</h4>
         <div class="form-group">
@@ -58,8 +57,7 @@
         </div>
       </form>
     </div>
-  </div>
-  <!-- .row -->
+  <!-- .col -->
 </template>
 
 <script>
@@ -76,7 +74,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-
-</style>

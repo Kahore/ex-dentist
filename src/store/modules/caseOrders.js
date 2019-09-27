@@ -1,13 +1,17 @@
 
 import db from '../../config/firebaseConfig'
 const state = {
-  caseOrders: []
+  caseOrders: [],
+  isLoading_CaseOrders: false
 }
 
 const getters = {
   // @caseOrders is a list of all case
   caseOrders: (state) => {
     return state.caseOrders
+  },
+  isLoading_CaseOrders: (state) => {
+    return state.isLoading_CaseOrders
   },
   statsTotalCase: (state) => {
     return state.caseOrders.length
@@ -55,11 +59,16 @@ const mutations = {
     let index = state.caseOrders.findIndex(patient => patient.id === payload.id)
     state.caseOrders.splice(index, 1)
     state.caseOrders = state.caseOrders.concat(payload)
+  },
+  MUTATE_isLoading_CaseOrders: (state) => {
+    state.isLoading_CaseOrders = !state.isLoading_CaseOrders
   }
 }
 
 const actions = {
   LOAD_ORDERS ({ commit }, payload) {
+    commit('MUTATE_isLoading_CaseOrders')
+    commit('LOAD_ORDERS', [])
     let { where } = payload
     let query = db.collection('caseOrders')
     if (where) {
@@ -76,8 +85,9 @@ const actions = {
       querySnapshot.forEach(order => {
         orders.push(order.data())
       })
+      commit('LOAD_ORDERS', orders)
+      commit('MUTATE_isLoading_CaseOrders')
     })
-    commit('LOAD_ORDERS', orders)
   }
 }
 
