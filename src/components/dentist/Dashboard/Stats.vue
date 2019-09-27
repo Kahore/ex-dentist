@@ -1,12 +1,12 @@
 <template>
   <section class="col-12 col-md-6 col-sm-8">
     <div class="col-6 stats-block">
-      <p>Total Cases: {{stats.totalCases}}</p>
-      <p>Cases Completed: {{stats.casesCompleted}}</p>
+      <p>Total Cases: {{ statsTotalCase }}</p>
+      <p>Cases Completed: {{ stats_Dentist_CaseCompleted }}</p>
     </div>
     <div class="col-6 stats-block">
-      <p>Cases Inprogress: {{stats.casesInprogress}}</p>
-      <p>Cases Required: {{stats.casesRequiredAttention}}</p>
+      <p>Cases Inprogress: {{ stats_Dentist_CaseInprogress }}</p>
+      <p>Cases Required: {{ stats_Dentist_CaseAttention }}</p>
     </div>
   </section>
 </template>
@@ -16,11 +16,7 @@ import { mapGetters } from 'vuex'
 export default {
   name: 'DentistStats',
   computed: {
-    ...mapGetters(['stats', 'currentUserId'])
-  },
-  mounted () {
-    let dentistId = this.currentUserId
-    this.$store.dispatch('LOAD_STATS', dentistId)
+    ...mapGetters(['statsTotalCase', 'stats_Dentist_CaseCompleted', 'stats_Dentist_CaseInprogress', 'stats_Dentist_CaseAttention'])
   }
 }
 </script>

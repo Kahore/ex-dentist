@@ -8,6 +8,30 @@ const getters = {
   // @caseOrders is a list of all case
   caseOrders: (state) => {
     return state.caseOrders
+  },
+  statsTotalCase: (state) => {
+    // let _statsTotalCase = state.caseOrder.filter( () => {
+    //   state.caseOrder.length
+    // })
+    return state.caseOrders.length
+  },
+  stats_Dentist_CaseCompleted: (state) => {
+    let _statsCaseCompleted = state.caseOrders.filter(statsCase =>
+      statsCase.status === 'Completed'
+    )
+    return _statsCaseCompleted.length
+  },
+  stats_Dentist_CaseInprogress: (state) => {
+    let _statsCaseInprogress = state.caseOrders.filter(statsCase =>
+      statsCase.status === 'Inprogress'
+    )
+    return _statsCaseInprogress.length
+  },
+  stats_Dentist_CaseAttention: (state) => {
+    let _statsCaseAttention = state.caseOrders.filter(statsCase =>
+      statsCase.attention_require === 'Dentist'
+    )
+    return _statsCaseAttention.length
   }
 }
 
