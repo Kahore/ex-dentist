@@ -82,7 +82,7 @@ export default {
     modal: () => import('./PatientsListActions_Modal')
   },
   computed: {
-    ...mapGetters(['practices'])
+    ...mapGetters(['practices', 'currentUserId'])
   },
   data () {
     return {

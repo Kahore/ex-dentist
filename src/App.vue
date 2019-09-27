@@ -19,7 +19,7 @@ export default {
   },
   updated () {
     if (firebase.auth().currentUser !== null) {
-      if (Object.entries(this.currentUser).length === 0) {
+      if (Object.entries(this.currentUser).length < 1) {
         let userId = firebase.auth().currentUser.uid
         this.$store.dispatch('LOAD_USER', userId)
         this.$store.commit('AUTH_STATUS_CHANGE')

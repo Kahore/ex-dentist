@@ -4,7 +4,6 @@ import { routes } from './routes'
 import VueRouter from 'vue-router'
 
 import store from './store/store'
-// import { firebaseListener } from './config/firebaseConfig'
 import './assets/styles/app.scss'
 import firebase from 'firebase'
 import './config/firebaseConfig'
@@ -21,7 +20,6 @@ let userType
 
 router.beforeEach((to, from, next) => {
   userType = store.getters.currentUser.type
-  console.log('TCL: userType', userType)
   if (to.matched.some(record => record.meta.requiresAuth)) {
     if (!firebase.auth().currentUser) {
       next({
@@ -58,7 +56,6 @@ router.beforeEach((to, from, next) => {
 
 let app
 firebase.auth().onAuthStateChanged(user => {
-  console.log('TCL: app', app)
   if (!app) {
     app = new Vue({
       router,
