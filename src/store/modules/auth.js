@@ -34,7 +34,7 @@ const getters = {
 const mutations = {
   AUTH_STATUS_CHANGE: (state) => {
     state.isLoggedIn = firebaseAuth().currentUser != null
-    state.currentUser = firebaseAuth().currentUser
+    state.currentUser = {}
   },
   MUTATE_USER_TYPE: (state, payload) => {
     state.userType = payload

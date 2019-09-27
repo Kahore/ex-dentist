@@ -64,7 +64,7 @@ export default {
   methods: {
     logout () {
       firebase.auth().signOut().then(() => {
-        this.$router.push('/')
+        this.$router.go('/')
         this.$store.commit('AUTH_STATUS_CHANGE')
         this.$store.dispatch('MUTATE_USER_TYPE', '')
         this.$store.commit('LOAD_USER', {})
