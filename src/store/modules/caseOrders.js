@@ -10,26 +10,35 @@ const getters = {
     return state.caseOrders
   },
   statsTotalCase: (state) => {
-    // let _statsTotalCase = state.caseOrder.filter( () => {
-    //   state.caseOrder.length
-    // })
     return state.caseOrders.length
   },
-  stats_Dentist_CaseCompleted: (state) => {
+  statsCaseCompleted: (state) => {
     let _statsCaseCompleted = state.caseOrders.filter(statsCase =>
       statsCase.status === 'Completed'
     )
     return _statsCaseCompleted.length
   },
-  stats_Dentist_CaseInprogress: (state) => {
+  statsCaseInprogress: (state) => {
     let _statsCaseInprogress = state.caseOrders.filter(statsCase =>
       statsCase.status === 'Inprogress'
     )
     return _statsCaseInprogress.length
   },
+  statsCaseInReview: (state) => {
+    let _statsCaseInReview = state.caseOrders.filter(statsCase =>
+      statsCase.status === 'In review'
+    )
+    return _statsCaseInReview.length
+  },
   stats_Dentist_CaseAttention: (state) => {
     let _statsCaseAttention = state.caseOrders.filter(statsCase =>
       statsCase.attention_require === 'Dentist'
+    )
+    return _statsCaseAttention.length
+  },
+  stats_Lab_CaseAttention: (state) => {
+    let _statsCaseAttention = state.caseOrders.filter(statsCase =>
+      statsCase.attention_require === 'Lab Staff'
     )
     return _statsCaseAttention.length
   }

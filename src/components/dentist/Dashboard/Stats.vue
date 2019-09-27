@@ -16,7 +16,7 @@ import { mapGetters } from 'vuex'
 export default {
   name: 'DentistStats',
   computed: {
-    ...mapGetters(['statsTotalCase', 'stats_Dentist_CaseCompleted', 'stats_Dentist_CaseInprogress', 'stats_Dentist_CaseAttention'])
+    ...mapGetters(['statsTotalCase', 'statsCaseCompleted', 'statsCaseInprogress', 'stats_Dentist_CaseAttention'])
   }
 }
 </script>

@@ -3,15 +3,15 @@
     <div class="col-md-12">
       <div class="row">
         <div class="col-12 col-md-4">
-          <p>Total Cases: {{labStats.totalCases}}</p>
-          <p>Cases Completed: {{labStats.casesCompleted}}</p>
+          <p>Total Cases: {{statsTotalCase}}</p>
+          <p>Cases Completed: {{statsCaseCompleted}}</p>
         </div>
         <div class="col-12 col-md-4">
-          <p>Cases in Review: {{labStats.casesInReview}}</p>
-          <p>Cases Sent to Practice: {{labStats.casesSentToPractice}}</p>
+          <p>Cases in Review: {{statsCaseInReview}}</p>
+          <p>Cases Sent to Practice: {{statsCaseInprogress}}</p>
         </div>
         <div class="col-12 col-md-4">
-          <p>Cases Required Attention: {{labStats.casesRequiredAttention}}</p>
+          <p>Cases Required Attention: {{stats_Lab_CaseAttention}}</p>
         </div>
       </div>
     </div>
@@ -23,12 +23,7 @@ import { mapGetters } from 'vuex'
 export default {
   name: 'LabStats',
   computed: {
-    ...mapGetters(['labStats'])
-  },
-  mounted () {
-    // this.$store.dispatch('LOAD_ORDERS', 'some data for future implement')
-    // this.$store.dispatch('LOAD_STATS', this.currentUser.id)
-    this.$store.dispatch('LOAD_LAB_STATS', 'l1')
+    ...mapGetters(['statsTotalCase', 'statsCaseCompleted', 'statsCaseInprogress', 'statsCaseInReview', 'stats_Lab_CaseAttention'])
   }
 }
 </script>
