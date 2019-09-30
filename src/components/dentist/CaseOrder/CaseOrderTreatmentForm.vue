@@ -4,7 +4,9 @@
     <h4 class="col-12 offset-md-2 pl-4">Treatment specific form</h4>
     <div class="col-lg-3 col-md-4 offset-md-2 col-12">
       <form id="treatment-form" role="form" class="form ml-2">
-        <div class="form-group">
+        <div
+          class="form-group"
+          :class="{ 'form-group--error': $v.newTreatment.$error }">
           <label for="treatmentNew">New treatment</label>
           <select required v-model="newTreatment" id="treatmentNew" class="form-control">
             <option value=""></option>
@@ -14,6 +16,7 @@
             <option value="Direct">Direct</option>
             <option value="In-Direct">In-Direct</option>
           </select>
+          <div class="form-group__message--error" v-if="!$v.newTreatment.required">New treatment is required.</div>
         </div>
         <!-- .form-group -->
         <div class="form-group">
@@ -41,6 +44,7 @@
 import { CASE_ORDER } from '../../../store/models/caseOrder'
 import { getDate } from '../../../tools/dateSetter'
 import { mapGetters } from 'vuex'
+import { required } from 'vuelidate/lib/validators'
 export default {
   name: 'CaseOrderTreatmentForm',
   data () {
@@ -49,27 +53,35 @@ export default {
       details: ''
     }
   },
+  validations: {
+    newTreatment: {
+      required
+    }
+  },
   computed: {
     ...mapGetters(['patientInfo', 'currentUserId'])
   },
   methods: {
     submitTreatment () {
-      let data = JSON.parse(JSON.stringify(CASE_ORDER))
-      data = {
-        ...data,
-        patientId: this.$route.params.id,
-        dentistId: this.currentUserId,
-        first_name: this.patientInfo.first_name,
-        last_name: this.patientInfo.last_name,
-        treatment: this.newTreatment,
-        details: this.details,
-        order_date: getDate(),
-        appointment_date: getDate()
+      this.$v.$touch()
+      if (!this.$v.$invalid) {
+        let data = JSON.parse(JSON.stringify(CASE_ORDER))
+        data = {
+          ...data,
+          patientId: this.$route.params.id,
+          dentistId: this.currentUserId,
+          first_name: this.patientInfo.first_name,
+          last_name: this.patientInfo.last_name,
+          treatment: this.newTreatment,
+          details: this.details,
+          order_date: getDate(),
+          appointment_date: getDate()
+        }
+        this.$store.dispatch('ADD_ORDER', data)
+        this.updatePersonalData(data.treatment)
+        this.updateTotalCase()
+        this.$router.push('/dentist-patients')
       }
-      this.$store.dispatch('ADD_ORDER', data)
-      this.updatePersonalData(data.treatment)
-      this.updateTotalCase()
-      this.$router.push('/dentist-patients')
     },
     // MEMO: @updatePersonalData Pass current treatment to user info
     updatePersonalData (newTreatment) {
@@ -85,7 +97,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-
-</style>
