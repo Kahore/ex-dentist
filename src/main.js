@@ -7,7 +7,9 @@ import store from './store/store'
 import './assets/styles/app.scss'
 import firebase from 'firebase'
 import './config/firebaseConfig'
+import Vuelidate from 'vuelidate'
 
+Vue.use(Vuelidate)
 Vue.use(VueRouter)
 Vue.config.productionTip = false
 
