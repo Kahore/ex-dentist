@@ -3,13 +3,8 @@
     class="nav mr-auto "
     :class="{'d-block' : isOpen}">
     <ul class="navbar-nav">
-      <router-link class="nav-link" to="/lab-dashboard">
-        Dashboard
-      </router-link>
-    </ul>
-    <ul class="navbar-nav">
-      <router-link class="nav-link" to="/lab-myAccount">
-        My Account
+      <router-link class="nav-link" to="/staff">
+        Staff
       </router-link>
     </ul>
   </div>
@@ -17,7 +12,7 @@
 
 <script>
 export default {
-  name: 'NavDentistRoot',
+  name: 'NavAdminRoot',
   props: {
     isOpen: {
       type: Boolean,

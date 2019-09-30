@@ -17,6 +17,7 @@
         <NavDentist :isOpen="isNavOpen" v-if="userType === 'Dentist'"/>
         <NavLab :isOpen="isNavOpen" v-if="userType === 'Lab'"/>
         <NavClinician :isOpen="isNavOpen" v-if="userType === 'Clinician'"/>
+        <NavAdmin :isOpen="isNavOpen" v-if="userType === 'Admin'"/>
         <div class="mr-auto" v-if="userType === ''"></div>
       <ul class="nav navbar-nav">
         <router-link to="/login" tag="li" v-if="!isLoggedIn" class="nav-item" active-class="active">
@@ -43,7 +44,8 @@ export default {
   components: {
     NavDentist: () => import('./dentist/_NavRoot'),
     NavLab: () => import('./lab/_NavRoot'),
-    NavClinician: () => import('./clinician/_NavRoot')
+    NavClinician: () => import('./clinician/_NavRoot'),
+    NavAdmin: () => import('./admin/_NavRoot')
   },
   data () {
     return {

@@ -13,13 +13,14 @@ import DentistCaseOrderPage from './components/dentist/CaseOrder/CaseOrder.vue'
 import DentistCaseDetailsPage from './components/dentist/CaseDetails/CaseDetails.vue'
 /**/
 import LabDashboard from './components/lab/Dashboard.vue'
-import LabStaffs from './components/lab/Staffs.vue'
 import LabMyAccount from './components/lab/MyAccount.vue'
 import LabCaseDetailsPage from './components/lab/CaseDetails/CaseDetails.vue'
 /**/
 import ClinicianDashboard from './components/clinician/Dashboard.vue'
 import ClinicianMyAccount from './components/clinician/MyAccount.vue'
 import ClinicianCaseDetailsPage from './components/clinician/CaseDetails/CaseDetails.vue'
+/**/
+import Staffs from './components/admin/Staffs.vue'
 
 export const routes = [
   {
@@ -124,12 +125,12 @@ export const routes = [
     }
   },
   {
-    path: '/lab-staffs',
-    component: LabStaffs,
-    name: 'LabStaffs',
+    path: '/staff',
+    component: Staffs,
+    name: 'Staffs',
     meta: {
       requiresAuth: true,
-      typeToProtect: 'Lab'
+      typeToProtect: 'Admin'
     }
   },
   {
