@@ -3,6 +3,7 @@ $bg-dark:#212529;
   &-bg{
     background: $bg-dark;
     opacity: 0.98;
+    overflow: overlay;
     &--show{
       display: block;
     }

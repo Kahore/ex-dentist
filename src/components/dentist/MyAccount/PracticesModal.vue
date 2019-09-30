@@ -11,7 +11,9 @@
           </button>
         </div>
         <form id="practice-form" role="form" class="form-group ml-2 mr-2">
-          <div class="form-group mt-2">
+          <div
+            class="form-group mt-2"
+            :class="{ 'form-group--error': $v.selectedPractice.name.$error }">
             <input
               type="text"
               name="name"
@@ -21,8 +23,11 @@
               placeholder="Practice Name"
               value=""
               v-model="selectedPractice.name">
+            <div class="form-group__message--error" v-if="!$v.selectedPractice.name.required">Practice name is required.</div>
           </div>
-          <div class="form-group">
+          <div
+            class="form-group"
+            :class="{ 'form-group--error': $v.selectedPractice.address_line_1.$error }">
             <input
               type="text"
               name="address_line_1"
@@ -32,6 +37,7 @@
               placeholder="Address Line 1"
               value=""
               v-model="selectedPractice.address_line_1">
+              <div class="form-group__message--error" v-if="!$v.selectedPractice.address_line_1.required">Address Line 1 is required.</div>
           </div>
           <div class="form-group">
             <input
@@ -43,18 +49,23 @@
               value=""
               v-model="selectedPractice.address_line_2">
           </div>
-          <div class="form-group">
+          <div
+            class="form-group"
+            :class="{ 'form-group--error': $v.selectedPractice.city.$error }">
             <input
               type="text"
               name="city"
               id="city"
               required
               class="form-control"
-              placeholder="City/Town*"
+              placeholder="City/Town"
               value=""
               v-model="selectedPractice.city">
+              <div class="form-group__message--error" v-if="!$v.selectedPractice.city.required">City is required.</div>
           </div>
-          <div class="form-group">
+          <div
+            class="form-group"
+            :class="{ 'form-group--error': $v.selectedPractice.region.$error }">
             <input
               type="text"
               name="region"
@@ -64,8 +75,11 @@
               placeholder="State/Region"
               value=""
               v-model="selectedPractice.region">
+              <div class="form-group__message--error" v-if="!$v.selectedPractice.region.required">State/Region is required.</div>
           </div>
-          <div class="form-group">
+          <div
+            class="form-group"
+            :class="{ 'form-group--error': $v.selectedPractice.country.$error }">
             <input
               type="text"
               name="country"
@@ -75,8 +89,11 @@
               placeholder="Country"
               value=""
               v-model="selectedPractice.country">
+              <div class="form-group__message--error" v-if="!$v.selectedPractice.country.required">Country is required.</div>
           </div>
-          <div class="form-group">
+          <div
+            class="form-group"
+            :class="{ 'form-group--error': $v.selectedPractice.postcode.$error }">
             <input
               type="text"
               name="postcode"
@@ -86,8 +103,12 @@
               placeholder="Postcode"
               value=""
               v-model="selectedPractice.postcode">
+              <div class="form-group__message--error" v-if="!$v.selectedPractice.postcode.required">Postcode is required.</div>
+              <div class="form-group__message--error" v-if="!$v.selectedPractice.postcode.numeric">Postcode should be a numeric.</div>
           </div>
-          <div class="form-group">
+          <div
+            class="form-group"
+            :class="{ 'form-group--error': $v.selectedPractice.email.$error }">
             <input
               type="email"
               name="email"
@@ -97,8 +118,12 @@
               placeholder="Email"
               value=""
               v-model="selectedPractice.email">
+            <div class="form-group__message--error" v-if="!$v.selectedPractice.email.required">Email is required.</div>
+            <div class="form-group__message--error" v-if="!$v.selectedPractice.email.email">Please, type a valid email.</div>
           </div>
-          <div class="form-group">
+          <div
+            class="form-group"
+            :class="{ 'form-group--error': $v.selectedPractice.phone.$error }">
             <input
               type="tel"
               name="phone"
@@ -108,13 +133,17 @@
               placeholder="Phone number"
               value=""
               v-model="selectedPractice.phone">
+            <div class="form-group__message--error" v-if="!$v.selectedPractice.phone.required">Phone number is required.</div>
           </div>
           <div class="form-group">
             <button
               class="btn btn-success"
               style="width: 100%"
               @click.prevent="savePractice"
-              >
+              :disabled="isLoading">
+              <i
+                v-if="isLoading"
+                class="fa fa-spinner fa-spin" />
               Save Practice
             </button>
           </div>
@@ -131,11 +160,46 @@
 import EventBus from '../../../EventBus'
 import { mapGetters } from 'vuex'
 import { PRACTICE } from '../../../store/models/practice'
+import { required, email, numeric } from 'vuelidate/lib/validators'
 export default {
   name: 'DentistPracticesModal',
   data () {
     return {
-      isActive: false
+      isActive: false,
+      isLoading: false
+    }
+  },
+  validations: {
+    selectedPractice: {
+      first_name: {
+        required
+      },
+      name: {
+        required
+      },
+      address_line_1: {
+        required
+      },
+      city: {
+        required
+      },
+      region: {
+        required
+      },
+      country: {
+        required
+      },
+      postcode: {
+        required,
+        numeric
+      },
+      email: {
+        required,
+        email
+      },
+      phone: {
+        required
+      }
     }
   },
   computed: {
@@ -146,15 +210,20 @@ export default {
       this.isActive = !this.isActive
     },
     savePractice () {
-      let isNew = this._isNew(this.selectedPractice)
-      if (isNew) {
-        let dentistId = this.currentUserId
-        let practices = { ...this.selectedPractice, dentistId: dentistId }
-        this.$store.dispatch('ADD_PRACTICE', practices)
-      } else {
-        this.$store.dispatch('MUTATE_PRACTICE_INFO', this.selectedPractice)
+      this.$v.$touch()
+      if (!this.$v.$invalid) {
+        this.isLoading = true
+        let isNew = this._isNew(this.selectedPractice)
+        if (isNew) {
+          let dentistId = this.currentUserId
+          let practices = { ...this.selectedPractice, dentistId: dentistId }
+          this.$store.dispatch('ADD_PRACTICE', practices)
+        } else {
+          this.$store.dispatch('MUTATE_PRACTICE_INFO', this.selectedPractice)
+        }
+        this.isLoading = false
+        this.toggleModal()
       }
-      this.toggleModal()
     },
     _isNew (selectedPractice) {
       if (typeof selectedPractice.id === 'undefined') {
