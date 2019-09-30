@@ -53,11 +53,14 @@ const actions = {
     })
   },
   LOAD_USER ({ commit }, payload) {
-    db.collection('users').where('id', '==', payload).get().then(querySnapshot => {
-      querySnapshot.forEach(doc => {
-        let data = doc.data()
-        localStorage.setItem('userInfo', JSON.stringify(data))
-        commit('LOAD_USER', data)
+    return new Promise(function (resolve, reject) {
+      db.collection('users').where('id', '==', payload).get().then(querySnapshot => {
+        querySnapshot.forEach(doc => {
+          let data = doc.data()
+          localStorage.setItem('userInfo', JSON.stringify(data))
+          commit('LOAD_USER', data)
+          resolve(data)
+        })
       })
     })
   }

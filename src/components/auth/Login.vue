@@ -130,8 +130,14 @@ export default {
       if (!this.$v.$invalid) {
         this.isLoading = true
         firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(res => {
-          this.$store.dispatch('LOAD_USER', res.user.uid)
-          this.$router.push('/')
+          this.$store.dispatch('LOAD_USER', res.user.uid).then(response => {
+            // this.$router.go( { path: this.$router.path})
+            this.$router.push('/')
+            let url = window.location.origin
+            history.pushState('', '', url)
+            window.location.reload(true)
+          })
+          this.toggleModal()
         }).catch(error => {
           this.isLoading = false
           this.submitError = error.message
