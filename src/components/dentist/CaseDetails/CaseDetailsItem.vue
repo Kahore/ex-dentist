@@ -73,6 +73,9 @@ export default {
       alert('Generating pdf document here')
     },
     saveDetails () {
+      if (this.caseOrder.status === 'Completed') {
+        this.caseOrder.attention_require = ''
+      }
       let updatedCase = { ...this.caseOrder, status: this.caseOrder.status, attention_require: this.caseOrder.attention_require }
       this.$store.dispatch('EDIT_ORDER', updatedCase)
     }
