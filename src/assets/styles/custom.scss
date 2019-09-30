@@ -12,7 +12,10 @@ $bg-dark:#212529;
     border-color: #f79483;
 }
 
-  .form-group__message--error {
+.form-group__message--error {
+   display: none;
+}
+ .form-group--error > .form-group__message--error {
     font-size: 0.75rem;
     display: block;
     color: #f57f6c;
