@@ -10,9 +10,11 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-          <form id="patient-details" role="form" class="form-group ml-2">
+          <form id="patient-details" role="form" class="form-group ml-2 mr-2">
             <input type="hidden" v-model="patientInfo.id">
-            <div class="form-group">
+            <div
+              class="form-group"
+              :class="{ 'form-group--error': $v.patientInfo.first_name.$error }">
               <input
                 type="text"
                 name="first_name"
@@ -22,8 +24,11 @@
                 placeholder="First Name"
                 value=""
                 v-model="patientInfo.first_name">
+              <div class="form-group__message--error" v-if="!$v.patientInfo.first_name.required">First name is required.</div>
             </div>
-            <div class="form-group">
+            <div
+              class="form-group"
+              :class="{ 'form-group--error': $v.patientInfo.last_name.$error }">
               <input
                 type="text"
                 name="last_name"
@@ -33,8 +38,11 @@
                 placeholder="Last Name"
                 value=""
                 v-model="patientInfo.last_name">
+              <div class="form-group__message--error" v-if="!$v.patientInfo.last_name.required">Last name is required.</div>
             </div>
-            <div class="form-group">
+            <div
+              class="form-group"
+              :class="{ 'form-group--error': $v.patientInfo.date_of_birth.$error }">
               <input
                 type="date"
                 name="date_of_birth"
@@ -44,6 +52,7 @@
                 placeholder="Date Of Birth"
                 value=""
                 v-model="patientInfo.date_of_birth">
+              <div class="form-group__message--error" v-if="!$v.patientInfo.date_of_birth.required">Date of birth is required.</div>
             </div>
             <div class="form-group">
               <input
@@ -55,14 +64,19 @@
                 placeholder="Email Address"
                 value=""
                 v-model="patientInfo.email">
+              <div class="form-group__message--error" v-if="!$v.patientInfo.email.required">Email address is required.</div>
+              <div class="form-group__message--error" v-if="!$v.patientInfo.email.email">Please, type a valid email.</div>
             </div>
-            <div class="form-group">
+            <div
+              class="form-group"
+              :class="{ 'form-group--error': $v.patientInfo.gender.$error }">
               <select v-model="patientInfo.gender">
                 <option value="" disabled selected>Select patient gender</option>
                 <option value="Female">Female</option>
                 <option value="Male">Male</option>
                 <option value="Another">Another</option>
               </select>
+              <div class="form-group__message--error" v-if="!$v.patientInfo.gender.required">Patient gender is required.</div>
             </div>
             <div class="form-group">
               <input
@@ -75,20 +89,26 @@
                 value=""
                 >
             </div>
-            <div class="form-group">
+            <div
+              class="form-group"
+              :class="{ 'form-group--error': $v.patientInfo.practice_centre_id.$error }">
               <select name="" id="" v-model="patientInfo.practice_centre_id">
                 <option value="" disabled selected>Select practice centre</option>
                 <option
                   v-for="(practice, index) in practices"
                   :key="index" :value="practice.name">{{practice.name}}</option>
               </select>
+              <div class="form-group__message--error" v-if="!$v.patientInfo.practice_centre_id.required">Practice centre is required.</div>
             </div>
             <div class="form-group" v-if="acl==='edit'">
               <button
                 class="btn btn-success"
                 style="width: 100%"
                 @click.prevent="savePatient(patientInfo)"
-                >
+                :disabled="isLoading">
+                <i
+                v-if="isLoading"
+                class="fa fa-spinner fa-spin" />
                 Save Patient
               </button>
             </div>
@@ -105,6 +125,7 @@
 import EventBus from '../../../EventBus'
 import { mapGetters } from 'vuex'
 import { getDate } from '../../../tools/dateSetter'
+import { required, email } from 'vuelidate/lib/validators'
 export default {
   name: 'DentistPatientModal',
   props: {
@@ -116,7 +137,31 @@ export default {
   },
   data () {
     return {
-      isActive: false
+      isActive: false,
+      isLoading: false
+    }
+  },
+  validations: {
+    patientInfo: {
+      first_name: {
+        required
+      },
+      last_name: {
+        required
+      },
+      date_of_birth: {
+        required
+      },
+      email: {
+        required,
+        email
+      },
+      gender: {
+        required
+      },
+      practice_centre_id: {
+        required
+      }
     }
   },
   computed: {
@@ -124,16 +169,21 @@ export default {
   },
   methods: {
     savePatient (patientInfo) {
-      let isNew = this._isNew(patientInfo)
-      if (isNew) {
-        let today = getDate()
-        let dentistId = this.currentUserId
-        patientInfo = { ...patientInfo, RegistrationDate: today, dentistId: dentistId, Status: 'Active' }
-        this.$store.dispatch('ADD_PATIENT', patientInfo)
-      } else {
-        this.$store.dispatch('EDIT_PATIENT', patientInfo)
+      this.$v.$touch()
+      if (!this.$v.$invalid) {
+        this.isLoading = true
+        let isNew = this._isNew(patientInfo)
+        if (isNew) {
+          let today = getDate()
+          let dentistId = this.currentUserId
+          patientInfo = { ...patientInfo, RegistrationDate: today, dentistId: dentistId, Status: 'Active' }
+          this.$store.dispatch('ADD_PATIENT', patientInfo)
+        } else {
+          this.$store.dispatch('EDIT_PATIENT', patientInfo)
+        }
+        this.isLoading = false
+        this.toggleModal()
       }
-      this.toggleModal()
     },
     _isNew (patientInfo) {
       if (typeof patientInfo.id === 'undefined') {
