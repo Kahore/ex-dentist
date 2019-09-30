@@ -13,22 +13,28 @@
             </router-link>
         </div>
         <div class="col-md-10 col-sm-10 offset-sm-1 ">
+          <p class="form-group__message--error">{{submitError}}</p>
           <form
             id="login-form"
             role="form"
             class="form-group mt-2">
             <userType v-if="selectedUserType === ''"/>
             <div v-else>
-            <div class="form-group">
+            <div
+              class="form-group"
+              :class="{ 'form-group--error': $v.email.$error }">
               <input
                 type="email"
                 name="email"
                 id="email"
                 class="form-control"
                 placeholder="Email Address" v-model="email">
+               <div class="form-group__message--error" v-if="$v.email.$error">Email is required</div>
             </div>
             <!-- .form-group -->
-            <div class="form-group">
+            <div
+              class="form-group"
+              :class="{ 'form-group--error': $v.password.$error }">
               <input
                 type="password"
                 name="password"
@@ -36,6 +42,7 @@
                 class="form-control"
                 placeholder="Password"
                 v-model="password">
+              <div class="form-group__message--error" v-if="$v.password.$error">Password is required</div>
             </div>
             <!-- .form-group -->
             <div class="form-group">
@@ -85,6 +92,7 @@
 </template>
 
 <script>
+import { required } from 'vuelidate/lib/validators'
 import { mapGetters } from 'vuex'
 import EventBus from './../../EventBus'
 import firebase from 'firebase'
@@ -95,7 +103,16 @@ export default {
       email: '',
       password: '',
       isLoading: false,
-      isActive: false
+      isActive: false,
+      submitError: null
+    }
+  },
+  validations: {
+    email: {
+      required
+    },
+    password: {
+      required
     }
   },
   components: {
@@ -106,12 +123,18 @@ export default {
   },
   methods: {
     loginWithEmailLocal () {
-      firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(res => {
-        this.$store.dispatch('LOAD_USER', res.user.uid)
-        this.$router.push('/')
-      }).catch(error => {
-        console.log('TCL: loginWithEmailLocal -> error', error)
-      })
+      this.submitError = ''
+      this.$v.$touch()
+      if (!this.$v.$invalid) {
+        this.isLoading = true
+        firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(res => {
+          this.$store.dispatch('LOAD_USER', res.user.uid)
+          this.$router.push('/')
+        }).catch(error => {
+          this.isLoading = false
+          this.submitError = error.message
+        })
+      }
     },
     toggleModal () {
       this.isActive = !this.isActive

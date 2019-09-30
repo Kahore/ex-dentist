@@ -8,3 +8,12 @@ $bg-dark:#212529;
     }
   }
 }
+.form-group--error input, .form-group--error textarea, .form-group--error input:focus, .form-group--error input:hover {
+    border-color: #f79483;
+}
+
+  .form-group__message--error {
+    font-size: 0.75rem;
+    display: block;
+    color: #f57f6c;
+}
