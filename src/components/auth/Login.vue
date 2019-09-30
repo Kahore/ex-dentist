@@ -13,7 +13,9 @@
             </router-link>
         </div>
         <div class="col-md-10 col-sm-10 offset-sm-1 ">
-          <p class="form-group__message--error">{{submitError}}</p>
+         <div class="form-group--error">
+            <p class="form-group__message--error">{{submitError}}</p>
+          </div>
           <form
             id="login-form"
             role="form"
