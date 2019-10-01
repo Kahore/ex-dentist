@@ -131,23 +131,23 @@ export default {
         this.isLoading = true
         firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(res => {
           this.$store.dispatch('LOAD_USER', res.user.uid).then(response => {
+            this.$store.commit('AUTH_STATUS_CHANGE')
             switch (response.type) {
               case 'Dentist':
-                history.pushState('', '', './dentist-dashboard')
+                this.$router.push('/dentist-dashboard')
                 break
               case 'Lab':
-                history.pushState('', '', './lab-dashboard')
+                this.$router.push('/lab-dashboard')
                 break
               case 'Clinician':
-                history.pushState('', '', './clinician-dashboard')
+                this.$router.push('/clinician-dashboard')
                 break
               case 'Admin':
-                history.pushState('', '', './staff')
+                this.$router.push('/staff')
                 break
               default:
                 break
             }
-            window.location.reload(true)
           })
           this.toggleModal()
         }).catch(error => {

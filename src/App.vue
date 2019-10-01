@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <div id="nav">
-      <appHeader :key="$route.fullPath"/>
-      <router-view/>
+      <appHeader/>
+      <router-view :key="$route.fullPath"/>
     </div>
   </div>
 </template>

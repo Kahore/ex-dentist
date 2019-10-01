@@ -25,7 +25,7 @@ const getters = {
     if (localStorage.getItem('userInfo')) {
       return JSON.parse(localStorage.getItem('userInfo')).id
     } else {
-      return ''
+      return state.user.id
     }
   }
 }
