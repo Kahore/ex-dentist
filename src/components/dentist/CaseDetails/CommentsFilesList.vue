@@ -19,7 +19,11 @@
         </li>
       </template>
     </ul>
-    <template v-if="commentsHistoryFile.length === 0">
+    <template v-if="isLoading_FilesList">
+      <i class="fa fa-spinner fa-spin" ></i>
+      <span class="ml-2">Loading data...</span>
+    </template>
+    <template v-if="!isLoading_FilesList && commentsHistoryFile.length === 0">
       <p>Oh, looks like there is nothing here</p>
     </template>
   </div>
@@ -31,7 +35,7 @@ import EventBus from '../../../EventBus'
 export default {
   name: 'DentistCommentsFilesList',
   computed: {
-    ...mapGetters(['commentsHistoryFile'])
+    ...mapGetters(['commentsHistoryFile', 'isLoading_FilesList'])
   },
   methods: {
     filterFile (mode) {

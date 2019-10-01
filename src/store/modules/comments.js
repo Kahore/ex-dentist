@@ -3,7 +3,8 @@ import db from '../../config/firebaseConfig'
 const state = {
   commentsHistoryDentistLab: [],
   commentsHistoryLabClinicals: [],
-  commentsHistoryFile: []
+  commentsHistoryFile: [],
+  isLoading_FilesList: false
 }
 
 const getters = {
@@ -15,6 +16,9 @@ const getters = {
   },
   commentsHistoryFile: (state) => {
     return state.commentsHistoryFile
+  },
+  isLoading_FilesList: (state) => {
+    return state.isLoading_FilesList
   }
 }
 
@@ -28,6 +32,9 @@ const mutations = {
   },
   LOAD_FILES: (state, payload) => {
     state.commentsHistoryFile = payload
+  },
+  MUTATE_isLoading_FilesList: (state) => {
+    state.isLoading_FilesList = !state.isLoading_FilesList
   },
   ADD_COMMENT: (state, payload) => {
     if (payload.mode === 'lab') {
@@ -56,8 +63,10 @@ const actions = {
     })
   },
   LOAD_FILES ({ commit }, payload) {
+    commit('MUTATE_isLoading_FilesList')
     let files = []
     let collections = ['commentsDentistLab', 'commentsLabClinician']
+    let helperCount = 0
     let options = { where: [['orderId', '==', payload.orderId], ['fileName', '>', '']] }
     if (payload.from !== 'All') {
       options.where.push(['from', '==', payload.from])
@@ -69,9 +78,16 @@ const actions = {
         query = query.where(...w)
       }
       query.get().then(querySnapshot => {
+        helperCount = helperCount + 1
         querySnapshot.forEach(doc => {
           files.push(doc.data())
+          if (helperCount === collections.length) {
+            commit('MUTATE_isLoading_FilesList')
+          }
         })
+        if (querySnapshot.empty && helperCount === collections.length) {
+          commit('MUTATE_isLoading_FilesList')
+        }
       })
     }
     commit('LOAD_FILES', files)
