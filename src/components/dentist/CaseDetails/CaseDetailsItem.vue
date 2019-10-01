@@ -18,9 +18,7 @@
          generate the lab slip
       </button>
     </div>
-    <div class="col-12 col-md-12" v-if="isSuccess">
-      <alertSuccess/>
-    </div>
+    <alertSuccess v-if="isSuccess"/>
     <div class="form-group col-lg-4 col-md-4 col-12">
       <strong><label for="orderStatus">Order status: </label></strong>
       <select
