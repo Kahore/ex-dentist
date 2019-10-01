@@ -218,6 +218,9 @@ export default {
           }
           regData = { ...regData, id: res.user.uid }
           this.$store.dispatch('CREATE_USER_WITH_LOGIN', regData)
+          this.isLoading = false
+          this.toggleModal()
+          this.$router.push('/')
         }).catch((error) => {
           this.isLoading = false
           this.submitError = error.message
