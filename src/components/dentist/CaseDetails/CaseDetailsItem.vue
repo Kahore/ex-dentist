@@ -18,6 +18,9 @@
          generate the lab slip
       </button>
     </div>
+    <div class="col-12 col-md-12" v-if="isSuccess">
+      <alertSuccess/>
+    </div>
     <div class="form-group col-lg-4 col-md-4 col-12">
       <strong><label for="orderStatus">Order status: </label></strong>
       <select
@@ -59,13 +62,15 @@
 import { mapGetters } from 'vuex'
 export default {
   name: 'CaseDetailsItem',
+  components: {
+    alertSuccess: () => import('../../AlertSuccess')
+  },
   computed: {
     ...mapGetters(['caseOrder', 'currentUser'])
   },
   data () {
     return {
-      tmp_status: '',
-      tmp_attention_require: ''
+      isSuccess: false
     }
   },
   methods: {
@@ -73,11 +78,15 @@ export default {
       alert('Generating pdf document here')
     },
     saveDetails () {
+      this.isSuccess = true
       if (this.caseOrder.status === 'Completed') {
         this.caseOrder.attention_require = ''
       }
       let updatedCase = { ...this.caseOrder, status: this.caseOrder.status, attention_require: this.caseOrder.attention_require }
       this.$store.dispatch('EDIT_ORDER', updatedCase)
+      setTimeout(() => {
+        this.isSuccess = false
+      }, 2000)
     }
   },
   mounted () {
