@@ -98,6 +98,9 @@
                   v-for="(practice, index) in practices"
                   :key="index" :value="practice.name">{{practice.name}}</option>
               </select>
+              <span
+                v-if="practices.length ===0"
+                class="bg-warning ml-1">You should add practice before continue</span>
               <div class="form-group__message--error" v-if="!$v.patientInfo.practice_centre_id.required">Practice centre is required.</div>
             </div>
             <div class="form-group" v-if="acl==='edit'">
