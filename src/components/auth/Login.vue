@@ -131,10 +131,22 @@ export default {
         this.isLoading = true
         firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(res => {
           this.$store.dispatch('LOAD_USER', res.user.uid).then(response => {
-            // this.$router.go( { path: this.$router.path})
-            this.$router.push('/')
-            let url = window.location.origin
-            history.pushState('', '', url)
+            switch (response.type) {
+              case 'Dentist':
+                history.pushState('', '', './dentist-dashboard')
+                break
+              case 'Lab':
+                history.pushState('', '', './lab-dashboard')
+                break
+              case 'Clinician':
+                history.pushState('', '', './clinician-dashboard')
+                break
+              case 'Admin':
+                history.pushState('', '', './staff')
+                break
+              default:
+                break
+            }
             window.location.reload(true)
           })
           this.toggleModal()
